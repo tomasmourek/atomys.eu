@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATOMYS – Inteligentní systémy pro řízení provozu</title>
+<meta name="description" content="ATOMYS vyvíjí inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a moderní provozy. Data, která rozhodují – provoz pod kontrolou.">
+<meta name="theme-color" content="#080b12">
+<meta name="author" content="ATOMYS">
+<link rel="canonical" href="https://atomys.eu/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ATOMYS – Inteligentní systémy pro řízení provozu">
+<meta property="og:description" content="Vyvíjíme inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a moderní provozy.">
+<meta property="og:url" content="https://atomys.eu/">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="ATOMYS">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 110'%3E%3Cpath fill='%23c9d2dc' d='M60 8 L112 104 L88 104 L60 50 L32 104 L8 104 Z'/%3E%3Cpath fill='%232b8fff' d='M60 60 L76 92 L44 92 Z'/%3E%3C/svg%3E">
+
+<style>
+/* ============================================================
+   ATOMYS — one-file company site
+   Colours, spacing and components driven by CSS variables.
+   Dark theme is default; light theme via [data-theme="light"].
+   ============================================================ */
+
+:root{
+  --brand:#2b8fff;
+  --brand-2:#48c4ff;
+  --brand-deep:#0d47a1;
+  --grad-blue:linear-gradient(135deg,#1666e0 0%,#1e74ff 100%); /* darkened for AA text contrast on buttons */
+  --grad-silver:linear-gradient(180deg,#f6f8fb 0%,#c6cfda 46%,#7c8797 100%);
+  --radius:18px;
+  --radius-sm:12px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow-brand:0 18px 50px -18px rgba(43,143,255,.55);
+}
+
+/* ---------- DARK (default) ---------- */
+[data-theme="dark"]{
+  --bg:#080b12;
+  --bg-grad-1:#0d1930;
+  --bg-grad-2:#070a11;
+  --surface:rgba(255,255,255,.035);
+  --surface-solid:#0f1622;
+  --surface-hover:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.09);
+  --border-strong:rgba(120,170,255,.35);
+  --text:#eef2f8;
+  --text-dim:#9fb0c6;
+  --text-faint:#7d8ca6;                 /* AA-safe on #080b12 & #0f1622 */
+  --nav-bg:rgba(9,13,20,.72);
+  --chip-bg:rgba(43,143,255,.12);
+  --chip-text:#7cc0ff;
+  --hero-glow:rgba(43,143,255,.32);
+  --card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.18),rgba(43,143,255,.04));
+  --footer-bg:#060910;
+  --iso-side:#090e17;                    /* isometric platform depth */
+  --mk-1:#f6f8fb; --mk-2:#c1cad6; --mk-3:#6f7a8a;   /* logo mark — bright on dark */
+}
+
+/* ---------- LIGHT ---------- */
+[data-theme="light"]{
+  --bg:#ffffff;
+  --bg-grad-1:#eaf2ff;
+  --bg-grad-2:#ffffff;
+  --surface:#ffffff;
+  --surface-solid:#ffffff;
+  --surface-hover:#f6f9ff;
+  --border:rgba(13,26,48,.10);
+  --border-strong:rgba(43,143,255,.45);
+  --text:#0d1524;
+  --text-dim:#54627a;
+  --text-faint:#6b7688;                 /* AA-safe on #ffffff */
+  --nav-bg:rgba(255,255,255,.78);
+  --chip-bg:rgba(43,143,255,.10);
+  --chip-text:#1358c4;                   /* AA-safe on tinted .alt sections */
+  --hero-glow:rgba(43,143,255,.20);
+  --card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.14),rgba(43,143,255,.03));
+  --footer-bg:#0a1220;
+  --grad-silver:linear-gradient(180deg,#5b6675 0%,#1f2733 100%);
+  --brand:#1666e0;
+  --iso-side:#d5dfee;
+  --mk-1:#8b96a6; --mk-2:#5a6473; --mk-3:#2f3947;   /* logo mark — steel, legible on white */
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,"Apple Color Emoji",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  overflow-wrap:break-word;
+  transition:background .4s var(--ease),color .4s var(--ease);
+}
+
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+ul{list-style:none}
+
+/* Keyboard focus — visible in both themes */
+:focus-visible{outline:2px solid var(--brand-2);outline-offset:3px;border-radius:12px}
+[data-theme="light"] :focus-visible{outline-color:var(--brand)}
+
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* Ambient background glows */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(1000px 600px at 78% -8%,var(--bg-grad-1),transparent 60%),
+    radial-gradient(900px 700px at 8% 12%,color-mix(in srgb,var(--bg-grad-1) 55%,transparent),transparent 55%),
+    var(--bg-grad-2);
+  transition:background .4s var(--ease);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 0,#000,transparent 70%);
+          mask-image:radial-gradient(circle at 50% 0,#000,transparent 70%);
+}
+
+/* ============ Buttons ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-weight:600;font-size:15px;letter-spacing:.01em;
+  padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s,color .25s;
+  white-space:nowrap;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--grad-blue);color:#fff;box-shadow:var(--shadow-brand)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 55px -16px rgba(43,143,255,.7)}
+.btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--border-strong);background:var(--surface-hover);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+/* ============ Header / Nav ============ */
+header{position:sticky;top:0;z-index:100;padding:0 24px;transition:background .3s,border-color .3s}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:12px 20px;margin:12px auto;max-width:var(--maxw);
+  background:var(--nav-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid var(--border);border-radius:16px;
+}
+.brand{display:flex;align-items:center;gap:11px}
+.brand .mark{width:34px;height:31px;flex:none}
+.brand .word{
+  font-weight:800;font-size:21px;letter-spacing:.26em;
+  padding-left:.13em;line-height:1;
+  background:var(--grad-silver);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{
+  font-size:14.5px;font-weight:500;color:var(--text-dim);
+  padding:9px 14px;border-radius:9px;transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--text);background:var(--surface-hover)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+
+.icon-btn{
+  width:40px;height:40px;display:grid;place-items:center;flex:none;
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  color:var(--text-dim);cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+}
+.icon-btn:hover{color:var(--text);border-color:var(--border-strong)}
+.icon-btn svg{width:18px;height:18px}
+.theme-toggle .sun{display:none}
+[data-theme="light"] .theme-toggle .sun{display:block}
+[data-theme="light"] .theme-toggle .moon{display:none}
+
+.burger{display:none}
+
+/* ============ Section scaffolding ============ */
+section{padding:96px 0;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--chip-text);background:var(--chip-bg);
+  padding:7px 14px;border-radius:100px;border:1px solid var(--border);
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand)}
+.section-head{max-width:660px;margin-bottom:52px}
+.section-head.center{margin-inline:auto;text-align:center}
+h2.title{
+  font-size:clamp(30px,4.4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-.02em;
+  margin:20px 0 14px;
+}
+.section-head p{color:var(--text-dim);font-size:17px}
+.grad-text{background:var(--grad-blue);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ============ Hero ============ */
+.hero{padding-top:52px;padding-bottom:64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{
+  font-size:clamp(38px,6vw,68px);line-height:1.04;font-weight:800;letter-spacing:-.03em;
+  margin:22px 0 12px;
+}
+.hero .hero-tagline{
+  font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-faint);margin-bottom:22px;
+}
+.hero p.lead{font-size:19px;color:var(--text-dim);max-width:520px;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+.hero-stats .num{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.hero-stats .lbl{font-size:13.5px;color:var(--text-faint)}
+
+/* Hero visual */
+.hero-visual{position:relative;aspect-ratio:1/1;display:grid;place-items:center}
+.hero-visual .glow{
+  position:absolute;width:60%;height:60%;border-radius:50%;
+  background:radial-gradient(circle,var(--hero-glow),transparent 68%);
+  filter:blur(12px);animation:pulse 6s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
+.hero-visual svg.net{position:relative;width:100%;height:100%;overflow:visible}
+.node-ring{fill:none;stroke:var(--brand);stroke-width:1.2;transform-box:fill-box;transform-origin:center;opacity:0;animation:ring 3.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(.55);opacity:.5}80%{opacity:0}100%{transform:scale(1.75);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .hero-visual .glow{animation:none}
+  .node-ring{animation:none;opacity:0}
+}
+
+/* ============ Products ============ */
+.alt{background:var(--surface);border-block:1px solid var(--border)}
+[data-theme="light"] .alt{background:var(--bg-grad-1)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{
+  position:relative;background:var(--surface-solid);border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px 24px 22px;overflow:hidden;
+  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
+  display:flex;flex-direction:column;
+}
+[data-theme="light"] .card{box-shadow:0 1px 2px rgba(13,26,48,.04)}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;
+  background:linear-gradient(160deg,var(--brand),transparent 42%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:0 26px 50px -26px rgba(43,143,255,.4)}
+.card:hover::before{opacity:1}
+.card .ic{
+  width:48px;height:48px;border-radius:13px;display:grid;place-items:center;
+  background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand);margin-bottom:18px;
+}
+.card .ic svg{width:24px;height:24px}
+.card h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:7px}
+.card .desc{font-size:14.5px;color:var(--text-dim);flex:1;margin-bottom:18px}
+.card .link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--brand);overflow-wrap:break-word}
+.card .link svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.card:hover .link svg{transform:translateX(4px)}
+.card .soon{color:var(--text-faint);font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:7px}
+.card .soon::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--text-faint)}
+.badge-tag{position:absolute;top:16px;right:16px;font-size:11px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--chip-text);background:var(--chip-bg);padding:4px 9px;border-radius:7px}
+
+/* ============ Features ============ */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.feat .fi{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand);margin-bottom:16px}
+.feat .fi svg{width:22px;height:22px}
+.feat h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+.feat p{font-size:14px;color:var(--text-dim)}
+
+/* ============ About ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-copy p{color:var(--text-dim);font-size:16.5px;margin-bottom:18px}
+.about-copy p strong{color:var(--text);font-weight:600}
+.pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{font-size:13.5px;font-weight:600;color:var(--text-dim);background:var(--surface);
+  border:1px solid var(--border);padding:9px 15px;border-radius:100px}
+.about-panel{
+  background:var(--surface-solid);border:1px solid var(--border);border-radius:22px;padding:34px;
+  position:relative;overflow:hidden;
+}
+[data-theme="light"] .about-panel{box-shadow:0 20px 50px -30px rgba(13,26,48,.25)}
+.about-panel .row{display:flex;align-items:flex-start;gap:15px;padding:16px 0;border-bottom:1px solid var(--border)}
+.about-panel .row:last-child{border-bottom:0;padding-bottom:0}
+.about-panel .row:first-child{padding-top:0}
+.about-panel .rn{width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand)}
+.about-panel .rn svg{width:17px;height:17px}
+.about-panel .rt{font-weight:700;font-size:15.5px;margin-bottom:2px}
+.about-panel .rd{font-size:13.5px;color:var(--text-dim)}
+
+/* ============ Contact ============ */
+.contact-card{
+  background:var(--surface-solid);border:1px solid var(--border);border-radius:24px;
+  padding:clamp(34px,5vw,60px);text-align:center;position:relative;overflow:hidden;
+}
+.contact-card::after{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+  width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--hero-glow),transparent 65%);z-index:0}
+.contact-card>*{position:relative;z-index:1}
+.contact-card h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.contact-card p{color:var(--text-dim);font-size:17px;max-width:520px;margin:0 auto 30px}
+.contact-methods{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+.cm{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--text);overflow-wrap:break-word;
+  background:var(--surface);border:1px solid var(--border);padding:14px 20px;border-radius:12px;
+  transition:border-color .2s,transform .2s}
+.cm:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+.cm svg{width:18px;height:18px;color:var(--brand)}
+
+/* ============ Footer ============ */
+footer{background:var(--footer-bg);border-top:1px solid var(--border);color:#c3ccda;padding:56px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer .brand .word{color:transparent}
+footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
+.foot-col h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#7d8ba0;margin-bottom:16px;font-weight:700}
+.foot-col a,.foot-col span{display:block;color:#aab6c8;font-size:14.5px;padding:6px 0;transition:color .2s;overflow-wrap:break-word}
+.foot-col a{text-decoration:underline;text-decoration-color:rgba(170,182,200,.35);text-underline-offset:3px}
+.foot-col a:hover{color:#fff;text-decoration-color:#fff}
+.foot-col span{opacity:.72}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:#71809a;font-size:13.5px}
+.foot-bottom .domains{display:flex;gap:16px}
+.foot-bottom .domains a{padding:4px 0;display:inline-block}
+.foot-bottom .domains a:hover{color:#fff}
+
+/* ============ Reveal on scroll ============ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ============ Responsive ============ */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .hero-visual{max-width:440px;margin:0 auto;order:-1}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .foot-grid{grid-template-columns:repeat(3,1fr);gap:28px}
+}
+@media (max-width:680px){
+  section{padding:70px 0}
+  header{padding:0 12px}
+  .nav-links,.nav-desktop-cta{display:none}
+  .burger{display:grid}
+  .nav-links.open{
+    display:flex;flex-direction:column;align-items:stretch;gap:2px;
+    position:absolute;top:74px;left:12px;right:12px;
+    background:var(--surface-solid);border:1px solid var(--border);border-radius:16px;padding:12px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .nav-links.open a{padding:13px 14px;font-size:16px}
+  .cards{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  .foot-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- Shared SVG gradient defs (single source, so no fragile cross-SVG id coupling) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- theme-aware silver mark (bright on dark, steel on light) -->
+    <linearGradient id="mk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--mk-1)"/><stop offset=".5" stop-color="var(--mk-2)"/><stop offset="1" stop-color="var(--mk-3)"/>
+    </linearGradient>
+    <!-- always-bright silver for the dark footer -->
+    <linearGradient id="mkBright" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f8fb"/><stop offset=".5" stop-color="#c1cad6"/><stop offset="1" stop-color="#6f7a8a"/>
+    </linearGradient>
+    <!-- brand blue triangle -->
+    <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#54c6ff"/><stop offset="1" stop-color="#1573ff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <nav class="nav-inner">
+    <a href="#top" class="brand" aria-label="ATOMYS — domů">
+      <svg class="mark" viewBox="0 0 120 110" aria-hidden="true" focusable="false">
+        <path fill="url(#mk)" d="M60 6 L114 104 L89 104 L60 49 L31 104 L6 104 Z"/>
+        <path fill="url(#mk)" opacity=".9" d="M44 70 L76 70 L84 85 L36 85 Z"/>
+        <path fill="url(#bl)" d="M60 58 L77 92 L43 92 Z"/>
+      </svg>
+      <span class="word">ATOMYS</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#produkty">Produkty</a></li>
+      <li><a href="#proc">Proč ATOMYS</a></li>
+      <li><a href="#o-nas">O nás</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" id="themeBtn" aria-label="Přepnout denní / noční režim" title="Denní / noční režim">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
+      </button>
+      <a href="#kontakt" class="btn btn-primary nav-desktop-cta">Kontaktujte nás</a>
+      <button class="icon-btn burger" id="burger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" aria-label="Úvod">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Inteligentní systémy</span>
+        <h1>Provoz pod&nbsp;kontrolou.<br><span class="grad-text">Data, která rozhodují.</span></h1>
+        <p class="hero-tagline">Inteligentní systémy pro řízení provozu</p>
+        <p class="lead">Vyvíjíme inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a&nbsp;moderní provozy. Spojujeme software, automatizaci a&nbsp;propojená data do jednoho celku, který šetří čas i&nbsp;náklady.</p>
+        <div class="hero-cta">
+          <a href="#produkty" class="btn btn-primary">Naše systémy
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#o-nas" class="btn btn-ghost">Zjistit více</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="num grad-text">4</div><div class="lbl">produktové oblasti</div></div>
+          <div><div class="num grad-text">1</div><div class="lbl">systém v&nbsp;ostrém provozu</div></div>
+          <div><div class="num grad-text">CZ</div><div class="lbl">vývoj a&nbsp;podpora</div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="glow"></div>
+        <svg class="net" viewBox="0 0 400 400" focusable="false">
+          <!-- connecting lines (static, drawn first so the platform overlaps them) -->
+          <g stroke="var(--border-strong)" stroke-width="1.3" opacity=".6">
+            <line x1="200" y1="205" x2="72"  y2="84"/>
+            <line x1="200" y1="205" x2="328" y2="84"/>
+            <line x1="200" y1="205" x2="72"  y2="326"/>
+            <line x1="200" y1="205" x2="328" y2="326"/>
+          </g>
+
+          <!-- isometric platform -->
+          <path d="M96 210 L96 234 L200 288 L200 264 Z" fill="var(--iso-side)"/>
+          <path d="M304 210 L304 234 L200 288 L200 264 Z" fill="var(--iso-side)" opacity=".82"/>
+          <path d="M200 156 L304 210 L200 264 L96 210 Z" fill="var(--surface-solid)" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path d="M200 170 L286 210 L200 250 L114 210 Z" fill="var(--surface-hover)" stroke="var(--border)" stroke-width="1"/>
+
+          <!-- central A -->
+          <g transform="translate(200,163) scale(1.15)">
+            <path fill="url(#mk)" d="M0 -66 L44 22 L24 22 L0 -24 L-24 22 L-44 22 Z"/>
+            <path fill="url(#mk)" opacity=".9" d="M-13 -4 L13 -4 L20 12 L-20 12 Z"/>
+            <path fill="url(#bl)" d="M0 -12 L15 24 L-15 24 Z"/>
+          </g>
+
+          <!-- nodes (static + upright icons; only the pulse ring animates) -->
+          <g transform="translate(72,84)">
+            <circle class="node-ring" r="30"/>
+            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
+            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5-5a2 2 0 0 1 1.9-1.4h11.2A2 2 0 0 1 19.5 10L21 15M3 15h18v3H3zM6 18v2M18 18v2"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></g>
+          </g>
+          <g transform="translate(328,84)">
+            <circle class="node-ring" r="30" style="animation-delay:.85s"/>
+            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
+            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></g>
+          </g>
+          <g transform="translate(72,326)">
+            <circle class="node-ring" r="30" style="animation-delay:1.7s"/>
+            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
+            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l2 10h9l2-7H7M9 19a1 1 0 1 0 0 .01M17 19a1 1 0 1 0 0 .01"/></g>
+          </g>
+          <g transform="translate(328,326)">
+            <circle class="node-ring" r="30" style="animation-delay:2.55s"/>
+            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
+            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.4-2h5.2L16 6"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section id="produkty" class="alt" aria-label="Naše systémy">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Naše systémy</span>
+      <h2 class="title">Jedna platforma, <span class="grad-text">čtyři světy provozu.</span></h2>
+      <p>Každý systém řeší jiné odvětví, ale všechny stojí na stejném základu – propojená data, automatizace a&nbsp;jednoduché ovládání.</p>
+    </div>
+
+    <div class="cards">
+      <!-- Atomys Auto -->
+      <article class="card reveal">
+        <span class="badge-tag">V provozu</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 15l1.6-5.4A2.5 2.5 0 0 1 7 8h10a2.5 2.5 0 0 1 2.4 1.6L21 15M3 15h18v3.5H3zM6.5 18.5V21M17.5 18.5V21"/><circle cx="7.5" cy="15" r="1.3"/><circle cx="16.5" cy="15" r="1.3"/></svg></div>
+        <h3>Atomys Auto</h3>
+        <p class="desc">Kompletní systém pro řízení autoservisů – rezervace, zakázky, sklad, pneuhotel, fakturace i&nbsp;přehledový kokpit na jednom místě.</p>
+        <a class="link" href="https://mujautoservis.eu" target="_blank" rel="noopener">Otevřít mujautoservis.eu<span class="sr-only"> (otevře se v novém okně)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+      </article>
+
+      <!-- Atomys Care -->
+      <article class="card reveal">
+        <span class="badge-tag">Připravujeme</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></svg></div>
+        <h3>Atomys Care</h3>
+        <p class="desc">Systém pro domovy pro seniory – evidence klientů, péče, docházka personálu a&nbsp;přehled o&nbsp;dění v&nbsp;reálném čase.</p>
+        <span class="soon">Ve vývoji</span>
+      </article>
+
+      <!-- Atomys Retail -->
+      <article class="card reveal">
+        <span class="badge-tag">Připravujeme</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h2l2 10h9l2-7H7M9.5 19a1.1 1.1 0 1 0 .01 0M16.5 19a1.1 1.1 0 1 0 .01 0"/></svg></div>
+        <h3>Atomys Retail</h3>
+        <p class="desc">Systém pro maloobchod a&nbsp;potraviny – skladové hospodářství, prodej, objednávky a&nbsp;přehled tržeb v&nbsp;jednom nástroji.</p>
+        <span class="soon">Ve vývoji</span>
+      </article>
+
+      <!-- Atomys Vision -->
+      <article class="card reveal">
+        <span class="badge-tag">Připravujeme</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6.5" width="18" height="12.5" rx="2.5"/><circle cx="12" cy="12.7" r="3.3"/><path d="M8 6.5l1.3-2.5h5.4L16 6.5"/></svg></div>
+        <h3>Atomys Vision</h3>
+        <p class="desc">Kamerový systém s&nbsp;umělou inteligencí pro provozy – pokročilá analýza obrazu, detekce událostí a&nbsp;přehled o&nbsp;bezpečnosti bez neustálého sledování.</p>
+        <span class="soon">Ve vývoji</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURES ===================== -->
+<section id="proc" aria-label="Proč ATOMYS">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Proč ATOMYS</span>
+      <h2 class="title">Čtyři principy, na kterých stavíme.</h2>
+    </div>
+    <div class="features">
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 1 3 11.2c-.6.4-1 1-1 1.8v.5H10v-.5c0-.8-.4-1.4-1-1.8A6 6 0 0 1 12 3zM10 20h4M10.5 22h3"/></svg></div>
+        <h3>Inteligence</h3>
+        <p>Data proměňujeme v&nbsp;chytrá rozhodnutí, ne v&nbsp;tabulky, které nikdo nečte.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+        <h3>Automatizace</h3>
+        <p>Automatizujeme rutinu, šetříme čas i&nbsp;náklady a&nbsp;necháváme lidi dělat to podstatné.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v18h18"/><path d="M7 15l3.5-4 3 2.5L21 7"/></svg></div>
+        <h3>Přehled</h3>
+        <p>Všechny důležité informace na jednom místě – jasně a&nbsp;v&nbsp;reálném čase.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 5-3.4 8.3-7 9.6C8.4 19.3 5 16 5 11V6z"/><path d="M9.3 12l1.9 1.9 3.6-3.8"/></svg></div>
+        <h3>Bezpečnost</h3>
+        <p>Vaše data jsou v&nbsp;bezpečí – provozujeme je zodpovědně a&nbsp;v&nbsp;souladu s&nbsp;pravidly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="o-nas" class="alt" aria-label="O nás">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">Kdo jsme</span>
+        <h2 class="title" style="margin-top:20px">Softwarová značka za <span class="grad-text">chytrým provozem.</span></h2>
+        <p><strong>ATOMYS</strong> zastřešuje rodinu softwarových systémů pro každodenní provoz firem. Nezaměřujeme se na jedno odvětví – stavíme nástroje pro autoservisy, domovy pro seniory, maloobchod i&nbsp;moderní provozy, které spojuje jedna potřeba: mít vše pod kontrolou.</p>
+        <p>Naším cílem je software, který práci ulehčuje, ne komplikuje. Přehledný, rychlý a&nbsp;postavený na datech, kterým se dá věřit. Každý produkt řešíme do hloubky – od rezervací a&nbsp;skladu až po fakturaci a&nbsp;analýzu.</p>
+        <div class="pill-row">
+          <span class="pill">Software na míru provozu</span>
+          <span class="pill">Data a&nbsp;automatizace</span>
+          <span class="pill">Vývoj v&nbsp;Česku</span>
+          <span class="pill">Dlouhodobá podpora</span>
+        </div>
+      </div>
+
+      <div class="about-panel reveal">
+        <div class="row">
+          <div class="rn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l2.6 5.3 5.9.9-4.3 4.1 1 5.7L12 15.9 6.8 18l1-5.7L3.5 8.2l5.9-.9z"/></svg></div>
+          <div><div class="rt">Vlastní vývoj</div><div class="rd">Systémy vyvíjíme vlastními silami, takže jim rozumíme do posledního řádku.</div></div>
+        </div>
+        <div class="row">
+          <div class="rn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM12 7v5l3 2"/></svg></div>
+          <div><div class="rt">Provoz 24/7</div><div class="rd">Naše systémy běží nepřetržitě – stejně jako provozy, kterým slouží.</div></div>
+        </div>
+        <div class="row">
+          <div class="rn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 5-3.4 8.3-7 9.6C8.4 19.3 5 16 5 11V6z"/></svg></div>
+          <div><div class="rt">Bezpečné a spolehlivé</div><div class="rd">Data hostujeme zodpovědně, s&nbsp;ohledem na soukromí a&nbsp;stabilitu.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="kontakt" aria-label="Kontakt">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <span class="eyebrow">Kontakt</span>
+      <h2 style="margin-top:18px">Pojďme dostat váš provoz <span class="grad-text">pod kontrolu.</span></h2>
+      <p>Máte provoz, který by si zasloužil chytřejší systém? Napište nám – rádi probereme, jak vám ATOMYS může pomoci.</p>
+      <div class="contact-methods">
+        <a class="cm" href="mailto:info@atomys.eu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>
+          info@atomys.eu
+        </a>
+        <!-- Telefon doplňte podle potřeby:
+        <a class="cm" href="tel:+420000000000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l1 5v1a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+          +420 000 000 000
+        </a>
+        -->
+      </div>
+      <div style="margin-top:26px">
+        <a href="mailto:info@atomys.eu?subject=Popt%C3%A1vka%20%E2%80%93%20ATOMYS" class="btn btn-primary">Napište nám
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 120 110" aria-hidden="true" focusable="false">
+            <path fill="url(#mkBright)" d="M60 6 L114 104 L89 104 L60 49 L31 104 L6 104 Z"/>
+            <path fill="url(#mkBright)" opacity=".9" d="M44 70 L76 70 L84 85 L36 85 Z"/>
+            <path fill="url(#bl)" d="M60 58 L77 92 L43 92 Z"/>
+          </svg>
+          <span class="word">ATOMYS</span>
+        </div>
+        <p class="tagline">Inteligentní systémy pro řízení provozu. Data, která rozhodují.</p>
+      </div>
+
+      <div class="foot-col">
+        <h3>Produkty</h3>
+        <a href="https://mujautoservis.eu" target="_blank" rel="noopener">Atomys Auto<span class="sr-only"> (otevře se v novém okně)</span></a>
+        <span>Atomys Care</span>
+        <span>Atomys Retail</span>
+        <span>Atomys Vision</span>
+      </div>
+
+      <div class="foot-col">
+        <h3>Společnost</h3>
+        <a href="#o-nas">O nás</a>
+        <a href="#proc">Proč ATOMYS</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="mailto:info@atomys.eu">info@atomys.eu</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> ATOMYS. Všechna práva vyhrazena.</span>
+      <div class="domains">
+        <a href="https://atomys.eu">atomys.eu</a>
+        <a href="https://atomys.cz">atomys.cz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+
+  /* ---- Theme: persist + respect system preference on first visit ---- */
+  try{
+    var saved=localStorage.getItem("atomys-theme");
+    if(saved){root.setAttribute("data-theme",saved);}
+    else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){root.setAttribute("data-theme","light");}
+  }catch(e){}
+
+  var themeBtn=document.getElementById("themeBtn");
+  themeBtn&&themeBtn.addEventListener("click",function(){
+    var next=root.getAttribute("data-theme")==="light"?"dark":"light";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem("atomys-theme",next);}catch(e){}
+  });
+
+  /* ---- Mobile menu ---- */
+  var burger=document.getElementById("burger"),links=document.getElementById("navLinks");
+  burger&&burger.addEventListener("click",function(){
+    var open=links.classList.toggle("open");
+    burger.setAttribute("aria-expanded",open?"true":"false");
+  });
+  links&&links.addEventListener("click",function(e){
+    if(e.target.tagName==="A"){links.classList.remove("open");burger.setAttribute("aria-expanded","false");}
+  });
+
+  /* ---- Year ---- */
+  var y=document.getElementById("year");if(y){y.textContent=new Date().getFullYear();}
+
+  /* ---- Reveal on scroll ---- */
+  var els=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});
+    },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+    els.forEach(function(el){io.observe(el);});
+  }else{els.forEach(function(el){el.classList.add("in");});}
+})();
+</script>
+</body>
+</html>
