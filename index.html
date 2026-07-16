@@ -1,262 +1,136 @@
 <!DOCTYPE html>
-<html lang="cs" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATOMYS – Inteligentní systémy pro řízení provozu</title>
-<meta name="description" content="ATOMYS vyvíjí inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a moderní provozy. Data, která rozhodují – provoz pod kontrolou.">
+<title>ATOMYS – Intelligent systems for operations management</title>
+<meta name="description" content="ATOMYS builds intelligent systems for auto repair shops, senior care homes, retail and modern operations. Data that drives decisions – operations under control.">
 <meta name="theme-color" content="#080b12">
 <meta name="author" content="ATOMYS">
 <link rel="canonical" href="https://atomys.eu/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="ATOMYS – Inteligentní systémy pro řízení provozu">
-<meta property="og:description" content="Vyvíjíme inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a moderní provozy.">
+<meta property="og:title" content="ATOMYS – Intelligent systems for operations management">
+<meta property="og:description" content="We build intelligent systems for auto repair shops, senior care homes, retail and modern operations.">
 <meta property="og:url" content="https://atomys.eu/">
-<meta property="og:locale" content="cs_CZ">
 <meta property="og:site_name" content="ATOMYS">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 110'%3E%3Cpath fill='%23c9d2dc' d='M60 8 L112 104 L88 104 L60 50 L32 104 L8 104 Z'/%3E%3Cpath fill='%232b8fff' d='M60 60 L76 92 L44 92 Z'/%3E%3C/svg%3E">
 
+<!-- anti-flash: hide until the correct language is applied (only when it differs from the hardcoded English) -->
+<script>(function(){try{var s=localStorage.getItem('atomys-lang');var d=location.hostname.indexOf('.cz')>-1?'cs':'en';var l=s||d;if(l&&l!=='en')document.documentElement.setAttribute('data-i18n-pending','1');}catch(e){}})();</script>
+<style>html[data-i18n-pending] body{visibility:hidden}</style>
+
 <style>
-/* ============================================================
-   ATOMYS — one-file company site
-   Colours, spacing and components driven by CSS variables.
-   Dark theme is default; light theme via [data-theme="light"].
-   ============================================================ */
-
 :root{
-  --brand:#2b8fff;
-  --brand-2:#48c4ff;
-  --brand-deep:#0d47a1;
-  --grad-blue:linear-gradient(135deg,#1666e0 0%,#1e74ff 100%); /* darkened for AA text contrast on buttons */
+  --brand:#2b8fff;--brand-2:#48c4ff;--brand-deep:#0d47a1;
+  --grad-blue:linear-gradient(135deg,#1666e0 0%,#1e74ff 100%);
   --grad-silver:linear-gradient(180deg,#f6f8fb 0%,#c6cfda 46%,#7c8797 100%);
-  --radius:18px;
-  --radius-sm:12px;
-  --maxw:1180px;
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --shadow-brand:0 18px 50px -18px rgba(43,143,255,.55);
+  --radius:18px;--radius-sm:12px;--maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);--shadow-brand:0 18px 50px -18px rgba(43,143,255,.55);
 }
-
-/* ---------- DARK (default) ---------- */
 [data-theme="dark"]{
-  --bg:#080b12;
-  --bg-grad-1:#0d1930;
-  --bg-grad-2:#070a11;
-  --surface:rgba(255,255,255,.035);
-  --surface-solid:#0f1622;
-  --surface-hover:rgba(255,255,255,.06);
-  --border:rgba(255,255,255,.09);
-  --border-strong:rgba(120,170,255,.35);
-  --text:#eef2f8;
-  --text-dim:#9fb0c6;
-  --text-faint:#7d8ca6;                 /* AA-safe on #080b12 & #0f1622 */
-  --nav-bg:rgba(9,13,20,.72);
-  --chip-bg:rgba(43,143,255,.12);
-  --chip-text:#7cc0ff;
-  --hero-glow:rgba(43,143,255,.32);
-  --card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.18),rgba(43,143,255,.04));
-  --footer-bg:#060910;
-  --iso-side:#090e17;                    /* isometric platform depth */
-  --mk-1:#f6f8fb; --mk-2:#c1cad6; --mk-3:#6f7a8a;   /* logo mark — bright on dark */
+  --bg:#080b12;--bg-grad-1:#0d1930;--bg-grad-2:#070a11;
+  --surface:rgba(255,255,255,.035);--surface-solid:#0f1622;--surface-hover:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.09);--border-strong:rgba(120,170,255,.35);
+  --text:#eef2f8;--text-dim:#9fb0c6;--text-faint:#7d8ca6;
+  --nav-bg:rgba(9,13,20,.72);--chip-bg:rgba(43,143,255,.12);--chip-text:#7cc0ff;
+  --hero-glow:rgba(43,143,255,.32);--card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.18),rgba(43,143,255,.04));
+  --footer-bg:#060910;--iso-side:#090e17;--mk-1:#f6f8fb;--mk-2:#c1cad6;--mk-3:#6f7a8a;
 }
-
-/* ---------- LIGHT ---------- */
 [data-theme="light"]{
-  --bg:#ffffff;
-  --bg-grad-1:#eaf2ff;
-  --bg-grad-2:#ffffff;
-  --surface:#ffffff;
-  --surface-solid:#ffffff;
-  --surface-hover:#f6f9ff;
-  --border:rgba(13,26,48,.10);
-  --border-strong:rgba(43,143,255,.45);
-  --text:#0d1524;
-  --text-dim:#54627a;
-  --text-faint:#6b7688;                 /* AA-safe on #ffffff */
-  --nav-bg:rgba(255,255,255,.78);
-  --chip-bg:rgba(43,143,255,.10);
-  --chip-text:#1358c4;                   /* AA-safe on tinted .alt sections */
-  --hero-glow:rgba(43,143,255,.20);
-  --card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.14),rgba(43,143,255,.03));
-  --footer-bg:#0a1220;
-  --grad-silver:linear-gradient(180deg,#5b6675 0%,#1f2733 100%);
-  --brand:#1666e0;
-  --iso-side:#d5dfee;
-  --mk-1:#8b96a6; --mk-2:#5a6473; --mk-3:#2f3947;   /* logo mark — steel, legible on white */
+  --bg:#ffffff;--bg-grad-1:#eaf2ff;--bg-grad-2:#ffffff;
+  --surface:#ffffff;--surface-solid:#ffffff;--surface-hover:#f6f9ff;
+  --border:rgba(13,26,48,.10);--border-strong:rgba(43,143,255,.45);
+  --text:#0d1524;--text-dim:#54627a;--text-faint:#6b7688;
+  --nav-bg:rgba(255,255,255,.78);--chip-bg:rgba(43,143,255,.10);--chip-text:#1358c4;
+  --hero-glow:rgba(43,143,255,.20);--card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.14),rgba(43,143,255,.03));
+  --footer-bg:#0a1220;--grad-silver:linear-gradient(180deg,#5b6675 0%,#1f2733 100%);
+  --brand:#1666e0;--iso-side:#d5dfee;--mk-1:#8b96a6;--mk-2:#5a6473;--mk-3:#2f3947;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,"Apple Color Emoji",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-  overflow-wrap:break-word;
-  transition:background .4s var(--ease),color .4s var(--ease);
-}
-
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,"Apple Color Emoji",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;overflow-wrap:break-word;transition:background .4s var(--ease),color .4s var(--ease)}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
 ul{list-style:none}
-
-/* Keyboard focus — visible in both themes */
 :focus-visible{outline:2px solid var(--brand-2);outline-offset:3px;border-radius:12px}
 [data-theme="light"] :focus-visible{outline-color:var(--brand)}
-
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
-
-/* Ambient background glows */
-body::before{
-  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background:
-    radial-gradient(1000px 600px at 78% -8%,var(--bg-grad-1),transparent 60%),
-    radial-gradient(900px 700px at 8% 12%,color-mix(in srgb,var(--bg-grad-1) 55%,transparent),transparent 55%),
-    var(--bg-grad-2);
-  transition:background .4s var(--ease);
-}
-body::after{
-  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
-  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(circle at 50% 0,#000,transparent 70%);
-          mask-image:radial-gradient(circle at 50% 0,#000,transparent 70%);
-}
-
-/* ============ Buttons ============ */
-.btn{
-  display:inline-flex;align-items:center;gap:9px;
-  font-weight:600;font-size:15px;letter-spacing:.01em;
-  padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;
-  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s,color .25s;
-  white-space:nowrap;
-}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(1000px 600px at 78% -8%,var(--bg-grad-1),transparent 60%),radial-gradient(900px 700px at 8% 12%,color-mix(in srgb,var(--bg-grad-1) 55%,transparent),transparent 55%),var(--bg-grad-2);transition:background .4s var(--ease)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(circle at 50% 0,#000,transparent 70%);mask-image:radial-gradient(circle at 50% 0,#000,transparent 70%)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;letter-spacing:.01em;padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s,color .25s;white-space:nowrap}
 .btn:active{transform:translateY(1px)}
 .btn-primary{background:var(--grad-blue);color:#fff;box-shadow:var(--shadow-brand)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 55px -16px rgba(43,143,255,.7)}
 .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border)}
 .btn-ghost:hover{border-color:var(--border-strong);background:var(--surface-hover);transform:translateY(-2px)}
 .btn svg{width:16px;height:16px}
-
-/* ============ Header / Nav ============ */
 header{position:sticky;top:0;z-index:100;padding:0 24px;transition:background .3s,border-color .3s}
-.nav-inner{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:12px 20px;margin:12px auto;max-width:var(--maxw);
-  background:var(--nav-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border:1px solid var(--border);border-radius:16px;
-}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;margin:12px auto;max-width:var(--maxw);background:var(--nav-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px}
 .brand{display:flex;align-items:center;gap:11px}
 .brand .mark{width:34px;height:31px;flex:none}
-.brand .word{
-  font-weight:800;font-size:21px;letter-spacing:.26em;
-  padding-left:.13em;line-height:1;
-  background:var(--grad-silver);-webkit-background-clip:text;background-clip:text;color:transparent;
-}
+.brand .word{font-weight:800;font-size:21px;letter-spacing:.26em;padding-left:.13em;line-height:1;background:var(--grad-silver);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{
-  font-size:14.5px;font-weight:500;color:var(--text-dim);
-  padding:9px 14px;border-radius:9px;transition:color .2s,background .2s;
-}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--text-dim);padding:9px 14px;border-radius:9px;transition:color .2s,background .2s}
 .nav-links a:hover{color:var(--text);background:var(--surface-hover)}
 .nav-actions{display:flex;align-items:center;gap:10px}
-
-.icon-btn{
-  width:40px;height:40px;display:grid;place-items:center;flex:none;
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  color:var(--text-dim);cursor:pointer;transition:color .2s,border-color .2s,background .2s;
-}
+.icon-btn{width:40px;height:40px;display:grid;place-items:center;flex:none;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text-dim);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
 .icon-btn:hover{color:var(--text);border-color:var(--border-strong)}
 .icon-btn svg{width:18px;height:18px}
 .theme-toggle .sun{display:none}
 [data-theme="light"] .theme-toggle .sun{display:block}
 [data-theme="light"] .theme-toggle .moon{display:none}
-
 .burger{display:none}
-
-/* ============ Section scaffolding ============ */
+/* language switcher */
+.lang-switch{position:relative}
+.lang-btn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text-dim);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.lang-btn:hover{color:var(--text);border-color:var(--border-strong)}
+.flag{width:22px;height:15px;border-radius:3px;overflow:hidden;display:inline-block;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.flag svg{width:100%;height:100%;display:block}
+.lang-btn .lang-code{font-size:12.5px;font-weight:700;letter-spacing:.04em}
+.lang-btn .chev{width:14px;height:14px;transition:transform .25s var(--ease)}
+.lang-switch.open .chev{transform:rotate(180deg)}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:186px;background:var(--surface-solid);border:1px solid var(--border);border-radius:14px;padding:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);list-style:none;margin:0;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;z-index:130;max-height:70vh;overflow:auto}
+.lang-switch.open .lang-menu{opacity:1;visibility:visible;transform:none}
+.lang-menu li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;font-size:14px;color:var(--text-dim);cursor:pointer;transition:background .15s,color .15s}
+.lang-menu li:hover,.lang-menu li:focus-visible{background:var(--surface-hover);color:var(--text);outline:none}
+.lang-menu li[aria-selected="true"]{color:var(--brand);font-weight:600;background:var(--chip-bg)}
 section{padding:96px 0;position:relative}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--chip-text);background:var(--chip-bg);
-  padding:7px 14px;border-radius:100px;border:1px solid var(--border);
-}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--chip-text);background:var(--chip-bg);padding:7px 14px;border-radius:100px;border:1px solid var(--border)}
 .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand)}
 .section-head{max-width:660px;margin-bottom:52px}
 .section-head.center{margin-inline:auto;text-align:center}
-h2.title{
-  font-size:clamp(30px,4.4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-.02em;
-  margin:20px 0 14px;
-}
+h2.title{font-size:clamp(30px,4.4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:20px 0 14px}
 .section-head p{color:var(--text-dim);font-size:17px}
 .grad-text{background:var(--grad-blue);-webkit-background-clip:text;background-clip:text;color:transparent}
-
-/* ============ Hero ============ */
 .hero{padding-top:52px;padding-bottom:64px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.hero h1{
-  font-size:clamp(38px,6vw,68px);line-height:1.04;font-weight:800;letter-spacing:-.03em;
-  margin:22px 0 12px;
-}
-.hero .hero-tagline{
-  font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--text-faint);margin-bottom:22px;
-}
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.04;font-weight:800;letter-spacing:-.03em;margin:22px 0 12px}
+.hero .hero-tagline{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint);margin-bottom:22px}
 .hero p.lead{font-size:19px;color:var(--text-dim);max-width:520px;margin-bottom:34px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
 .hero-stats .num{font-size:26px;font-weight:800;letter-spacing:-.02em}
 .hero-stats .lbl{font-size:13.5px;color:var(--text-faint)}
-
-/* Hero visual */
 .hero-visual{position:relative;aspect-ratio:1/1;display:grid;place-items:center}
-.hero-visual .glow{
-  position:absolute;width:60%;height:60%;border-radius:50%;
-  background:radial-gradient(circle,var(--hero-glow),transparent 68%);
-  filter:blur(12px);animation:pulse 6s ease-in-out infinite;
-}
+.hero-visual .glow{position:absolute;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,var(--hero-glow),transparent 68%);filter:blur(12px);animation:pulse 6s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
 .hero-visual svg.net{position:relative;width:100%;height:100%;overflow:visible}
 .node-ring{fill:none;stroke:var(--brand);stroke-width:1.2;transform-box:fill-box;transform-origin:center;opacity:0;animation:ring 3.4s ease-out infinite}
 @keyframes ring{0%{transform:scale(.55);opacity:.5}80%{opacity:0}100%{transform:scale(1.75);opacity:0}}
-@media (prefers-reduced-motion:reduce){
-  .hero-visual .glow{animation:none}
-  .node-ring{animation:none;opacity:0}
-}
-
-/* ============ Products ============ */
+@media (prefers-reduced-motion:reduce){.hero-visual .glow{animation:none}.node-ring{animation:none;opacity:0}}
 .alt{background:var(--surface);border-block:1px solid var(--border)}
 [data-theme="light"] .alt{background:var(--bg-grad-1)}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.card{
-  position:relative;background:var(--surface-solid);border:1px solid var(--border);
-  border-radius:var(--radius);padding:26px 24px 22px;overflow:hidden;
-  transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;
-  display:flex;flex-direction:column;
-}
+.card{position:relative;background:var(--surface-solid);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px 22px;overflow:hidden;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;display:flex;flex-direction:column}
 [data-theme="light"] .card{box-shadow:0 1px 2px rgba(13,26,48,.04)}
-.card::before{
-  content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;
-  background:linear-gradient(160deg,var(--brand),transparent 42%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;
-}
+.card::before{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:linear-gradient(160deg,var(--brand),transparent 42%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:0 26px 50px -26px rgba(43,143,255,.4)}
 .card:hover::before{opacity:1}
-.card .ic{
-  width:48px;height:48px;border-radius:13px;display:grid;place-items:center;
-  background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand);margin-bottom:18px;
-}
+.card .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand);margin-bottom:18px}
 .card .ic svg{width:24px;height:24px}
 .card h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:7px}
 .card .desc{font-size:14.5px;color:var(--text-dim);flex:1;margin-bottom:18px}
@@ -265,56 +139,35 @@ h2.title{
 .card:hover .link svg{transform:translateX(4px)}
 .card .soon{color:var(--text-faint);font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:7px}
 .card .soon::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--text-faint)}
-.badge-tag{position:absolute;top:16px;right:16px;font-size:11px;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--chip-text);background:var(--chip-bg);padding:4px 9px;border-radius:7px}
-
-/* ============ Features ============ */
+.badge-tag{position:absolute;top:16px;right:16px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--chip-text);background:var(--chip-bg);padding:4px 9px;border-radius:7px}
 .features{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
-.feat .fi{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
-  background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand);margin-bottom:16px}
+.feat .fi{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand);margin-bottom:16px}
 .feat .fi svg{width:22px;height:22px}
 .feat h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
 .feat p{font-size:14px;color:var(--text-dim)}
-
-/* ============ About ============ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .about-copy p{color:var(--text-dim);font-size:16.5px;margin-bottom:18px}
 .about-copy p strong{color:var(--text);font-weight:600}
 .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.pill{font-size:13.5px;font-weight:600;color:var(--text-dim);background:var(--surface);
-  border:1px solid var(--border);padding:9px 15px;border-radius:100px}
-.about-panel{
-  background:var(--surface-solid);border:1px solid var(--border);border-radius:22px;padding:34px;
-  position:relative;overflow:hidden;
-}
+.pill{font-size:13.5px;font-weight:600;color:var(--text-dim);background:var(--surface);border:1px solid var(--border);padding:9px 15px;border-radius:100px}
+.about-panel{background:var(--surface-solid);border:1px solid var(--border);border-radius:22px;padding:34px;position:relative;overflow:hidden}
 [data-theme="light"] .about-panel{box-shadow:0 20px 50px -30px rgba(13,26,48,.25)}
 .about-panel .row{display:flex;align-items:flex-start;gap:15px;padding:16px 0;border-bottom:1px solid var(--border)}
 .about-panel .row:last-child{border-bottom:0;padding-bottom:0}
 .about-panel .row:first-child{padding-top:0}
-.about-panel .rn{width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;
-  background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand)}
+.about-panel .rn{width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;background:var(--card-icon-bg);border:1px solid var(--border);color:var(--brand)}
 .about-panel .rn svg{width:17px;height:17px}
 .about-panel .rt{font-weight:700;font-size:15.5px;margin-bottom:2px}
 .about-panel .rd{font-size:13.5px;color:var(--text-dim)}
-
-/* ============ Contact ============ */
-.contact-card{
-  background:var(--surface-solid);border:1px solid var(--border);border-radius:24px;
-  padding:clamp(34px,5vw,60px);text-align:center;position:relative;overflow:hidden;
-}
-.contact-card::after{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);
-  width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--hero-glow),transparent 65%);z-index:0}
+.contact-card{background:var(--surface-solid);border:1px solid var(--border);border-radius:24px;padding:clamp(34px,5vw,60px);text-align:center;position:relative;overflow:hidden}
+.contact-card::after{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,var(--hero-glow),transparent 65%);z-index:0}
 .contact-card>*{position:relative;z-index:1}
 .contact-card h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
 .contact-card p{color:var(--text-dim);font-size:17px;max-width:520px;margin:0 auto 30px}
 .contact-methods{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
-.cm{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--text);overflow-wrap:break-word;
-  background:var(--surface);border:1px solid var(--border);padding:14px 20px;border-radius:12px;
-  transition:border-color .2s,transform .2s}
+.cm{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--text);overflow-wrap:break-word;background:var(--surface);border:1px solid var(--border);padding:14px 20px;border-radius:12px;transition:border-color .2s,transform .2s}
 .cm:hover{border-color:var(--border-strong);transform:translateY(-2px)}
 .cm svg{width:18px;height:18px;color:var(--brand)}
-
-/* ============ Footer ============ */
 footer{background:var(--footer-bg);border-top:1px solid var(--border);color:#c3ccda;padding:56px 0 30px}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:40px}
 footer .brand .word{color:transparent}
@@ -324,18 +177,13 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 .foot-col a{text-decoration:underline;text-decoration-color:rgba(170,182,200,.35);text-underline-offset:3px}
 .foot-col a:hover{color:#fff;text-decoration-color:#fff}
 .foot-col span{opacity:.72}
-.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-  border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:#71809a;font-size:13.5px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;color:#71809a;font-size:13.5px}
 .foot-bottom .domains{display:flex;gap:16px}
 .foot-bottom .domains a{padding:4px 0;display:inline-block}
 .foot-bottom .domains a:hover{color:#fff}
-
-/* ============ Reveal on scroll ============ */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
-
-/* ============ Responsive ============ */
 @media (max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:20px}
   .hero-visual{max-width:440px;margin:0 auto;order:-1}
@@ -349,12 +197,9 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
   header{padding:0 12px}
   .nav-links,.nav-desktop-cta{display:none}
   .burger{display:grid}
-  .nav-links.open{
-    display:flex;flex-direction:column;align-items:stretch;gap:2px;
-    position:absolute;top:74px;left:12px;right:12px;
-    background:var(--surface-solid);border:1px solid var(--border);border-radius:16px;padding:12px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
-  }
+  .lang-btn .lang-code{display:none}
+  .lang-btn{padding:0 8px}
+  .nav-links.open{display:flex;flex-direction:column;align-items:stretch;gap:2px;position:absolute;top:74px;left:12px;right:12px;background:var(--surface-solid);border:1px solid var(--border);border-radius:16px;padding:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
   .nav-links.open a{padding:13px 14px;font-size:16px}
   .cards{grid-template-columns:1fr}
   .features{grid-template-columns:1fr}
@@ -366,28 +211,17 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 </head>
 <body>
 
-<!-- Shared SVG gradient defs (single source, so no fragile cross-SVG id coupling) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <!-- theme-aware silver mark (bright on dark, steel on light) -->
-    <linearGradient id="mk" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="var(--mk-1)"/><stop offset=".5" stop-color="var(--mk-2)"/><stop offset="1" stop-color="var(--mk-3)"/>
-    </linearGradient>
-    <!-- always-bright silver for the dark footer -->
-    <linearGradient id="mkBright" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f6f8fb"/><stop offset=".5" stop-color="#c1cad6"/><stop offset="1" stop-color="#6f7a8a"/>
-    </linearGradient>
-    <!-- brand blue triangle -->
-    <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#54c6ff"/><stop offset="1" stop-color="#1573ff"/>
-    </linearGradient>
+    <linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--mk-1)"/><stop offset=".5" stop-color="var(--mk-2)"/><stop offset="1" stop-color="var(--mk-3)"/></linearGradient>
+    <linearGradient id="mkBright" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fb"/><stop offset=".5" stop-color="#c1cad6"/><stop offset="1" stop-color="#6f7a8a"/></linearGradient>
+    <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#54c6ff"/><stop offset="1" stop-color="#1573ff"/></linearGradient>
   </defs>
 </svg>
 
-<!-- ===================== HEADER ===================== -->
 <header>
   <nav class="nav-inner">
-    <a href="#top" class="brand" aria-label="ATOMYS — domů">
+    <a href="#top" class="brand" aria-label="ATOMYS — home">
       <svg class="mark" viewBox="0 0 120 110" aria-hidden="true" focusable="false">
         <path fill="url(#mk)" d="M60 6 L114 104 L89 104 L60 49 L31 104 L6 104 Z"/>
         <path fill="url(#mk)" opacity=".9" d="M44 70 L76 70 L84 85 L36 85 Z"/>
@@ -397,18 +231,26 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
     </a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#produkty">Produkty</a></li>
-      <li><a href="#proc">Proč ATOMYS</a></li>
-      <li><a href="#o-nas">O nás</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#produkty" data-i18n="nav.products">Products</a></li>
+      <li><a href="#proc" data-i18n="nav.why">Why ATOMYS</a></li>
+      <li><a href="#o-nas" data-i18n="nav.about">About</a></li>
+      <li><a href="#kontakt" data-i18n="nav.contact">Contact</a></li>
     </ul>
 
     <div class="nav-actions">
-      <button class="icon-btn theme-toggle" id="themeBtn" aria-label="Přepnout denní / noční režim" title="Denní / noční režim">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose language">
+          <span class="flag" id="curFlag"></span>
+          <span class="lang-code" id="curCode">EN</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu" role="listbox" aria-label="Language"></ul>
+      </div>
+      <button class="icon-btn theme-toggle" id="themeBtn" aria-label="Toggle light / dark mode" title="Light / dark mode">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg>
       </button>
-      <a href="#kontakt" class="btn btn-primary nav-desktop-cta">Kontaktujte nás</a>
+      <a href="#kontakt" class="btn btn-primary nav-desktop-cta" data-i18n="nav.cta">Contact us</a>
       <button class="icon-btn burger" id="burger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -418,218 +260,172 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 
 <main id="top">
 
-<!-- ===================== HERO ===================== -->
-<section class="hero" aria-label="Úvod">
+<section class="hero" aria-label="Intro">
   <div class="wrap">
     <div class="hero-grid">
       <div class="reveal">
-        <span class="eyebrow">Inteligentní systémy</span>
-        <h1>Provoz pod&nbsp;kontrolou.<br><span class="grad-text">Data, která rozhodují.</span></h1>
-        <p class="hero-tagline">Inteligentní systémy pro řízení provozu</p>
-        <p class="lead">Vyvíjíme inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a&nbsp;moderní provozy. Spojujeme software, automatizaci a&nbsp;propojená data do jednoho celku, který šetří čas i&nbsp;náklady.</p>
+        <span class="eyebrow" data-i18n="hero.eyebrow">Intelligent systems</span>
+        <h1><span data-i18n="hero.h1a">Operations under control.</span><br><span class="grad-text" data-i18n="hero.h1b">Data that drives decisions.</span></h1>
+        <p class="hero-tagline" data-i18n="hero.tagline">Intelligent systems for operations management</p>
+        <p class="lead" data-i18n="hero.lead">We build intelligent systems for auto repair shops, senior care homes, retail and modern operations. We bring software, automation and connected data together into one whole that saves time and cost.</p>
         <div class="hero-cta">
-          <a href="#produkty" class="btn btn-primary">Naše systémy
+          <a href="#produkty" class="btn btn-primary"><span data-i18n="hero.cta1">Our systems</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#o-nas" class="btn btn-ghost">Zjistit více</a>
+          <a href="#o-nas" class="btn btn-ghost" data-i18n="hero.cta2">Learn more</a>
         </div>
         <div class="hero-stats">
-          <div><div class="num grad-text">4</div><div class="lbl">produktové oblasti</div></div>
-          <div><div class="num grad-text">1</div><div class="lbl">systém v&nbsp;ostrém provozu</div></div>
-          <div><div class="num grad-text">CZ</div><div class="lbl">vývoj a&nbsp;podpora</div></div>
+          <div><div class="num grad-text">4</div><div class="lbl" data-i18n="hero.stat1lbl">product areas</div></div>
+          <div><div class="num grad-text">1</div><div class="lbl" data-i18n="hero.stat2lbl">system in production</div></div>
+          <div><div class="num grad-text">CZ</div><div class="lbl" data-i18n="hero.stat3lbl">development &amp; support</div></div>
         </div>
       </div>
 
       <div class="hero-visual reveal" aria-hidden="true">
         <div class="glow"></div>
         <svg class="net" viewBox="0 0 400 400" focusable="false">
-          <!-- connecting lines (static, drawn first so the platform overlaps them) -->
           <g stroke="var(--border-strong)" stroke-width="1.3" opacity=".6">
-            <line x1="200" y1="205" x2="72"  y2="84"/>
-            <line x1="200" y1="205" x2="328" y2="84"/>
-            <line x1="200" y1="205" x2="72"  y2="326"/>
-            <line x1="200" y1="205" x2="328" y2="326"/>
+            <line x1="200" y1="205" x2="72" y2="84"/><line x1="200" y1="205" x2="328" y2="84"/><line x1="200" y1="205" x2="72" y2="326"/><line x1="200" y1="205" x2="328" y2="326"/>
           </g>
-
-          <!-- isometric platform -->
           <path d="M96 210 L96 234 L200 288 L200 264 Z" fill="var(--iso-side)"/>
           <path d="M304 210 L304 234 L200 288 L200 264 Z" fill="var(--iso-side)" opacity=".82"/>
           <path d="M200 156 L304 210 L200 264 L96 210 Z" fill="var(--surface-solid)" stroke="var(--border-strong)" stroke-width="1.4"/>
           <path d="M200 170 L286 210 L200 250 L114 210 Z" fill="var(--surface-hover)" stroke="var(--border)" stroke-width="1"/>
-
-          <!-- central A -->
           <g transform="translate(200,163) scale(1.15)">
             <path fill="url(#mk)" d="M0 -66 L44 22 L24 22 L0 -24 L-24 22 L-44 22 Z"/>
             <path fill="url(#mk)" opacity=".9" d="M-13 -4 L13 -4 L20 12 L-20 12 Z"/>
             <path fill="url(#bl)" d="M0 -12 L15 24 L-15 24 Z"/>
           </g>
-
-          <!-- nodes (static + upright icons; only the pulse ring animates) -->
-          <g transform="translate(72,84)">
-            <circle class="node-ring" r="30"/>
-            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
-            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5-5a2 2 0 0 1 1.9-1.4h11.2A2 2 0 0 1 19.5 10L21 15M3 15h18v3H3zM6 18v2M18 18v2"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></g>
-          </g>
-          <g transform="translate(328,84)">
-            <circle class="node-ring" r="30" style="animation-delay:.85s"/>
-            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
-            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></g>
-          </g>
-          <g transform="translate(72,326)">
-            <circle class="node-ring" r="30" style="animation-delay:1.7s"/>
-            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
-            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l2 10h9l2-7H7M9 19a1 1 0 1 0 0 .01M17 19a1 1 0 1 0 0 .01"/></g>
-          </g>
-          <g transform="translate(328,326)">
-            <circle class="node-ring" r="30" style="animation-delay:2.55s"/>
-            <circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/>
-            <g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.4-2h5.2L16 6"/></g>
-          </g>
+          <g transform="translate(72,84)"><circle class="node-ring" r="30"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5-5a2 2 0 0 1 1.9-1.4h11.2A2 2 0 0 1 19.5 10L21 15M3 15h18v3H3zM6 18v2M18 18v2"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></g></g>
+          <g transform="translate(328,84)"><circle class="node-ring" r="30" style="animation-delay:.85s"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></g></g>
+          <g transform="translate(72,326)"><circle class="node-ring" r="30" style="animation-delay:1.7s"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l2 10h9l2-7H7M9 19a1 1 0 1 0 0 .01M17 19a1 1 0 1 0 0 .01"/></g></g>
+          <g transform="translate(328,326)"><circle class="node-ring" r="30" style="animation-delay:2.55s"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.4-2h5.2L16 6"/></g></g>
         </svg>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== PRODUCTS ===================== -->
-<section id="produkty" class="alt" aria-label="Naše systémy">
+<section id="produkty" class="alt" aria-label="Our systems">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Naše systémy</span>
-      <h2 class="title">Jedna platforma, <span class="grad-text">čtyři světy provozu.</span></h2>
-      <p>Každý systém řeší jiné odvětví, ale všechny stojí na stejném základu – propojená data, automatizace a&nbsp;jednoduché ovládání.</p>
+      <span class="eyebrow" data-i18n="products.eyebrow">Our systems</span>
+      <h2 class="title"><span data-i18n="products.title_a">One platform,</span> <span class="grad-text" data-i18n="products.title_b">four worlds of operations.</span></h2>
+      <p data-i18n="products.subtitle">Each system serves a different industry, but they all stand on the same foundation – connected data, automation and simple control.</p>
     </div>
-
     <div class="cards">
-      <!-- Atomys Auto -->
       <article class="card reveal">
-        <span class="badge-tag">V provozu</span>
+        <span class="badge-tag" data-i18n="badge.live">In production</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 15l1.6-5.4A2.5 2.5 0 0 1 7 8h10a2.5 2.5 0 0 1 2.4 1.6L21 15M3 15h18v3.5H3zM6.5 18.5V21M17.5 18.5V21"/><circle cx="7.5" cy="15" r="1.3"/><circle cx="16.5" cy="15" r="1.3"/></svg></div>
         <h3>Atomys Auto</h3>
-        <p class="desc">Kompletní systém pro řízení autoservisů – rezervace, zakázky, sklad, pneuhotel, fakturace i&nbsp;přehledový kokpit na jednom místě.</p>
-        <a class="link" href="https://mujautoservis.eu" target="_blank" rel="noopener">Otevřít mujautoservis.eu<span class="sr-only"> (otevře se v novém okně)</span>
+        <p class="desc" data-i18n="product.auto.desc">A complete system for running auto repair shops – bookings, jobs, inventory, tyre hotel, invoicing and an overview cockpit, all in one place.</p>
+        <a class="link" href="https://mujautoservis.eu" target="_blank" rel="noopener"><span data-i18n="product.auto.link">Open mujautoservis.eu</span><span class="sr-only" data-i18n="newtab"> (opens in a new window)</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
       </article>
-
-      <!-- Atomys Care -->
       <article class="card reveal">
-        <span class="badge-tag">Připravujeme</span>
+        <span class="badge-tag" data-i18n="badge.soon">Coming soon</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></svg></div>
         <h3>Atomys Care</h3>
-        <p class="desc">Systém pro domovy pro seniory – evidence klientů, péče, docházka personálu a&nbsp;přehled o&nbsp;dění v&nbsp;reálném čase.</p>
-        <span class="soon">Ve vývoji</span>
+        <p class="desc" data-i18n="product.care.desc">A system for senior care homes – client records, care, staff attendance and a real-time overview of what’s happening.</p>
+        <span class="soon" data-i18n="status.indev">In development</span>
       </article>
-
-      <!-- Atomys Retail -->
       <article class="card reveal">
-        <span class="badge-tag">Připravujeme</span>
+        <span class="badge-tag" data-i18n="badge.soon">Coming soon</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h2l2 10h9l2-7H7M9.5 19a1.1 1.1 0 1 0 .01 0M16.5 19a1.1 1.1 0 1 0 .01 0"/></svg></div>
         <h3>Atomys Retail</h3>
-        <p class="desc">Systém pro maloobchod a&nbsp;potraviny – skladové hospodářství, prodej, objednávky a&nbsp;přehled tržeb v&nbsp;jednom nástroji.</p>
-        <span class="soon">Ve vývoji</span>
+        <p class="desc" data-i18n="product.retail.desc">A system for retail and groceries – inventory management, sales, orders and a sales overview in a single tool.</p>
+        <span class="soon" data-i18n="status.indev">In development</span>
       </article>
-
-      <!-- Atomys Vision -->
       <article class="card reveal">
-        <span class="badge-tag">Připravujeme</span>
+        <span class="badge-tag" data-i18n="badge.soon">Coming soon</span>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6.5" width="18" height="12.5" rx="2.5"/><circle cx="12" cy="12.7" r="3.3"/><path d="M8 6.5l1.3-2.5h5.4L16 6.5"/></svg></div>
         <h3>Atomys Vision</h3>
-        <p class="desc">Kamerový systém s&nbsp;umělou inteligencí pro provozy – pokročilá analýza obrazu, detekce událostí a&nbsp;přehled o&nbsp;bezpečnosti bez neustálého sledování.</p>
-        <span class="soon">Ve vývoji</span>
+        <p class="desc" data-i18n="product.vision.desc">An AI camera system for operations – advanced image analysis, event detection and a security overview without constant monitoring.</p>
+        <span class="soon" data-i18n="status.indev">In development</span>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ===================== FEATURES ===================== -->
-<section id="proc" aria-label="Proč ATOMYS">
+<section id="proc" aria-label="Why ATOMYS">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">Proč ATOMYS</span>
-      <h2 class="title">Čtyři principy, na kterých stavíme.</h2>
+      <span class="eyebrow" data-i18n="why.eyebrow">Why ATOMYS</span>
+      <h2 class="title" data-i18n="why.title">Four principles we build on.</h2>
     </div>
     <div class="features">
       <div class="feat reveal">
         <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 1 3 11.2c-.6.4-1 1-1 1.8v.5H10v-.5c0-.8-.4-1.4-1-1.8A6 6 0 0 1 12 3zM10 20h4M10.5 22h3"/></svg></div>
-        <h3>Inteligence</h3>
-        <p>Data proměňujeme v&nbsp;chytrá rozhodnutí, ne v&nbsp;tabulky, které nikdo nečte.</p>
+        <h3 data-i18n="feat.intel.t">Intelligence</h3>
+        <p data-i18n="feat.intel.d">We turn data into smart decisions, not spreadsheets nobody reads.</p>
       </div>
       <div class="feat reveal">
         <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
-        <h3>Automatizace</h3>
-        <p>Automatizujeme rutinu, šetříme čas i&nbsp;náklady a&nbsp;necháváme lidi dělat to podstatné.</p>
+        <h3 data-i18n="feat.auto.t">Automation</h3>
+        <p data-i18n="feat.auto.d">We automate the routine, save time and cost, and let people focus on what matters.</p>
       </div>
       <div class="feat reveal">
         <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v18h18"/><path d="M7 15l3.5-4 3 2.5L21 7"/></svg></div>
-        <h3>Přehled</h3>
-        <p>Všechny důležité informace na jednom místě – jasně a&nbsp;v&nbsp;reálném čase.</p>
+        <h3 data-i18n="feat.over.t">Overview</h3>
+        <p data-i18n="feat.over.d">All the important information in one place – clearly and in real time.</p>
       </div>
       <div class="feat reveal">
         <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 5-3.4 8.3-7 9.6C8.4 19.3 5 16 5 11V6z"/><path d="M9.3 12l1.9 1.9 3.6-3.8"/></svg></div>
-        <h3>Bezpečnost</h3>
-        <p>Vaše data jsou v&nbsp;bezpečí – provozujeme je zodpovědně a&nbsp;v&nbsp;souladu s&nbsp;pravidly.</p>
+        <h3 data-i18n="feat.sec.t">Security</h3>
+        <p data-i18n="feat.sec.d">Your data is safe – we run it responsibly and in line with the rules.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== ABOUT ===================== -->
-<section id="o-nas" class="alt" aria-label="O nás">
+<section id="o-nas" class="alt" aria-label="About">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-copy reveal">
-        <span class="eyebrow">Kdo jsme</span>
-        <h2 class="title" style="margin-top:20px">Softwarová značka za <span class="grad-text">chytrým provozem.</span></h2>
-        <p><strong>ATOMYS</strong> zastřešuje rodinu softwarových systémů pro každodenní provoz firem. Nezaměřujeme se na jedno odvětví – stavíme nástroje pro autoservisy, domovy pro seniory, maloobchod i&nbsp;moderní provozy, které spojuje jedna potřeba: mít vše pod kontrolou.</p>
-        <p>Naším cílem je software, který práci ulehčuje, ne komplikuje. Přehledný, rychlý a&nbsp;postavený na datech, kterým se dá věřit. Každý produkt řešíme do hloubky – od rezervací a&nbsp;skladu až po fakturaci a&nbsp;analýzu.</p>
+        <span class="eyebrow" data-i18n="about.eyebrow">Who we are</span>
+        <h2 class="title" style="margin-top:20px"><span data-i18n="about.title_a">The software brand behind</span> <span class="grad-text" data-i18n="about.title_b">smart operations.</span></h2>
+        <p data-i18n-html="about.p1"><strong>ATOMYS</strong> brings together a family of software systems for the everyday operations of businesses. We don’t focus on a single industry – we build tools for auto repair shops, senior care homes, retail and modern operations, united by one need: to keep everything under control.</p>
+        <p data-i18n="about.p2">Our goal is software that makes work easier, not harder. Clear, fast and built on data you can trust. We solve every product in depth – from bookings and inventory to invoicing and analytics.</p>
         <div class="pill-row">
-          <span class="pill">Software na míru provozu</span>
-          <span class="pill">Data a&nbsp;automatizace</span>
-          <span class="pill">Vývoj v&nbsp;Česku</span>
-          <span class="pill">Dlouhodobá podpora</span>
+          <span class="pill" data-i18n="about.pill1">Software tailored to operations</span>
+          <span class="pill" data-i18n="about.pill2">Data &amp; automation</span>
+          <span class="pill" data-i18n="about.pill3">Developed in Czechia</span>
+          <span class="pill" data-i18n="about.pill4">Long-term support</span>
         </div>
       </div>
-
       <div class="about-panel reveal">
         <div class="row">
           <div class="rn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l2.6 5.3 5.9.9-4.3 4.1 1 5.7L12 15.9 6.8 18l1-5.7L3.5 8.2l5.9-.9z"/></svg></div>
-          <div><div class="rt">Vlastní vývoj</div><div class="rd">Systémy vyvíjíme vlastními silami, takže jim rozumíme do posledního řádku.</div></div>
+          <div><div class="rt" data-i18n="about.panel1t">In-house development</div><div class="rd" data-i18n="about.panel1d">We build our systems ourselves, so we understand them down to the last line.</div></div>
         </div>
         <div class="row">
           <div class="rn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM12 7v5l3 2"/></svg></div>
-          <div><div class="rt">Provoz 24/7</div><div class="rd">Naše systémy běží nepřetržitě – stejně jako provozy, kterým slouží.</div></div>
+          <div><div class="rt" data-i18n="about.panel2t">24/7 operation</div><div class="rd" data-i18n="about.panel2d">Our systems run non-stop – just like the operations they serve.</div></div>
         </div>
         <div class="row">
           <div class="rn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 5-3.4 8.3-7 9.6C8.4 19.3 5 16 5 11V6z"/></svg></div>
-          <div><div class="rt">Bezpečné a spolehlivé</div><div class="rd">Data hostujeme zodpovědně, s&nbsp;ohledem na soukromí a&nbsp;stabilitu.</div></div>
+          <div><div class="rt" data-i18n="about.panel3t">Safe and reliable</div><div class="rd" data-i18n="about.panel3d">We host data responsibly, with respect for privacy and stability.</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CONTACT ===================== -->
-<section id="kontakt" aria-label="Kontakt">
+<section id="kontakt" aria-label="Contact">
   <div class="wrap">
     <div class="contact-card reveal">
-      <span class="eyebrow">Kontakt</span>
-      <h2 style="margin-top:18px">Pojďme dostat váš provoz <span class="grad-text">pod kontrolu.</span></h2>
-      <p>Máte provoz, který by si zasloužil chytřejší systém? Napište nám – rádi probereme, jak vám ATOMYS může pomoci.</p>
+      <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
+      <h2 style="margin-top:18px"><span data-i18n="contact.title_a">Let’s bring your operations</span> <span class="grad-text" data-i18n="contact.title_b">under control.</span></h2>
+      <p data-i18n="contact.p">Do you run an operation that deserves a smarter system? Write to us – we’ll be glad to discuss how ATOMYS can help.</p>
       <div class="contact-methods">
         <a class="cm" href="mailto:info@atomys.eu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>
           info@atomys.eu
         </a>
-        <!-- Telefon doplňte podle potřeby:
-        <a class="cm" href="tel:+420000000000">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l1 5v1a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
-          +420 000 000 000
-        </a>
-        -->
       </div>
       <div style="margin-top:26px">
-        <a href="mailto:info@atomys.eu?subject=Popt%C3%A1vka%20%E2%80%93%20ATOMYS" class="btn btn-primary">Napište nám
+        <a href="mailto:info@atomys.eu?subject=Inquiry%20%E2%80%93%20ATOMYS" class="btn btn-primary" id="mailBtn"><span data-i18n="contact.btn">Write to us</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -639,7 +435,6 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 
 </main>
 
-<!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -652,28 +447,25 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
           </svg>
           <span class="word">ATOMYS</span>
         </div>
-        <p class="tagline">Inteligentní systémy pro řízení provozu. Data, která rozhodují.</p>
+        <p class="tagline" data-i18n="footer.tagline">Intelligent systems for operations management. Data that drives decisions.</p>
       </div>
-
       <div class="foot-col">
-        <h3>Produkty</h3>
-        <a href="https://mujautoservis.eu" target="_blank" rel="noopener">Atomys Auto<span class="sr-only"> (otevře se v novém okně)</span></a>
+        <h3 data-i18n="footer.products">Products</h3>
+        <a href="https://mujautoservis.eu" target="_blank" rel="noopener">Atomys Auto<span class="sr-only" data-i18n="newtab"> (opens in a new window)</span></a>
         <span>Atomys Care</span>
         <span>Atomys Retail</span>
         <span>Atomys Vision</span>
       </div>
-
       <div class="foot-col">
-        <h3>Společnost</h3>
-        <a href="#o-nas">O nás</a>
-        <a href="#proc">Proč ATOMYS</a>
-        <a href="#kontakt">Kontakt</a>
+        <h3 data-i18n="footer.company">Company</h3>
+        <a href="#o-nas" data-i18n="nav.about">About</a>
+        <a href="#proc" data-i18n="nav.why">Why ATOMYS</a>
+        <a href="#kontakt" data-i18n="nav.contact">Contact</a>
         <a href="mailto:info@atomys.eu">info@atomys.eu</a>
       </div>
     </div>
-
     <div class="foot-bottom">
-      <span>© <span id="year">2026</span> ATOMYS. Všechna práva vyhrazena.</span>
+      <span>© <span id="year">2026</span> ATOMYS. <span data-i18n="footer.rights">All rights reserved.</span></span>
       <div class="domains">
         <a href="https://atomys.eu">atomys.eu</a>
         <a href="https://atomys.cz">atomys.cz</a>
@@ -687,41 +479,88 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
   "use strict";
   var root=document.documentElement;
 
-  /* ---- Theme: persist + respect system preference on first visit ---- */
-  try{
-    var saved=localStorage.getItem("atomys-theme");
-    if(saved){root.setAttribute("data-theme",saved);}
-    else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){root.setAttribute("data-theme","light");}
-  }catch(e){}
-
+  /* ---------- theme ---------- */
+  try{var st=localStorage.getItem("atomys-theme");if(st){root.setAttribute("data-theme",st);}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){root.setAttribute("data-theme","light");}}catch(e){}
   var themeBtn=document.getElementById("themeBtn");
-  themeBtn&&themeBtn.addEventListener("click",function(){
-    var next=root.getAttribute("data-theme")==="light"?"dark":"light";
-    root.setAttribute("data-theme",next);
-    try{localStorage.setItem("atomys-theme",next);}catch(e){}
-  });
+  themeBtn&&themeBtn.addEventListener("click",function(){var n=root.getAttribute("data-theme")==="light"?"dark":"light";root.setAttribute("data-theme",n);try{localStorage.setItem("atomys-theme",n);}catch(e){}});
 
-  /* ---- Mobile menu ---- */
+  /* ---------- mobile menu ---------- */
   var burger=document.getElementById("burger"),links=document.getElementById("navLinks");
-  burger&&burger.addEventListener("click",function(){
-    var open=links.classList.toggle("open");
-    burger.setAttribute("aria-expanded",open?"true":"false");
-  });
-  links&&links.addEventListener("click",function(e){
-    if(e.target.tagName==="A"){links.classList.remove("open");burger.setAttribute("aria-expanded","false");}
-  });
+  burger&&burger.addEventListener("click",function(){var o=links.classList.toggle("open");burger.setAttribute("aria-expanded",o?"true":"false");});
+  links&&links.addEventListener("click",function(e){if(e.target.tagName==="A"){links.classList.remove("open");burger.setAttribute("aria-expanded","false");}});
 
-  /* ---- Year ---- */
+  /* ---------- year ---------- */
   var y=document.getElementById("year");if(y){y.textContent=new Date().getFullYear();}
 
-  /* ---- Reveal on scroll ---- */
+  /* ---------- i18n ---------- */
+  var I18N = {"cs":{"nav.products":"Produkty","nav.why":"Proč ATOMYS","nav.about":"O nás","nav.contact":"Kontakt","nav.cta":"Kontaktujte nás","hero.eyebrow":"Inteligentní systémy","hero.h1a":"Provoz pod kontrolou.","hero.h1b":"Data, která rozhodují.","hero.tagline":"Inteligentní systémy pro řízení provozu","hero.lead":"Vyvíjíme inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a moderní provozy. Spojujeme software, automatizaci a propojená data do jednoho celku, který šetří čas i náklady.","hero.cta1":"Naše systémy","hero.cta2":"Zjistit více","hero.stat1lbl":"produktové oblasti","hero.stat2lbl":"systém v ostrém provozu","hero.stat3lbl":"vývoj a podpora","products.eyebrow":"Naše systémy","products.title_a":"Jedna platforma,","products.title_b":"čtyři světy provozu.","products.subtitle":"Každý systém řeší jiné odvětví, ale všechny stojí na stejném základě – propojená data, automatizace a jednoduché ovládání.","badge.live":"V provozu","badge.soon":"Připravujeme","status.indev":"Ve vývoji","product.auto.desc":"Kompletní systém pro řízení autoservisů – rezervace, zakázky, sklad, pneuhotel, fakturace i přehledový kokpit na jednom místě.","product.auto.link":"Otevřít mujautoservis.eu","product.care.desc":"Systém pro domovy pro seniory – evidence klientů, péče, docházka personálu a přehled o dění v reálném čase.","product.retail.desc":"Systém pro maloobchod a potraviny – skladové hospodářství, prodej, objednávky a přehled tržeb v jednom nástroji.","product.vision.desc":"Kamerový systém s umělou inteligencí pro provozy – pokročilá analýza obrazu, detekce událostí a přehled o bezpečnosti bez neustálého sledování.","newtab":"(otevře se v novém okně)","why.eyebrow":"Proč ATOMYS","why.title":"Čtyři principy, na kterých stavíme.","feat.intel.t":"Inteligence","feat.intel.d":"Data proměňujeme v chytrá rozhodnutí, ne v tabulky, které nikdo nečte.","feat.auto.t":"Automatizace","feat.auto.d":"Automatizujeme rutinu, šetříme čas i náklady a necháváme lidi dělat to podstatné.","feat.over.t":"Přehled","feat.over.d":"Všechny důležité informace na jednom místě – jasně a v reálném čase.","feat.sec.t":"Bezpečnost","feat.sec.d":"Vaše data jsou v bezpečí – provozujeme je zodpovědně a v souladu s pravidly.","about.eyebrow":"Kdo jsme","about.title_a":"Softwarová značka za","about.title_b":"chytrým provozem.","about.p1":"<strong>ATOMYS</strong> zastřešuje rodinu softwarových systémů pro každodenní provoz firem. Nezaměřujeme se na jedno odvětví – stavíme nástroje pro autoservisy, domovy pro seniory, maloobchod i moderní provozy, které spojuje jedna potřeba: mít vše pod kontrolou.","about.p2":"Naším cílem je software, který práci ulehčuje, ne komplikuje. Přehledný, rychlý a postavený na datech, kterým se dá věřit. Každý produkt řešíme do hloubky – od rezervací a skladu až po fakturaci a analýzu.","about.pill1":"Software na míru provozu","about.pill2":"Data a automatizace","about.pill3":"Vývoj v Česku","about.pill4":"Dlouhodobá podpora","about.panel1t":"Vlastní vývoj","about.panel1d":"Systémy vyvíjíme vlastními silami, takže jim rozumíme do posledního řádku.","about.panel2t":"Provoz 24/7","about.panel2d":"Naše systémy běží nepřetržitě – stejně jako provozy, kterým slouží.","about.panel3t":"Bezpečné a spolehlivé","about.panel3d":"Data hostujeme zodpovědně, s ohledem na soukromí a stabilitu.","contact.eyebrow":"Kontakt","contact.title_a":"Pojďme dostat váš provoz","contact.title_b":"pod kontrolu.","contact.p":"Máte provoz, který by si zasloužil chytřejší systém? Napište nám – rádi probereme, jak vám ATOMYS může pomoci.","contact.btn":"Napište nám","contact.mailsubject":"Poptávka – ATOMYS","footer.tagline":"Inteligentní systémy pro řízení provozu. Data, která rozhodují.","footer.products":"Produkty","footer.company":"Společnost","footer.rights":"Všechna práva vyhrazena.","meta.title":"ATOMYS – Inteligentní systémy pro řízení provozu","meta.description":"ATOMYS vyvíjí inteligentní systémy pro autoservisy, domovy pro seniory, maloobchod a moderní provozy. Data, která rozhodují – provoz pod kontrolou.","switcher.aria":"Vybrat jazyk"},"en":{"nav.products":"Products","nav.why":"Why ATOMYS","nav.about":"About","nav.contact":"Contact","nav.cta":"Contact us","hero.eyebrow":"Intelligent systems","hero.h1a":"Operations under control.","hero.h1b":"Data that drives decisions.","hero.tagline":"Intelligent systems for operations management","hero.lead":"We build intelligent systems for auto repair shops, senior care homes, retail and modern operations. We bring software, automation and connected data together into one whole that saves time and cost.","hero.cta1":"Our systems","hero.cta2":"Learn more","hero.stat1lbl":"product areas","hero.stat2lbl":"system in production","hero.stat3lbl":"development & support","products.eyebrow":"Our systems","products.title_a":"One platform,","products.title_b":"four worlds of operations.","products.subtitle":"Each system serves a different industry, but they all stand on the same foundation – connected data, automation and simple control.","badge.live":"In production","badge.soon":"Coming soon","status.indev":"In development","product.auto.desc":"A complete system for running auto repair shops – bookings, jobs, inventory, tyre hotel, invoicing and an overview cockpit, all in one place.","product.auto.link":"Open mujautoservis.eu","product.care.desc":"A system for senior care homes – client records, care, staff attendance and a real-time overview of what’s happening.","product.retail.desc":"A system for retail and groceries – inventory management, sales, orders and a sales overview in a single tool.","product.vision.desc":"An AI camera system for operations – advanced image analysis, event detection and a security overview without constant monitoring.","newtab":"(opens in a new window)","why.eyebrow":"Why ATOMYS","why.title":"Four principles we build on.","feat.intel.t":"Intelligence","feat.intel.d":"We turn data into smart decisions, not spreadsheets nobody reads.","feat.auto.t":"Automation","feat.auto.d":"We automate the routine, save time and cost, and let people focus on what matters.","feat.over.t":"Overview","feat.over.d":"All the important information in one place – clearly and in real time.","feat.sec.t":"Security","feat.sec.d":"Your data is safe – we run it responsibly and in line with the rules.","about.eyebrow":"Who we are","about.title_a":"The software brand behind","about.title_b":"smart operations.","about.p1":"<strong>ATOMYS</strong> brings together a family of software systems for the everyday operations of businesses. We don’t focus on a single industry – we build tools for auto repair shops, senior care homes, retail and modern operations, united by one need: to keep everything under control.","about.p2":"Our goal is software that makes work easier, not harder. Clear, fast and built on data you can trust. We solve every product in depth – from bookings and inventory to invoicing and analytics.","about.pill1":"Software tailored to operations","about.pill2":"Data & automation","about.pill3":"Developed in Czechia","about.pill4":"Long-term support","about.panel1t":"In-house development","about.panel1d":"We build our systems ourselves, so we understand them down to the last line.","about.panel2t":"24/7 operation","about.panel2d":"Our systems run non-stop – just like the operations they serve.","about.panel3t":"Safe and reliable","about.panel3d":"We host data responsibly, with respect for privacy and stability.","contact.eyebrow":"Contact","contact.title_a":"Let’s bring your operations","contact.title_b":"under control.","contact.p":"Do you run an operation that deserves a smarter system? Write to us – we’ll be glad to discuss how ATOMYS can help.","contact.btn":"Write to us","contact.mailsubject":"Inquiry – ATOMYS","footer.tagline":"Intelligent systems for operations management. Data that drives decisions.","footer.products":"Products","footer.company":"Company","footer.rights":"All rights reserved.","meta.title":"ATOMYS – Intelligent systems for operations management","meta.description":"ATOMYS builds intelligent systems for auto repair shops, senior care homes, retail and modern operations. Data that drives decisions – operations under control.","switcher.aria":"Choose language"},"de":{"nav.products":"Produkte","nav.why":"Warum ATOMYS","nav.about":"Über uns","nav.contact":"Kontakt","nav.cta":"Kontakt aufnehmen","hero.eyebrow":"Intelligente Systeme","hero.h1a":"Betrieb unter Kontrolle.","hero.h1b":"Daten, die entscheiden.","hero.tagline":"Intelligente Systeme für das Betriebsmanagement","hero.lead":"Wir entwickeln intelligente Systeme für Autowerkstätten, Seniorenheime, den Einzelhandel und moderne Betriebe. Wir verbinden Software, Automatisierung und vernetzte Daten zu einem Ganzen, das Zeit und Kosten spart.","hero.cta1":"Unsere Systeme","hero.cta2":"Mehr erfahren","hero.stat1lbl":"Produktbereiche","hero.stat2lbl":"System im Produktivbetrieb","hero.stat3lbl":"Entwicklung & Support","products.eyebrow":"Unsere Systeme","products.title_a":"Eine Plattform,","products.title_b":"vier Welten des Betriebs.","products.subtitle":"Jedes System bedient eine andere Branche, doch alle bauen auf demselben Fundament – vernetzte Daten, Automatisierung und einfache Bedienung.","badge.live":"In Betrieb","badge.soon":"In Vorbereitung","status.indev":"In Entwicklung","product.auto.desc":"Ein komplettes System für die Führung von Autowerkstätten – Terminbuchung, Aufträge, Lager, Reifeneinlagerung, Rechnungsstellung und ein Übersichts-Cockpit, alles an einem Ort.","product.auto.link":"mujautoservis.eu öffnen","product.care.desc":"Ein System für Seniorenheime – Klientenverwaltung, Pflege, Personalanwesenheit und ein Echtzeit-Überblick über das Geschehen.","product.retail.desc":"Ein System für Einzelhandel und Lebensmittelgeschäfte – Lagerverwaltung, Verkauf, Bestellungen und eine Umsatzübersicht in einem einzigen Tool.","product.vision.desc":"Ein KI-Kamerasystem für Betriebe – fortschrittliche Bildanalyse, Ereigniserkennung und ein Sicherheitsüberblick ohne ständige Überwachung.","newtab":"(öffnet sich in einem neuen Fenster)","why.eyebrow":"Warum ATOMYS","why.title":"Vier Prinzipien, auf die wir bauen.","feat.intel.t":"Intelligenz","feat.intel.d":"Wir verwandeln Daten in kluge Entscheidungen – nicht in Tabellen, die niemand liest.","feat.auto.t":"Automatisierung","feat.auto.d":"Wir automatisieren die Routine, sparen Zeit und Kosten und lassen die Menschen sich auf das Wesentliche konzentrieren.","feat.over.t":"Überblick","feat.over.d":"Alle wichtigen Informationen an einem Ort – klar und in Echtzeit.","feat.sec.t":"Sicherheit","feat.sec.d":"Ihre Daten sind sicher – wir betreiben sie verantwortungsvoll und regelkonform.","about.eyebrow":"Wer wir sind","about.title_a":"Die Softwaremarke hinter","about.title_b":"smartem Betrieb.","about.p1":"<strong>ATOMYS</strong> vereint eine Familie von Softwaresystemen für den täglichen Betrieb von Unternehmen. Wir konzentrieren uns nicht auf eine einzige Branche – wir entwickeln Werkzeuge für Autowerkstätten, Seniorenheime, den Einzelhandel und moderne Betriebe, die eine Notwendigkeit verbindet: alles unter Kontrolle zu haben.","about.p2":"Unser Ziel ist Software, die die Arbeit erleichtert, nicht erschwert. Übersichtlich, schnell und auf Daten gebaut, denen man vertrauen kann. Jedes Produkt durchdenken wir bis ins Detail – von Terminbuchung und Lager bis hin zu Rechnungsstellung und Analyse.","about.pill1":"Software maßgeschneidert für den Betrieb","about.pill2":"Daten & Automatisierung","about.pill3":"Entwickelt in Tschechien","about.pill4":"Langfristiger Support","about.panel1t":"Eigenentwicklung","about.panel1d":"Wir entwickeln unsere Systeme selbst und verstehen sie deshalb bis zur letzten Zeile.","about.panel2t":"24/7-Betrieb","about.panel2d":"Unsere Systeme laufen ununterbrochen – genau wie die Betriebe, denen sie dienen.","about.panel3t":"Sicher und zuverlässig","about.panel3d":"Wir hosten Daten verantwortungsvoll – mit Rücksicht auf Datenschutz und Stabilität.","contact.eyebrow":"Kontakt","contact.title_a":"Bringen wir Ihren Betrieb","contact.title_b":"unter Kontrolle.","contact.p":"Führen Sie einen Betrieb, der ein intelligenteres System verdient? Schreiben Sie uns – wir besprechen gern, wie ATOMYS helfen kann.","contact.btn":"Schreiben Sie uns","contact.mailsubject":"Anfrage – ATOMYS","footer.tagline":"Intelligente Systeme für das Betriebsmanagement. Daten, die entscheiden.","footer.products":"Produkte","footer.company":"Unternehmen","footer.rights":"Alle Rechte vorbehalten.","meta.title":"ATOMYS – Intelligente Systeme für das Betriebsmanagement","meta.description":"ATOMYS entwickelt intelligente Systeme für Autowerkstätten, Seniorenheime, den Einzelhandel und moderne Betriebe. Daten, die entscheiden – der Betrieb unter Kontrolle.","switcher.aria":"Sprache wählen"},"sk":{"nav.products":"Produkty","nav.why":"Prečo ATOMYS","nav.about":"O nás","nav.contact":"Kontakt","nav.cta":"Kontaktujte nás","hero.eyebrow":"Inteligentné systémy","hero.h1a":"Prevádzka pod kontrolou.","hero.h1b":"Dáta, ktoré rozhodujú.","hero.tagline":"Inteligentné systémy na riadenie prevádzky","hero.lead":"Vyvíjame inteligentné systémy pre autoservisy, domovy pre seniorov, maloobchod a moderné prevádzky. Softvér, automatizáciu a prepojené dáta spájame do jedného celku, ktorý šetrí čas aj náklady.","hero.cta1":"Naše systémy","hero.cta2":"Zistiť viac","hero.stat1lbl":"produktové oblasti","hero.stat2lbl":"systém v ostrej prevádzke","hero.stat3lbl":"vývoj a podpora","products.eyebrow":"Naše systémy","products.title_a":"Jedna platforma,","products.title_b":"štyri svety prevádzky.","products.subtitle":"Každý systém rieši iné odvetvie, no všetky stoja na rovnakom základe – prepojené dáta, automatizácia a jednoduché ovládanie.","badge.live":"V prevádzke","badge.soon":"Pripravujeme","status.indev":"Vo vývoji","product.auto.desc":"Kompletný systém na riadenie autoservisov – rezervácie, zákazky, sklad, pneuhotel, fakturácia aj prehľadový kokpit na jednom mieste.","product.auto.link":"Otvoriť mujautoservis.eu","product.care.desc":"Systém pre domovy pre seniorov – evidencia klientov, starostlivosť, dochádzka personálu a prehľad o dianí v reálnom čase.","product.retail.desc":"Systém pre maloobchod a potraviny – skladové hospodárstvo, predaj, objednávky a prehľad tržieb v jednom nástroji.","product.vision.desc":"Kamerový systém s umelou inteligenciou pre prevádzky – pokročilá analýza obrazu, detekcia udalostí a prehľad o bezpečnosti bez neustáleho sledovania.","newtab":"(otvorí sa v novom okne)","why.eyebrow":"Prečo ATOMYS","why.title":"Štyri princípy, na ktorých staviame.","feat.intel.t":"Inteligencia","feat.intel.d":"Dáta premieňame na inteligentné rozhodnutia, nie na tabuľky, ktoré nikto nečíta.","feat.auto.t":"Automatizácia","feat.auto.d":"Automatizujeme rutinu, šetríme čas aj náklady a necháme ľudí robiť to podstatné.","feat.over.t":"Prehľad","feat.over.d":"Všetky dôležité informácie na jednom mieste – prehľadne a v reálnom čase.","feat.sec.t":"Bezpečnosť","feat.sec.d":"Vaše dáta sú v bezpečí – prevádzkujeme ich zodpovedne a v súlade s pravidlami.","about.eyebrow":"Kto sme","about.title_a":"Softvérová značka za","about.title_b":"inteligentnou prevádzkou.","about.p1":"<strong>ATOMYS</strong> zastrešuje rodinu softvérových systémov pre každodennú prevádzku firiem. Nezameriavame sa na jedno odvetvie – staviame nástroje pre autoservisy, domovy pre seniorov, maloobchod aj moderné prevádzky, ktoré spája jedna potreba: mať všetko pod kontrolou.","about.p2":"Naším cieľom je softvér, ktorý prácu uľahčuje, nie komplikuje. Prehľadný, rýchly a postavený na dátach, ktorým sa dá veriť. Každý produkt riešime do hĺbky – od rezervácií a skladu až po fakturáciu a analýzu.","about.pill1":"Softvér na mieru prevádzky","about.pill2":"Dáta a automatizácia","about.pill3":"Vývoj v Česku","about.pill4":"Dlhodobá podpora","about.panel1t":"Vlastný vývoj","about.panel1d":"Systémy vyvíjame vlastnými silami, takže im rozumieme do posledného riadka.","about.panel2t":"Prevádzka 24/7","about.panel2d":"Naše systémy bežia nepretržite – rovnako ako prevádzky, ktorým slúžia.","about.panel3t":"Bezpečné a spoľahlivé","about.panel3d":"Dáta hostujeme zodpovedne, s ohľadom na súkromie a stabilitu.","contact.eyebrow":"Kontakt","contact.title_a":"Dostaňme vašu prevádzku","contact.title_b":"pod kontrolu.","contact.p":"Prevádzkujete podnik, ktorý by si zaslúžil inteligentnejší systém? Napíšte nám – radi preberieme, ako vám ATOMYS môže pomôcť.","contact.btn":"Napíšte nám","contact.mailsubject":"Dopyt – ATOMYS","footer.tagline":"Inteligentné systémy na riadenie prevádzky. Dáta, ktoré rozhodujú.","footer.products":"Produkty","footer.company":"Spoločnosť","footer.rights":"Všetky práva vyhradené.","meta.title":"ATOMYS – Inteligentné systémy na riadenie prevádzky","meta.description":"ATOMYS vyvíja inteligentné systémy pre autoservisy, domovy pre seniorov, maloobchod a moderné prevádzky. Dáta, ktoré rozhodujú – prevádzka pod kontrolou.","switcher.aria":"Vybrať jazyk"},"pl":{"nav.products":"Produkty","nav.why":"Dlaczego ATOMYS","nav.about":"O nas","nav.contact":"Kontakt","nav.cta":"Skontaktuj się z nami","hero.eyebrow":"Inteligentne systemy","hero.h1a":"Operacje pod kontrolą.","hero.h1b":"Dane, które napędzają decyzje.","hero.tagline":"Inteligentne systemy do zarządzania operacjami","hero.lead":"Tworzymy inteligentne systemy dla warsztatów samochodowych, domów opieki dla seniorów, handlu detalicznego i nowoczesnych zakładów. Łączymy oprogramowanie, automatyzację i połączone dane w jedną całość, która oszczędza czas i koszty.","hero.cta1":"Nasze systemy","hero.cta2":"Dowiedz się więcej","hero.stat1lbl":"obszary produktowe","hero.stat2lbl":"system w produkcji","hero.stat3lbl":"rozwój i wsparcie","products.eyebrow":"Nasze systemy","products.title_a":"Jedna platforma,","products.title_b":"cztery światy operacji.","products.subtitle":"Każdy system obsługuje inną branżę, ale wszystkie opierają się na tym samym fundamencie – połączonych danych, automatyzacji i prostym sterowaniu.","badge.live":"W użyciu","badge.soon":"Wkrótce","status.indev":"W rozwoju","product.auto.desc":"Kompletny system do prowadzenia warsztatów samochodowych – rezerwacje, zlecenia, magazyn, przechowalnia opon, fakturowanie i pulpit z pełnym przeglądem, wszystko w jednym miejscu.","product.auto.link":"Otwórz mujautoservis.eu","product.care.desc":"System dla domów opieki dla seniorów – ewidencja klientów, opieka, obecność personelu i podgląd wydarzeń w czasie rzeczywistym.","product.retail.desc":"System dla handlu detalicznego i sklepów spożywczych – gospodarka magazynowa, sprzedaż, zamówienia i przegląd obrotów w jednym narzędziu.","product.vision.desc":"System kamer ze sztuczną inteligencją dla zakładów – zaawansowana analiza obrazu, wykrywanie zdarzeń i przegląd bezpieczeństwa bez ciągłego monitorowania.","newtab":"(otwiera się w nowym oknie)","why.eyebrow":"Dlaczego ATOMYS","why.title":"Cztery zasady, na których budujemy.","feat.intel.t":"Inteligencja","feat.intel.d":"Zamieniamy dane w trafne decyzje, a nie w tabele, których nikt nie czyta.","feat.auto.t":"Automatyzacja","feat.auto.d":"Automatyzujemy rutynę, oszczędzamy czas i koszty, a ludziom pozwalamy skupić się na tym, co ważne.","feat.over.t":"Przegląd","feat.over.d":"Wszystkie ważne informacje w jednym miejscu – przejrzyście i w czasie rzeczywistym.","feat.sec.t":"Bezpieczeństwo","feat.sec.d":"Twoje dane są bezpieczne – zarządzamy nimi odpowiedzialnie i zgodnie z przepisami.","about.eyebrow":"Kim jesteśmy","about.title_a":"Marka oprogramowania stojąca za","about.title_b":"inteligentnymi operacjami.","about.p1":"<strong>ATOMYS</strong> spaja rodzinę systemów informatycznych dla codziennej działalności firm. Nie skupiamy się na jednej branży – tworzymy narzędzia dla warsztatów samochodowych, domów opieki dla seniorów, handlu detalicznego i nowoczesnych zakładów, które łączy jedna potrzeba: mieć wszystko pod kontrolą.","about.p2":"Naszym celem jest oprogramowanie, które ułatwia pracę, a nie ją komplikuje. Przejrzyste, szybkie i oparte na danych, którym można zaufać. Każdy produkt dopracowujemy w szczegółach – od rezerwacji i magazynu po fakturowanie i analizy.","about.pill1":"Oprogramowanie dopasowane do operacji","about.pill2":"Dane i automatyzacja","about.pill3":"Tworzone w Czechach","about.pill4":"Długoterminowe wsparcie","about.panel1t":"Własny rozwój","about.panel1d":"Nasze systemy tworzymy samodzielnie, dlatego rozumiemy je do ostatniej linijki kodu.","about.panel2t":"Działanie 24/7","about.panel2d":"Nasze systemy działają nieprzerwanie – tak jak zakłady, którym służą.","about.panel3t":"Bezpieczne i niezawodne","about.panel3d":"Dane hostujemy odpowiedzialnie, z dbałością o prywatność i stabilność.","contact.eyebrow":"Kontakt","contact.title_a":"Weźmy Twoje operacje","contact.title_b":"pod kontrolę.","contact.p":"Prowadzisz zakład, który zasługuje na inteligentniejszy system? Napisz do nas – chętnie omówimy, jak ATOMYS może pomóc.","contact.btn":"Napisz do nas","contact.mailsubject":"Zapytanie – ATOMYS","footer.tagline":"Inteligentne systemy do zarządzania operacjami. Dane, które napędzają decyzje.","footer.products":"Produkty","footer.company":"Firma","footer.rights":"Wszelkie prawa zastrzeżone.","meta.title":"ATOMYS – Inteligentne systemy do zarządzania operacjami","meta.description":"ATOMYS tworzy inteligentne systemy dla warsztatów samochodowych, domów opieki dla seniorów, handlu detalicznego i nowoczesnych zakładów. Dane, które napędzają decyzje – operacje pod kontrolą.","switcher.aria":"Wybierz język"},"it":{"nav.products":"Prodotti","nav.why":"Perché ATOMYS","nav.about":"Chi siamo","nav.contact":"Contatti","nav.cta":"Contattaci","hero.eyebrow":"Sistemi intelligenti","hero.h1a":"Operatività sotto controllo.","hero.h1b":"Dati che guidano le decisioni.","hero.tagline":"Sistemi intelligenti per la gestione operativa","hero.lead":"Sviluppiamo sistemi intelligenti per autofficine, case di riposo, retail e attività moderne. Uniamo software, automazione e dati connessi in un unico insieme che fa risparmiare tempo e costi.","hero.cta1":"I nostri sistemi","hero.cta2":"Scopri di più","hero.stat1lbl":"aree di prodotto","hero.stat2lbl":"sistema in produzione","hero.stat3lbl":"sviluppo e supporto","products.eyebrow":"I nostri sistemi","products.title_a":"Una piattaforma,","products.title_b":"quattro mondi operativi.","products.subtitle":"Ogni sistema risponde a un settore diverso, ma tutti poggiano sulle stesse fondamenta: dati connessi, automazione e controllo semplice.","badge.live":"In produzione","badge.soon":"In arrivo","status.indev":"In sviluppo","product.auto.desc":"Un sistema completo per la gestione delle autofficine: prenotazioni, ordini di lavoro, magazzino, deposito pneumatici, fatturazione e un cruscotto di panoramica, tutto in un unico posto.","product.auto.link":"Apri mujautoservis.eu","product.care.desc":"Un sistema per le case di riposo: anagrafica degli ospiti, assistenza, presenze del personale e una panoramica in tempo reale di ciò che accade.","product.retail.desc":"Un sistema per il retail e l'alimentare: gestione del magazzino, vendite, ordini e una panoramica delle vendite in un unico strumento.","product.vision.desc":"Un sistema di videosorveglianza con intelligenza artificiale per le attività: analisi avanzata delle immagini, rilevamento degli eventi e una panoramica sulla sicurezza senza monitoraggio costante.","newtab":"(si apre in una nuova finestra)","why.eyebrow":"Perché ATOMYS","why.title":"Quattro principi su cui costruiamo.","feat.intel.t":"Intelligenza","feat.intel.d":"Trasformiamo i dati in decisioni intelligenti, non in tabelle che nessuno legge.","feat.auto.t":"Automazione","feat.auto.d":"Automatizziamo la routine, riduciamo tempo e costi e lasciamo che le persone si dedichino a ciò che conta.","feat.over.t":"Panoramica","feat.over.d":"Tutte le informazioni importanti in un unico posto: chiare e in tempo reale.","feat.sec.t":"Sicurezza","feat.sec.d":"I tuoi dati sono al sicuro: li gestiamo in modo responsabile e conforme alle regole.","about.eyebrow":"Chi siamo","about.title_a":"Il marchio software dietro","about.title_b":"le attività intelligenti.","about.p1":"<strong>ATOMYS</strong> riunisce una famiglia di sistemi software per l'operatività quotidiana delle aziende. Non ci concentriamo su un unico settore: costruiamo strumenti per autofficine, case di riposo, retail e attività moderne, uniti da un'unica esigenza: tenere tutto sotto controllo.","about.p2":"Il nostro obiettivo è un software che semplifica il lavoro, non lo complica. Chiaro, veloce e costruito su dati di cui ti puoi fidare. Affrontiamo ogni prodotto in profondità, dalle prenotazioni e dal magazzino fino alla fatturazione e all'analisi.","about.pill1":"Software su misura per l'operatività","about.pill2":"Dati e automazione","about.pill3":"Sviluppato in Repubblica Ceca","about.pill4":"Supporto a lungo termine","about.panel1t":"Sviluppo interno","about.panel1d":"Sviluppiamo i nostri sistemi in prima persona, quindi li conosciamo fino all'ultima riga.","about.panel2t":"Operatività 24/7","about.panel2d":"I nostri sistemi funzionano senza sosta, proprio come le attività a cui servono.","about.panel3t":"Sicuri e affidabili","about.panel3d":"Ospitiamo i dati in modo responsabile, nel rispetto della privacy e della stabilità.","contact.eyebrow":"Contatti","contact.title_a":"Portiamo la tua operatività","contact.title_b":"sotto controllo.","contact.p":"Gestisci un'attività che merita un sistema più intelligente? Scrivici: saremo lieti di valutare insieme come ATOMYS può aiutarti.","contact.btn":"Scrivici","contact.mailsubject":"Richiesta – ATOMYS","footer.tagline":"Sistemi intelligenti per la gestione operativa. Dati che guidano le decisioni.","footer.products":"Prodotti","footer.company":"Azienda","footer.rights":"Tutti i diritti riservati.","meta.title":"ATOMYS – Sistemi intelligenti per la gestione operativa","meta.description":"ATOMYS sviluppa sistemi intelligenti per autofficine, case di riposo, retail e attività moderne. Dati che guidano le decisioni: operatività sotto controllo.","switcher.aria":"Scegli la lingua"},"el":{"nav.products":"Προϊόντα","nav.why":"Γιατί ATOMYS","nav.about":"Σχετικά","nav.contact":"Επικοινωνία","nav.cta":"Επικοινωνήστε μαζί μας","hero.eyebrow":"Έξυπνα συστήματα","hero.h1a":"Η λειτουργία υπό έλεγχο.","hero.h1b":"Δεδομένα που καθοδηγούν τις αποφάσεις.","hero.tagline":"Έξυπνα συστήματα για τη διαχείριση λειτουργιών","hero.lead":"Αναπτύσσουμε έξυπνα συστήματα για συνεργεία αυτοκινήτων, μονάδες φροντίδας ηλικιωμένων, το λιανικό εμπόριο και τις σύγχρονες επιχειρήσεις. Ενώνουμε λογισμικό, αυτοματισμό και διασυνδεδεμένα δεδομένα σε ένα ενιαίο σύνολο που εξοικονομεί χρόνο και κόστος.","hero.cta1":"Τα συστήματά μας","hero.cta2":"Μάθετε περισσότερα","hero.stat1lbl":"τομείς προϊόντων","hero.stat2lbl":"σύστημα σε πλήρη λειτουργία","hero.stat3lbl":"ανάπτυξη & υποστήριξη","products.eyebrow":"Τα συστήματά μας","products.title_a":"Μία πλατφόρμα,","products.title_b":"τέσσερις κόσμοι λειτουργίας.","products.subtitle":"Κάθε σύστημα εξυπηρετεί έναν διαφορετικό κλάδο, όμως όλα στηρίζονται στην ίδια βάση – διασυνδεδεμένα δεδομένα, αυτοματισμό και απλό χειρισμό.","badge.live":"Σε λειτουργία","badge.soon":"Έρχεται σύντομα","status.indev":"Σε ανάπτυξη","product.auto.desc":"Ένα ολοκληρωμένο σύστημα για τη διαχείριση συνεργείων αυτοκινήτων – κρατήσεις, εργασίες, αποθήκη, εποχική φύλαξη ελαστικών, τιμολόγηση και έναν κεντρικό πίνακα εποπτείας, όλα σε ένα σημείο.","product.auto.link":"Άνοιγμα mujautoservis.eu","product.care.desc":"Ένα σύστημα για μονάδες φροντίδας ηλικιωμένων – μητρώα ενοίκων, φροντίδα, παρουσίες προσωπικού και εποπτεία των όσων συμβαίνουν σε πραγματικό χρόνο.","product.retail.desc":"Ένα σύστημα για το λιανικό εμπόριο και τα τρόφιμα – διαχείριση αποθήκης, πωλήσεις, παραγγελίες και εποπτεία τζίρου σε ένα εργαλείο.","product.vision.desc":"Ένα σύστημα καμερών με τεχνητή νοημοσύνη για επιχειρήσεις – προηγμένη ανάλυση εικόνας, εντοπισμός συμβάντων και εποπτεία ασφάλειας χωρίς διαρκή παρακολούθηση.","newtab":"(ανοίγει σε νέο παράθυρο)","why.eyebrow":"Γιατί ATOMYS","why.title":"Τέσσερις αρχές πάνω στις οποίες χτίζουμε.","feat.intel.t":"Ευφυΐα","feat.intel.d":"Μετατρέπουμε τα δεδομένα σε έξυπνες αποφάσεις, όχι σε πίνακες που δεν διαβάζει κανείς.","feat.auto.t":"Αυτοματισμός","feat.auto.d":"Αυτοματοποιούμε τη ρουτίνα, εξοικονομούμε χρόνο και κόστος και αφήνουμε τους ανθρώπους να επικεντρωθούν σε αυτό που μετράει.","feat.over.t":"Εποπτεία","feat.over.d":"Όλες οι σημαντικές πληροφορίες σε ένα σημείο – με σαφήνεια και σε πραγματικό χρόνο.","feat.sec.t":"Ασφάλεια","feat.sec.d":"Τα δεδομένα σας είναι ασφαλή – τα διαχειριζόμαστε υπεύθυνα και σύμφωνα με τους κανόνες.","about.eyebrow":"Ποιοι είμαστε","about.title_a":"Η μάρκα λογισμικού πίσω από","about.title_b":"τις έξυπνες λειτουργίες.","about.p1":"Η <strong>ATOMYS</strong> συγκεντρώνει μια οικογένεια συστημάτων λογισμικού για την καθημερινή λειτουργία των επιχειρήσεων. Δεν εστιάζουμε σε έναν μόνο κλάδο – δημιουργούμε εργαλεία για συνεργεία αυτοκινήτων, μονάδες φροντίδας ηλικιωμένων, το λιανικό εμπόριο και τις σύγχρονες επιχειρήσεις, που τα ενώνει μία ανάγκη: να έχετε τα πάντα υπό έλεγχο.","about.p2":"Στόχος μας είναι λογισμικό που κάνει τη δουλειά πιο εύκολη, όχι πιο δύσκολη. Ξεκάθαρο, γρήγορο και χτισμένο πάνω σε δεδομένα που μπορείτε να εμπιστευτείτε. Κάθε προϊόν το επεξεργαζόμαστε σε βάθος – από τις κρατήσεις και την αποθήκη μέχρι την τιμολόγηση και την ανάλυση.","about.pill1":"Λογισμικό στα μέτρα της λειτουργίας σας","about.pill2":"Δεδομένα & αυτοματισμός","about.pill3":"Ανάπτυξη στην Τσεχία","about.pill4":"Μακροχρόνια υποστήριξη","about.panel1t":"Εσωτερική ανάπτυξη","about.panel1d":"Αναπτύσσουμε τα συστήματά μας μόνοι μας, γι' αυτό και τα γνωρίζουμε μέχρι την τελευταία γραμμή κώδικα.","about.panel2t":"Λειτουργία 24/7","about.panel2d":"Τα συστήματά μας λειτουργούν ασταμάτητα – όπως ακριβώς και οι επιχειρήσεις που εξυπηρετούν.","about.panel3t":"Ασφαλή και αξιόπιστα","about.panel3d":"Φιλοξενούμε τα δεδομένα υπεύθυνα, με σεβασμό στην ιδιωτικότητα και τη σταθερότητα.","contact.eyebrow":"Επικοινωνία","contact.title_a":"Ας βάλουμε τη λειτουργία σας","contact.title_b":"υπό έλεγχο.","contact.p":"Διαχειρίζεστε μια επιχείρηση που αξίζει ένα πιο έξυπνο σύστημα; Γράψτε μας – θα χαρούμε να συζητήσουμε πώς μπορεί να βοηθήσει η ATOMYS.","contact.btn":"Γράψτε μας","contact.mailsubject":"Ζήτηση προσφοράς – ATOMYS","footer.tagline":"Έξυπνα συστήματα για τη διαχείριση λειτουργιών. Δεδομένα που καθοδηγούν τις αποφάσεις.","footer.products":"Προϊόντα","footer.company":"Εταιρεία","footer.rights":"Με την επιφύλαξη παντός δικαιώματος.","meta.title":"ATOMYS – Έξυπνα συστήματα για τη διαχείριση λειτουργιών","meta.description":"Η ATOMYS αναπτύσσει έξυπνα συστήματα για συνεργεία αυτοκινήτων, μονάδες φροντίδας ηλικιωμένων, το λιανικό εμπόριο και τις σύγχρονες επιχειρήσεις. Δεδομένα που καθοδηγούν τις αποφάσεις – η λειτουργία υπό έλεγχο.","switcher.aria":"Επιλογή γλώσσας"},"hu":{"nav.products":"Termékek","nav.why":"Miért ATOMYS","nav.about":"Rólunk","nav.contact":"Kapcsolat","nav.cta":"Lépjen kapcsolatba","hero.eyebrow":"Intelligens rendszerek","hero.h1a":"A működés kézben tartva.","hero.h1b":"Adatok, amelyek döntenek.","hero.tagline":"Intelligens rendszerek a működés irányításához","hero.lead":"Intelligens rendszereket fejlesztünk autószervizek, idősotthonok, kiskereskedelem és modern üzemek számára. A szoftvert, az automatizálást és az összekapcsolt adatokat egyetlen egésszé fűzzük össze, amely időt és költséget takarít meg.","hero.cta1":"Rendszereink","hero.cta2":"Tudjon meg többet","hero.stat1lbl":"termékterület","hero.stat2lbl":"rendszer éles üzemben","hero.stat3lbl":"fejlesztés és támogatás","products.eyebrow":"Rendszereink","products.title_a":"Egy platform,","products.title_b":"a működés négy világa.","products.subtitle":"Minden rendszer más iparágat szolgál ki, de mindegyik ugyanazon az alapon áll – összekapcsolt adatok, automatizálás és egyszerű kezelés.","badge.live":"Éles üzemben","badge.soon":"Hamarosan","status.indev":"Fejlesztés alatt","product.auto.desc":"Teljes körű rendszer autószervizek működtetéséhez – foglalások, munkalapok, raktár, gumiabroncs-tárolás, számlázás és áttekintő irányítópult, mindez egy helyen.","product.auto.link":"mujautoservis.eu megnyitása","product.care.desc":"Rendszer idősotthonok számára – ügyfélnyilvántartás, gondozás, a személyzet jelenléte és valós idejű áttekintés a történésekről.","product.retail.desc":"Rendszer a kiskereskedelem és élelmiszerüzletek számára – készletgazdálkodás, értékesítés, rendelések és bevételi áttekintés egyetlen eszközben.","product.vision.desc":"Mesterséges intelligenciával működő kamerarendszer üzemekhez – fejlett képelemzés, eseményfelismerés és biztonsági áttekintés folyamatos felügyelet nélkül.","newtab":"(új ablakban nyílik meg)","why.eyebrow":"Miért ATOMYS","why.title":"Négy alapelv, amelyre építünk.","feat.intel.t":"Intelligencia","feat.intel.d":"Az adatokból okos döntéseket formálunk, nem táblázatokat, amelyeket senki sem olvas.","feat.auto.t":"Automatizálás","feat.auto.d":"Automatizáljuk a rutint, időt és költséget takarítunk meg, és hagyjuk, hogy az emberek a lényegre koncentráljanak.","feat.over.t":"Áttekintés","feat.over.d":"Minden fontos információ egy helyen – áttekinthetően és valós időben.","feat.sec.t":"Biztonság","feat.sec.d":"Az Ön adatai biztonságban vannak – felelősségteljesen és a szabályoknak megfelelően kezeljük őket.","about.eyebrow":"Kik vagyunk","about.title_a":"A szoftvermárka az","about.title_b":"okos működés mögött.","about.p1":"Az <strong>ATOMYS</strong> szoftverrendszerek családját fogja össze a vállalkozások mindennapi működéséhez. Nem egyetlen iparágra összpontosítunk – eszközöket építünk autószervizek, idősotthonok, kiskereskedelem és modern üzemek számára, amelyeket egyetlen igény köt össze: mindent kézben tartani.","about.p2":"Célunk olyan szoftver, amely megkönnyíti a munkát, nem megnehezíti. Áttekinthető, gyors és megbízható adatokra épül. Minden terméket mélységében dolgozunk ki – a foglalásoktól és a raktártól a számlázásig és az elemzésig.","about.pill1":"Működésre szabott szoftver","about.pill2":"Adatok és automatizálás","about.pill3":"Csehországban fejlesztve","about.pill4":"Hosszú távú támogatás","about.panel1t":"Saját fejlesztés","about.panel1d":"Rendszereinket saját magunk fejlesztjük, így az utolsó sorig értjük őket.","about.panel2t":"24/7 üzemelés","about.panel2d":"Rendszereink megállás nélkül működnek – akárcsak a működés, amelyet kiszolgálnak.","about.panel3t":"Biztonságos és megbízható","about.panel3d":"Az adatokat felelősségteljesen tároljuk, tiszteletben tartva a magánszférát és a stabilitást.","contact.eyebrow":"Kapcsolat","contact.title_a":"Vegyük kézbe a","contact.title_b":"működését.","contact.p":"Olyan üzemet vezet, amely megérdemelne egy okosabb rendszert? Írjon nekünk – szívesen megbeszéljük, hogyan segíthet Önnek az ATOMYS.","contact.btn":"Írjon nekünk","contact.mailsubject":"Érdeklődés – ATOMYS","footer.tagline":"Intelligens rendszerek a működés irányításához. Adatok, amelyek döntenek.","footer.products":"Termékek","footer.company":"Vállalat","footer.rights":"Minden jog fenntartva.","meta.title":"ATOMYS – Intelligens rendszerek a működés irányításához","meta.description":"Az ATOMYS intelligens rendszereket fejleszt autószervizek, idősotthonok, kiskereskedelem és modern üzemek számára. Adatok, amelyek döntenek – a működés kézben tartva.","switcher.aria":"Nyelv kiválasztása"},"es":{"nav.products":"Productos","nav.why":"Por qué ATOMYS","nav.about":"Nosotros","nav.contact":"Contacto","nav.cta":"Contáctanos","hero.eyebrow":"Sistemas inteligentes","hero.h1a":"Operaciones bajo control.","hero.h1b":"Datos que impulsan decisiones.","hero.tagline":"Sistemas inteligentes para la gestión de operaciones","hero.lead":"Desarrollamos sistemas inteligentes para talleres de automóviles, residencias de mayores, comercio minorista y operaciones modernas. Unimos software, automatización y datos conectados en un solo conjunto que ahorra tiempo y costes.","hero.cta1":"Nuestros sistemas","hero.cta2":"Saber más","hero.stat1lbl":"áreas de producto","hero.stat2lbl":"sistema en producción","hero.stat3lbl":"desarrollo y soporte","products.eyebrow":"Nuestros sistemas","products.title_a":"Una plataforma,","products.title_b":"cuatro mundos de operaciones.","products.subtitle":"Cada sistema resuelve un sector distinto, pero todos se apoyan en la misma base: datos conectados, automatización y un control sencillo.","badge.live":"En producción","badge.soon":"Próximamente","status.indev":"En desarrollo","product.auto.desc":"Un sistema completo para gestionar talleres de automóviles: reservas, órdenes de trabajo, almacén, hotel de neumáticos, facturación y un panel de control general, todo en un solo lugar.","product.auto.link":"Abrir mujautoservis.eu","product.care.desc":"Un sistema para residencias de mayores: fichas de clientes, cuidados, control de asistencia del personal y una visión en tiempo real de lo que ocurre.","product.retail.desc":"Un sistema para comercio minorista y alimentación: gestión de almacén, ventas, pedidos y una visión de las ventas en una sola herramienta.","product.vision.desc":"Un sistema de cámaras con inteligencia artificial para operaciones: análisis avanzado de imagen, detección de eventos y una visión de la seguridad sin vigilancia constante.","newtab":"(se abre en una ventana nueva)","why.eyebrow":"Por qué ATOMYS","why.title":"Cuatro principios sobre los que construimos.","feat.intel.t":"Inteligencia","feat.intel.d":"Convertimos los datos en decisiones inteligentes, no en hojas de cálculo que nadie lee.","feat.auto.t":"Automatización","feat.auto.d":"Automatizamos la rutina, ahorramos tiempo y costes, y dejamos que las personas se centren en lo importante.","feat.over.t":"Visión general","feat.over.d":"Toda la información importante en un solo lugar, con claridad y en tiempo real.","feat.sec.t":"Seguridad","feat.sec.d":"Tus datos están seguros: los gestionamos con responsabilidad y conforme a la normativa.","about.eyebrow":"Quiénes somos","about.title_a":"La marca de software detrás de","about.title_b":"las operaciones inteligentes.","about.p1":"<strong>ATOMYS</strong> reúne una familia de sistemas de software para las operaciones diarias de las empresas. No nos centramos en un único sector: creamos herramientas para talleres de automóviles, residencias de mayores, comercio minorista y operaciones modernas, unidas por una misma necesidad: tenerlo todo bajo control.","about.p2":"Nuestro objetivo es un software que facilite el trabajo, no que lo complique. Claro, rápido y basado en datos en los que puedes confiar. Abordamos cada producto en profundidad: desde las reservas y el almacén hasta la facturación y la analítica.","about.pill1":"Software a medida de tu operación","about.pill2":"Datos y automatización","about.pill3":"Desarrollado en Chequia","about.pill4":"Soporte a largo plazo","about.panel1t":"Desarrollo propio","about.panel1d":"Desarrollamos nuestros sistemas con recursos propios, así que los entendemos hasta la última línea.","about.panel2t":"Funcionamiento 24/7","about.panel2d":"Nuestros sistemas funcionan sin interrupción, igual que las operaciones a las que sirven.","about.panel3t":"Seguro y fiable","about.panel3d":"Alojamos los datos con responsabilidad, cuidando la privacidad y la estabilidad.","contact.eyebrow":"Contacto","contact.title_a":"Pongamos tu operación","contact.title_b":"bajo control.","contact.p":"¿Diriges una operación que merece un sistema más inteligente? Escríbenos: estaremos encantados de hablar de cómo ATOMYS puede ayudarte.","contact.btn":"Escríbenos","contact.mailsubject":"Consulta – ATOMYS","footer.tagline":"Sistemas inteligentes para la gestión de operaciones. Datos que impulsan decisiones.","footer.products":"Productos","footer.company":"Empresa","footer.rights":"Todos los derechos reservados.","meta.title":"ATOMYS – Sistemas inteligentes para la gestión de operaciones","meta.description":"ATOMYS desarrolla sistemas inteligentes para talleres de automóviles, residencias de mayores, comercio minorista y operaciones modernas. Datos que impulsan decisiones: operaciones bajo control.","switcher.aria":"Elegir idioma"},"ru":{"nav.products":"Продукты","nav.why":"Почему ATOMYS","nav.about":"О нас","nav.contact":"Контакты","nav.cta":"Свяжитесь с нами","hero.eyebrow":"Интеллектуальные системы","hero.h1a":"Процессы под контролем.","hero.h1b":"Данные, которые решают.","hero.tagline":"Интеллектуальные системы для управления процессами","hero.lead":"Мы создаём интеллектуальные системы для автосервисов, домов престарелых, розничной торговли и современных предприятий. Объединяем программное обеспечение, автоматизацию и связанные данные в единое целое, которое экономит время и деньги.","hero.cta1":"Наши системы","hero.cta2":"Узнать больше","hero.stat1lbl":"продуктовых направления","hero.stat2lbl":"система в эксплуатации","hero.stat3lbl":"разработка и поддержка","products.eyebrow":"Наши системы","products.title_a":"Одна платформа,","products.title_b":"четыре мира процессов.","products.subtitle":"Каждая система решает задачи своей отрасли, но все они опираются на общий фундамент — связанные данные, автоматизацию и простое управление.","badge.live":"В эксплуатации","badge.soon":"Скоро","status.indev":"В разработке","product.auto.desc":"Полноценная система для управления автосервисами — записи, заказ-наряды, склад, сезонное хранение шин, выставление счетов и обзорная панель, всё в одном месте.","product.auto.link":"Открыть mujautoservis.eu","product.care.desc":"Система для домов престарелых — учёт клиентов, уход, учёт присутствия персонала и обзор происходящего в реальном времени.","product.retail.desc":"Система для розничной торговли и продуктовых магазинов — складской учёт, продажи, заказы и обзор выручки в едином инструменте.","product.vision.desc":"Система видеонаблюдения с искусственным интеллектом для предприятий — продвинутый анализ изображения, обнаружение событий и контроль безопасности без постоянного наблюдения.","newtab":"(откроется в новом окне)","why.eyebrow":"Почему ATOMYS","why.title":"Четыре принципа, на которых мы строим.","feat.intel.t":"Интеллект","feat.intel.d":"Мы превращаем данные в умные решения, а не в таблицы, которые никто не читает.","feat.auto.t":"Автоматизация","feat.auto.d":"Мы автоматизируем рутину, экономим время и деньги и даём людям заниматься главным.","feat.over.t":"Обзор","feat.over.d":"Вся важная информация в одном месте — понятно и в реальном времени.","feat.sec.t":"Безопасность","feat.sec.d":"Ваши данные в безопасности — мы обращаемся с ними ответственно и по правилам.","about.eyebrow":"Кто мы","about.title_a":"Программный бренд, стоящий за","about.title_b":"умными процессами.","about.p1":"<strong>ATOMYS</strong> объединяет семейство программных систем для повседневной работы компаний. Мы не ограничиваемся одной отраслью — создаём инструменты для автосервисов, домов престарелых, розничной торговли и современных предприятий, которые объединяет одна потребность: держать всё под контролем.","about.p2":"Наша цель — программное обеспечение, которое облегчает работу, а не усложняет её. Понятное, быстрое и построенное на данных, которым можно доверять. Каждый продукт мы прорабатываем в глубину — от записей и склада до выставления счетов и аналитики.","about.pill1":"Программное обеспечение под ваши процессы","about.pill2":"Данные и автоматизация","about.pill3":"Разработано в Чехии","about.pill4":"Долгосрочная поддержка","about.panel1t":"Собственная разработка","about.panel1d":"Мы разрабатываем свои системы сами, поэтому понимаем их до последней строки кода.","about.panel2t":"Работа 24/7","about.panel2d":"Наши системы работают без остановки — как и предприятия, которым они служат.","about.panel3t":"Безопасно и надёжно","about.panel3d":"Мы храним данные ответственно, заботясь о конфиденциальности и стабильности.","contact.eyebrow":"Контакты","contact.title_a":"Давайте возьмём ваши процессы","contact.title_b":"под контроль.","contact.p":"У вас есть бизнес, который заслуживает более умной системы? Напишите нам — с радостью обсудим, чем ATOMYS может помочь.","contact.btn":"Напишите нам","contact.mailsubject":"Запрос — ATOMYS","footer.tagline":"Интеллектуальные системы для управления процессами. Данные, которые решают.","footer.products":"Продукты","footer.company":"Компания","footer.rights":"Все права защищены.","meta.title":"ATOMYS — интеллектуальные системы для управления процессами","meta.description":"ATOMYS создаёт интеллектуальные системы для автосервисов, домов престарелых, розничной торговли и современных предприятий. Данные, которые решают, — процессы под контролем.","switcher.aria":"Выбрать язык"},"fr":{"nav.products":"Produits","nav.why":"Pourquoi ATOMYS","nav.about":"À propos","nav.contact":"Contact","nav.cta":"Contactez-nous","hero.eyebrow":"Systèmes intelligents","hero.h1a":"Votre activité sous contrôle.","hero.h1b":"Des données qui décident.","hero.tagline":"Systèmes intelligents pour le pilotage de l'activité","hero.lead":"Nous concevons des systèmes intelligents pour les garages automobiles, les maisons de retraite, le commerce de détail et les activités modernes. Nous réunissons logiciel, automatisation et données connectées en un tout cohérent qui fait gagner du temps et réduit les coûts.","hero.cta1":"Nos systèmes","hero.cta2":"En savoir plus","hero.stat1lbl":"domaines produits","hero.stat2lbl":"système en production","hero.stat3lbl":"développement et support","products.eyebrow":"Nos systèmes","products.title_a":"Une plateforme,","products.title_b":"quatre univers d'activité.","products.subtitle":"Chaque système répond à un secteur différent, mais tous reposent sur les mêmes fondations : des données connectées, l'automatisation et une prise en main simple.","badge.live":"En production","badge.soon":"Bientôt disponible","status.indev":"En développement","product.auto.desc":"Un système complet pour la gestion des garages automobiles : réservations, interventions, stock, gardiennage de pneus, facturation et un tableau de bord synthétique, le tout au même endroit.","product.auto.link":"Ouvrir mujautoservis.eu","product.care.desc":"Un système pour les maisons de retraite : dossiers des résidents, soins, présence du personnel et une vue d'ensemble en temps réel de ce qui se passe.","product.retail.desc":"Un système pour le commerce de détail et l'alimentation : gestion des stocks, ventes, commandes et un aperçu du chiffre d'affaires dans un seul outil.","product.vision.desc":"Un système de caméras à intelligence artificielle pour vos activités : analyse d'image avancée, détection d'événements et une vue d'ensemble de la sécurité sans surveillance permanente.","newtab":"(s'ouvre dans une nouvelle fenêtre)","why.eyebrow":"Pourquoi ATOMYS","why.title":"Quatre principes sur lesquels nous bâtissons.","feat.intel.t":"Intelligence","feat.intel.d":"Nous transformons les données en décisions pertinentes, pas en tableurs que personne ne lit.","feat.auto.t":"Automatisation","feat.auto.d":"Nous automatisons les tâches routinières, réduisons le temps et les coûts, et laissons chacun se concentrer sur l'essentiel.","feat.over.t":"Vue d'ensemble","feat.over.d":"Toutes les informations essentielles réunies au même endroit : clairement et en temps réel.","feat.sec.t":"Sécurité","feat.sec.d":"Vos données sont en sécurité : nous les exploitons de façon responsable et conforme aux règles.","about.eyebrow":"Qui nous sommes","about.title_a":"La marque logicielle derrière","about.title_b":"les activités intelligentes.","about.p1":"<strong>ATOMYS</strong> réunit une famille de systèmes logiciels dédiés au fonctionnement quotidien des entreprises. Nous ne nous limitons pas à un seul secteur : nous concevons des outils pour les garages automobiles, les maisons de retraite, le commerce de détail et les activités modernes, réunis par un même besoin : tout garder sous contrôle.","about.p2":"Notre objectif : un logiciel qui simplifie le travail au lieu de le compliquer. Clair, rapide et fondé sur des données fiables. Nous traitons chaque produit en profondeur, des réservations et du stock jusqu'à la facturation et l'analyse.","about.pill1":"Logiciel sur mesure pour l'activité","about.pill2":"Données et automatisation","about.pill3":"Développé en Tchéquie","about.pill4":"Support à long terme","about.panel1t":"Développement interne","about.panel1d":"Nous développons nos systèmes en interne : nous les maîtrisons jusqu'à la dernière ligne de code.","about.panel2t":"Fonctionnement 24/7","about.panel2d":"Nos systèmes fonctionnent sans interruption, tout comme les activités qu'ils accompagnent.","about.panel3t":"Sûr et fiable","about.panel3d":"Nous hébergeons les données de façon responsable, dans le respect de la confidentialité et de la stabilité.","contact.eyebrow":"Contact","contact.title_a":"Mettons votre activité","contact.title_b":"sous contrôle.","contact.p":"Vous dirigez une activité qui mérite un système plus intelligent ? Écrivez-nous : nous serons ravis d'échanger sur la façon dont ATOMYS peut vous aider.","contact.btn":"Écrivez-nous","contact.mailsubject":"Demande – ATOMYS","footer.tagline":"Systèmes intelligents pour le pilotage de l'activité. Des données qui décident.","footer.products":"Produits","footer.company":"Société","footer.rights":"Tous droits réservés.","meta.title":"ATOMYS – Systèmes intelligents pour le pilotage de l'activité","meta.description":"ATOMYS conçoit des systèmes intelligents pour les garages automobiles, les maisons de retraite, le commerce de détail et les activités modernes. Des données qui décident – votre activité sous contrôle.","switcher.aria":"Choisir la langue"},"zh":{"nav.products":"产品","nav.why":"为何选择 ATOMYS","nav.about":"关于我们","nav.contact":"联系我们","nav.cta":"联系我们","hero.eyebrow":"智能系统","hero.h1a":"运营尽在掌控。","hero.h1b":"数据驱动决策。","hero.tagline":"面向运营管理的智能系统","hero.lead":"我们为汽车维修厂、养老院、零售及现代运营场景打造智能系统。我们将软件、自动化与互联数据融为一体，帮助您节省时间与成本。","hero.cta1":"我们的系统","hero.cta2":"了解更多","hero.stat1lbl":"产品领域","hero.stat2lbl":"系统正式运行","hero.stat3lbl":"开发与支持","products.eyebrow":"我们的系统","products.title_a":"一个平台，","products.title_b":"四大运营领域。","products.subtitle":"每套系统服务于不同的行业，却都建立在同一基石之上——互联数据、自动化与简单易用的操控。","badge.live":"正式运行","badge.soon":"即将推出","status.indev":"开发中","product.auto.desc":"面向汽车维修厂的一体化系统——预约、工单、库存、轮胎换季存储、开票以及总览仪表盘，尽在一处。","product.auto.link":"打开 mujautoservis.eu","product.care.desc":"面向养老院的系统——客户档案、护理记录、员工考勤，以及实时掌握院内动态。","product.retail.desc":"面向零售与食品杂货的系统——库存管理、销售、订单与销售总览，集于一款工具。","product.vision.desc":"面向运营场景的 AI 摄像系统——先进的图像分析、事件检测，无需持续盯守即可掌握安全态势。","newtab":"（在新窗口中打开）","why.eyebrow":"为何选择 ATOMYS","why.title":"我们坚守的四项原则。","feat.intel.t":"智能","feat.intel.d":"我们让数据化为明智决策，而非无人问津的表格。","feat.auto.t":"自动化","feat.auto.d":"我们让日常事务自动化，节省时间与成本，让员工专注于真正重要的事。","feat.over.t":"全局总览","feat.over.d":"所有关键信息汇于一处——清晰明了、实时呈现。","feat.sec.t":"安全","feat.sec.d":"您的数据安全无忧——我们负责任地运营，并严格遵循相关规范。","about.eyebrow":"我们是谁","about.title_a":"智慧运营背后的","about.title_b":"软件品牌。","about.p1":"<strong>ATOMYS</strong> 汇聚了一系列面向企业日常运营的软件系统。我们并不局限于某一个行业——我们为汽车维修厂、养老院、零售及现代运营场景打造工具，它们都源于同一个诉求：让一切尽在掌控。","about.p2":"我们的目标，是让软件为工作减负，而非添乱。它清晰、快速，并建立在值得信赖的数据之上。我们对每一款产品都深耕细作——从预约、库存到开票与分析。","about.pill1":"为运营量身定制的软件","about.pill2":"数据与自动化","about.pill3":"捷克研发","about.pill4":"长期支持","about.panel1t":"自主研发","about.panel1d":"我们的系统由自己一手打造，因此对每一行代码都了如指掌。","about.panel2t":"24/7 全天候运行","about.panel2d":"我们的系统不间断运行——正如它们所服务的运营场景一样。","about.panel3t":"安全可靠","about.panel3d":"我们负责任地托管数据，尊重隐私、保障稳定。","contact.eyebrow":"联系我们","contact.title_a":"让我们一起，把您的运营","contact.title_b":"带入掌控之中。","contact.p":"您的运营是否值得拥有更聪明的系统？欢迎联系我们——我们很乐意探讨 ATOMYS 能为您带来怎样的帮助。","contact.btn":"联系我们","contact.mailsubject":"业务咨询 — ATOMYS","footer.tagline":"面向运营管理的智能系统。数据驱动决策。","footer.products":"产品","footer.company":"公司","footer.rights":"版权所有。","meta.title":"ATOMYS — 面向运营管理的智能系统","meta.description":"ATOMYS 为汽车维修厂、养老院、零售及现代运营场景打造智能系统。数据驱动决策——运营尽在掌控。","switcher.aria":"选择语言"},"vi":{"nav.products":"Sản phẩm","nav.why":"Vì sao chọn ATOMYS","nav.about":"Giới thiệu","nav.contact":"Liên hệ","nav.cta":"Liên hệ với chúng tôi","hero.eyebrow":"Hệ thống thông minh","hero.h1a":"Vận hành trong tầm kiểm soát.","hero.h1b":"Dữ liệu dẫn lối quyết định.","hero.tagline":"Hệ thống thông minh cho quản lý vận hành","hero.lead":"Chúng tôi xây dựng các hệ thống thông minh cho gara ô tô, viện dưỡng lão, bán lẻ và các mô hình vận hành hiện đại. Chúng tôi kết hợp phần mềm, tự động hóa và dữ liệu liên thông thành một thể thống nhất giúp tiết kiệm thời gian và chi phí.","hero.cta1":"Hệ thống của chúng tôi","hero.cta2":"Tìm hiểu thêm","hero.stat1lbl":"lĩnh vực sản phẩm","hero.stat2lbl":"hệ thống đang vận hành thực tế","hero.stat3lbl":"phát triển & hỗ trợ","products.eyebrow":"Hệ thống của chúng tôi","products.title_a":"Một nền tảng,","products.title_b":"bốn thế giới vận hành.","products.subtitle":"Mỗi hệ thống phục vụ một ngành khác nhau, nhưng tất cả đều dựa trên cùng một nền tảng – dữ liệu liên thông, tự động hóa và điều khiển đơn giản.","badge.live":"Đang vận hành","badge.soon":"Sắp ra mắt","status.indev":"Đang phát triển","product.auto.desc":"Hệ thống toàn diện để quản lý gara ô tô – đặt lịch, đơn sửa chữa, kho, lưu kho lốp theo mùa, xuất hóa đơn và bảng điều khiển tổng quan, tất cả ở một nơi.","product.auto.link":"Mở mujautoservis.eu","product.care.desc":"Hệ thống cho viện dưỡng lão – hồ sơ khách hàng, chăm sóc, chấm công nhân viên và cái nhìn tổng quan theo thời gian thực về mọi hoạt động.","product.retail.desc":"Hệ thống cho bán lẻ và cửa hàng thực phẩm – quản lý kho, bán hàng, đặt hàng và tổng quan doanh thu trong một công cụ duy nhất.","product.vision.desc":"Hệ thống camera tích hợp AI cho vận hành – phân tích hình ảnh nâng cao, phát hiện sự kiện và giám sát an ninh mà không cần theo dõi liên tục.","newtab":"(mở trong cửa sổ mới)","why.eyebrow":"Vì sao chọn ATOMYS","why.title":"Bốn nguyên tắc chúng tôi lấy làm nền tảng.","feat.intel.t":"Trí tuệ","feat.intel.d":"Chúng tôi biến dữ liệu thành những quyết định thông minh, không phải những bảng tính chẳng ai đọc.","feat.auto.t":"Tự động hóa","feat.auto.d":"Chúng tôi tự động hóa công việc lặp lại, tiết kiệm thời gian và chi phí, để con người tập trung vào điều thực sự quan trọng.","feat.over.t":"Tổng quan","feat.over.d":"Mọi thông tin quan trọng ở một nơi – rõ ràng và theo thời gian thực.","feat.sec.t":"Bảo mật","feat.sec.d":"Dữ liệu của bạn được an toàn – chúng tôi vận hành có trách nhiệm và tuân thủ quy định.","about.eyebrow":"Chúng tôi là ai","about.title_a":"Thương hiệu phần mềm đứng sau","about.title_b":"vận hành thông minh.","about.p1":"<strong>ATOMYS</strong> hội tụ một nhóm các hệ thống phần mềm cho hoạt động vận hành hằng ngày của doanh nghiệp. Chúng tôi không tập trung vào một ngành duy nhất – chúng tôi xây dựng công cụ cho gara ô tô, viện dưỡng lão, bán lẻ và các mô hình vận hành hiện đại, gắn kết bởi một nhu cầu chung: giữ mọi thứ trong tầm kiểm soát.","about.p2":"Mục tiêu của chúng tôi là phần mềm khiến công việc dễ dàng hơn, không phức tạp hơn. Rõ ràng, nhanh chóng và dựa trên dữ liệu đáng tin cậy. Chúng tôi giải quyết từng sản phẩm một cách chuyên sâu – từ đặt lịch và quản lý kho đến xuất hóa đơn và phân tích.","about.pill1":"Phần mềm được thiết kế riêng cho vận hành","about.pill2":"Dữ liệu & tự động hóa","about.pill3":"Phát triển tại Séc","about.pill4":"Hỗ trợ dài hạn","about.panel1t":"Phát triển nội bộ","about.panel1d":"Chúng tôi tự xây dựng hệ thống của mình, nên hiểu chúng đến từng dòng lệnh cuối cùng.","about.panel2t":"Vận hành 24/7","about.panel2d":"Hệ thống của chúng tôi hoạt động không ngừng nghỉ – giống như chính những mô hình vận hành mà chúng phục vụ.","about.panel3t":"An toàn và đáng tin cậy","about.panel3d":"Chúng tôi lưu trữ dữ liệu có trách nhiệm, tôn trọng quyền riêng tư và sự ổn định.","contact.eyebrow":"Liên hệ","contact.title_a":"Hãy đưa hoạt động vận hành của bạn","contact.title_b":"vào tầm kiểm soát.","contact.p":"Bạn đang điều hành một hoạt động xứng đáng có một hệ thống thông minh hơn? Hãy viết cho chúng tôi – chúng tôi rất vui được trao đổi về cách ATOMYS có thể giúp bạn.","contact.btn":"Viết cho chúng tôi","contact.mailsubject":"Yêu cầu tư vấn – ATOMYS","footer.tagline":"Hệ thống thông minh cho quản lý vận hành. Dữ liệu dẫn lối quyết định.","footer.products":"Sản phẩm","footer.company":"Công ty","footer.rights":"Bảo lưu mọi quyền.","meta.title":"ATOMYS – Hệ thống thông minh cho quản lý vận hành","meta.description":"ATOMYS xây dựng các hệ thống thông minh cho gara ô tô, viện dưỡng lão, bán lẻ và các mô hình vận hành hiện đại. Dữ liệu dẫn lối quyết định – vận hành trong tầm kiểm soát.","switcher.aria":"Chọn ngôn ngữ"}};
+  var STAR="M0,-5 L1.1226,-1.5451 L4.7553,-1.5451 L1.8164,0.5902 L2.9389,4.0451 L0,1.9098 L-2.9389,4.0451 L-1.8164,0.5902 L-4.7553,-1.5451 L-1.1226,-1.5451 Z";
+  function star(tx,ty,s){return '<path transform="translate('+tx+','+ty+') scale('+s+')" d="'+STAR+'"/>';}
+  var FLAGS={
+    cs:'<svg viewBox="0 0 24 16"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#d7141a"/><path d="M0 0 L12 8 L0 16 Z" fill="#11457e"/></svg>',
+    en:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><path d="M0 0 L24 16 M24 0 L0 16" stroke="#fff" stroke-width="3.2"/><path d="M0 0 L24 16 M24 0 L0 16" stroke="#c8102e" stroke-width="1.6"/><rect x="9.5" width="5" height="16" fill="#fff"/><rect y="5.5" width="24" height="5" fill="#fff"/><rect x="10.5" width="3" height="16" fill="#c8102e"/><rect y="6.5" width="24" height="3" fill="#c8102e"/></svg>',
+    de:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#000"/><rect y="5.33" width="24" height="5.33" fill="#d00"/><rect y="10.66" width="24" height="5.34" fill="#ffce00"/></svg>',
+    sk:'<svg viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.33" fill="#0b4ea2"/><rect y="10.66" width="24" height="5.34" fill="#ee1c25"/><path d="M3.6 3 h4.6 v4.4 c0 2 -2.3 3 -2.3 3 s-2.3 -1 -2.3 -3 z" fill="#ee1c25" stroke="#fff" stroke-width="0.7"/><path d="M5.9 4 v4.2 M4.8 5.2 h2.2 M5.2 6.4 h1.4" stroke="#fff" stroke-width="0.6" stroke-linecap="round"/></svg>',
+    pl:'<svg viewBox="0 0 24 16"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#dc143c"/></svg>',
+    it:'<svg viewBox="0 0 24 16"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ce2b37"/></svg>',
+    el:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#0d5eaf"/><rect y="1.78" width="24" height="1.78" fill="#fff"/><rect y="5.33" width="24" height="1.78" fill="#fff"/><rect y="8.89" width="24" height="1.78" fill="#fff"/><rect y="12.44" width="24" height="1.78" fill="#fff"/><rect width="8.9" height="8.9" fill="#0d5eaf"/><rect x="3.5" width="1.9" height="8.9" fill="#fff"/><rect y="3.5" width="8.9" height="1.9" fill="#fff"/></svg>',
+    hu:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#cd2a3e"/><rect y="10.66" width="24" height="5.34" fill="#436f4d"/></svg>',
+    es:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#c60b1e"/><rect y="4" width="24" height="8" fill="#ffc400"/><rect x="4" y="6.4" width="2.6" height="3.4" rx="0.4" fill="#c60b1e"/></svg>',
+    ru:'<svg viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#fff"/><rect y="5.33" width="24" height="5.33" fill="#0039a6"/><rect y="10.66" width="24" height="5.34" fill="#d52b1e"/></svg>',
+    fr:'<svg viewBox="0 0 24 16"><rect width="8" height="16" fill="#0055a4"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ef4135"/></svg>',
+    zh:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#de2910"/><g fill="#ffde00">'+star(5,4.6,0.62)+star(9.5,1.8,0.2)+star(11.2,3.5,0.2)+star(11.2,5.8,0.2)+star(9.5,7.4,0.2)+'</g></svg>',
+    vi:'<svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#da251d"/><g fill="#ff0">'+star(12,8,1.25)+'</g></svg>'
+  };
+  var LANGS=[["cs","Čeština"],["en","English"],["de","Deutsch"],["sk","Slovenčina"],["pl","Polski"],["it","Italiano"],["el","Ελληνικά"],["hu","Magyar"],["es","Español"],["ru","Русский"],["fr","Français"],["zh","中文"],["vi","Tiếng Việt"]];
+
+  var menu=document.getElementById("langMenu");
+  var swWrap=document.getElementById("langSwitch");
+  var langBtn=document.getElementById("langBtn");
+
+  function applyLang(lang){
+    if(!I18N[lang]) lang="en";
+    var d=I18N[lang];
+    root.setAttribute("lang",lang);
+    document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(d[k]!=null)el.textContent=d[k];});
+    document.querySelectorAll("[data-i18n-html]").forEach(function(el){var k=el.getAttribute("data-i18n-html");if(d[k]!=null)el.innerHTML=d[k];});
+    if(d["meta.title"])document.title=d["meta.title"];
+    var md=document.querySelector('meta[name="description"]');if(md&&d["meta.description"])md.setAttribute("content",d["meta.description"]);
+    var og=document.querySelector('meta[property="og:title"]');if(og&&d["meta.title"])og.setAttribute("content",d["meta.title"]);
+    var mb=document.getElementById("mailBtn");if(mb&&d["contact.mailsubject"])mb.setAttribute("href","mailto:info@atomys.eu?subject="+encodeURIComponent(d["contact.mailsubject"]));
+    var cf=document.getElementById("curFlag");if(cf)cf.innerHTML=FLAGS[lang]||"";
+    var cc=document.getElementById("curCode");if(cc)cc.textContent=lang.toUpperCase();
+    if(langBtn&&d["switcher.aria"])langBtn.setAttribute("aria-label",d["switcher.aria"]);
+    Array.prototype.forEach.call(menu.children,function(li){li.setAttribute("aria-selected",li.getAttribute("data-lang")===lang?"true":"false");});
+    try{localStorage.setItem("atomys-lang",lang);}catch(e){}
+    root.removeAttribute("data-i18n-pending");
+  }
+
+  LANGS.forEach(function(L){
+    var li=document.createElement("li");
+    li.setAttribute("role","option");li.setAttribute("data-lang",L[0]);li.tabIndex=0;
+    li.innerHTML='<span class="flag">'+(FLAGS[L[0]]||"")+'</span><span>'+L[1]+'</span>';
+    li.addEventListener("click",function(){applyLang(L[0]);close();});
+    li.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();applyLang(L[0]);close();langBtn.focus();}});
+    menu.appendChild(li);
+  });
+
+  function open(){swWrap.classList.add("open");langBtn.setAttribute("aria-expanded","true");}
+  function close(){swWrap.classList.remove("open");langBtn.setAttribute("aria-expanded","false");}
+  langBtn.addEventListener("click",function(e){e.stopPropagation();swWrap.classList.contains("open")?close():open();});
+  document.addEventListener("click",function(e){if(!swWrap.contains(e.target))close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+
+  function initialLang(){try{var s=localStorage.getItem("atomys-lang");if(s&&I18N[s])return s;}catch(e){}return location.hostname.indexOf(".cz")>-1?"cs":"en";}
+  applyLang(initialLang());
+  /* fail-safe reveal */
+  setTimeout(function(){root.removeAttribute("data-i18n-pending");},1500);
+
+  /* self-canonical per domain */
+  try{var cl=document.querySelector('link[rel="canonical"]');if(cl)cl.setAttribute("href",location.origin+"/");var ou=document.querySelector('meta[property="og:url"]');if(ou)ou.setAttribute("content",location.origin+"/");}catch(e){}
+
+  /* ---------- reveal on scroll ---------- */
   var els=document.querySelectorAll(".reveal");
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});
-    },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
-    els.forEach(function(el){io.observe(el);});
-  }else{els.forEach(function(el){el.classList.add("in");});}
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}});},{threshold:.12,rootMargin:"0px 0px -40px 0px"});els.forEach(function(el){io.observe(el);});}else{els.forEach(function(el){el.classList.add("in");});}
 })();
 </script>
 </body>
