@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 240" role="img" aria-label="ATOMYS — Inteligentní systémy pro řízení provozu">
+  <title>ATOMYS — Inteligentní systémy pro řízení provozu</title>
+  <defs>
+    <linearGradient id="aLeft" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#eef3f8"/>
+      <stop offset="0.30" stop-color="#ffffff"/>
+      <stop offset="0.58" stop-color="#c9d3df"/>
+      <stop offset="1" stop-color="#7f8b9a"/>
+    </linearGradient>
+    <linearGradient id="aRight" x1="0.65" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b8c2cf"/>
+      <stop offset="0.45" stop-color="#98a4b3"/>
+      <stop offset="1" stop-color="#66727f"/>
+    </linearGradient>
+    <linearGradient id="aBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#47a0ff"/>
+      <stop offset="1" stop-color="#1466d8"/>
+    </linearGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c6673"/>
+      <stop offset="1" stop-color="#2b333f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ZNAČKA -->
+  <g transform="translate(6,15) scale(0.875)">
+    <path d="M120 126 L98 196 L142 196 Z" fill="url(#aBlue)"/>
+    <path d="M112 44 L52 196 L92 196 L120 118 L120 62 Z" fill="url(#aLeft)"/>
+    <path d="M128 44 L188 196 L148 196 L120 118 L120 62 Z" fill="url(#aRight)"/>
+  </g>
+
+  <!-- NÁPIS "ATOMYS" -->
+  <g transform="translate(250,60) scale(0.75)" fill="url(#word)">
+    <path d="M54 0 L0 120 L34 120 L59 46 L84 120 L118 120 L64 0 L59 14 Z"/>
+    <path d="M160 0 H264 V18 H221 V120 H203 V18 H160 Z"/>
+    <circle cx="366" cy="60" r="51" fill="none" stroke="url(#word)" stroke-width="18"/>
+    <path d="M468 0 L534 64 L600 0 L600 120 L582 120 L582 30 L534 96 L486 30 L486 120 L468 120 Z"/>
+    <path d="M642 0 L662 0 L697 48 L732 0 L752 0 L706 70 L706 120 L688 120 L688 70 Z"/>
+    <path d="M878 34 C878 14 860 6 842 6 C824 6 806 16 806 36 C806 54 822 58 842 62 C862 66 878 70 878 88 C878 108 860 114 842 114 C824 114 806 106 806 86" fill="none" stroke="url(#word)" stroke-width="18" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+
+  <!-- TAGLINE -->
+  <text x="250" y="182" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#6b7683" textLength="667" lengthAdjust="spacing">Inteligentní systémy pro řízení provozu</text>
+</svg>

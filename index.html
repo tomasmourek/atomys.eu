@@ -23,14 +23,13 @@
 {"@context":"https://schema.org","@type":"Organization","name":"ATOMYS","url":"https://atomys.eu","logo":"https://atomys.eu/og.png","description":"Intelligent systems for auto repair shops, senior care homes, retail and modern operations.","email":"info@atomys.eu","telephone":"+420604964867","sameAs":["https://atomys.cz","https://mujautoservis.eu"],"areaServed":"CZ"}
 </script>
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%237c8794' d='M50 10 L88 90 L66 90 L50 34 Z'/%3E%3Cpath fill='%23d5dce4' d='M50 10 L12 90 L34 90 L50 34 Z'/%3E%3Cpath fill='%232b8fff' d='M50 58 L36 88 L64 88 Z'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="atomys-brand/atomys-mark-tile.svg">
 
 <!-- anti-flash: hide until the correct language is applied (only when it differs from the hardcoded English) -->
 <script>(function(){try{var s=localStorage.getItem('atomys-lang');var d=location.hostname.indexOf('.cz')>-1?'cs':'en';var l=s||d;if(l&&l!=='en')document.documentElement.setAttribute('data-i18n-pending','1');}catch(e){}})();</script>
 <style>html[data-i18n-pending] body{visibility:hidden}</style>
 
 <style>
-@font-face{font-family:'Michroma';font-style:normal;font-weight:400;font-display:swap;src:url('michroma.woff2') format('woff2')}
 :root{
   --brand:#2b8fff;--brand-2:#48c4ff;--brand-deep:#0d47a1;
   --grad-blue:linear-gradient(135deg,#1666e0 0%,#1e74ff 100%);
@@ -46,7 +45,7 @@
   --nav-bg:rgba(9,13,20,.72);--chip-bg:rgba(43,143,255,.12);--chip-text:#7cc0ff;
   --hero-glow:rgba(43,143,255,.32);--card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.18),rgba(43,143,255,.04));
   --footer-bg:#060910;--iso-side:#090e17;--mk-1:#f6f8fb;--mk-2:#c1cad6;--mk-3:#6f7a8a;
-  --aL1:#ffffff;--aL2:#b2bcc8;--aR1:#9aa4b0;--aR2:#545e6a;--aX1:#96a0ac;--aX2:#78828e;
+  --word1:#ffffff;--word2:#cbd5e1;
 }
 [data-theme="light"]{
   --bg:#ffffff;--bg-grad-1:#eaf2ff;--bg-grad-2:#ffffff;
@@ -57,7 +56,7 @@
   --hero-glow:rgba(43,143,255,.20);--card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.14),rgba(43,143,255,.03));
   --footer-bg:#0a1220;--grad-silver:linear-gradient(180deg,#5b6675 0%,#1f2733 100%);
   --brand:#1666e0;--iso-side:#d5dfee;--mk-1:#8b96a6;--mk-2:#5a6473;--mk-3:#2f3947;
-  --aL1:#c6cfda;--aL2:#8791a0;--aR1:#6b7684;--aR2:#3a434e;--aX1:#7a8492;--aX2:#5c6672;
+  --word1:#5c6673;--word2:#2b333f;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -82,8 +81,8 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 header{position:sticky;top:0;z-index:100;padding:0 24px;transition:background .3s,border-color .3s}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;margin:12px auto;max-width:var(--maxw);background:var(--nav-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px}
 .brand{display:flex;align-items:center;gap:11px}
-.brand .mark{width:33px;height:33px;flex:none}
-.brand .word{font-family:'Michroma',-apple-system,"Segoe UI",sans-serif;font-weight:400;font-size:15.5px;letter-spacing:.1em;padding-left:.1em;line-height:1;background:var(--grad-silver);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand .mark{height:32px;width:auto;flex:none}
+.brand .word{height:19px;width:auto;display:block;margin-left:1px}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links a{font-size:14.5px;font-weight:500;color:var(--text-dim);padding:9px 14px;border-radius:9px;transition:color .2s,background .2s}
 .nav-links a:hover{color:var(--text);background:var(--surface-hover)}
@@ -224,28 +223,32 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--mk-1)"/><stop offset=".5" stop-color="var(--mk-2)"/><stop offset="1" stop-color="var(--mk-3)"/></linearGradient>
-    <linearGradient id="mkBright" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fb"/><stop offset=".5" stop-color="#c1cad6"/><stop offset="1" stop-color="#6f7a8a"/></linearGradient>
-    <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63ccff"/><stop offset="1" stop-color="#1668e0"/></linearGradient>
-    <linearGradient id="aL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--aL1)"/><stop offset="1" stop-color="var(--aL2)"/></linearGradient>
-    <linearGradient id="aR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--aR1)"/><stop offset="1" stop-color="var(--aR2)"/></linearGradient>
-    <linearGradient id="aX" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--aX1)"/><stop offset="1" stop-color="var(--aX2)"/></linearGradient>
-    <linearGradient id="aLb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b2bcc8"/></linearGradient>
-    <linearGradient id="aRb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9aa4b0"/><stop offset="1" stop-color="#545e6a"/></linearGradient>
-    <linearGradient id="aXb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#96a0ac"/><stop offset="1" stop-color="#78828e"/></linearGradient>
+    <linearGradient id="aLeft" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#eef3f8"/><stop offset="0.30" stop-color="#ffffff"/><stop offset="0.58" stop-color="#c9d3df"/><stop offset="1" stop-color="#7f8b9a"/></linearGradient>
+    <linearGradient id="aRight" x1="0.65" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b8c2cf"/><stop offset="0.45" stop-color="#98a4b3"/><stop offset="1" stop-color="#66727f"/></linearGradient>
+    <linearGradient id="aBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#47a0ff"/><stop offset="1" stop-color="#1466d8"/></linearGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--word1)"/><stop offset="1" stop-color="var(--word2)"/></linearGradient>
+    <linearGradient id="wordBright" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient>
   </defs>
 </svg>
 
 <header>
   <nav class="nav-inner">
     <a href="#top" class="brand" aria-label="ATOMYS — home">
-      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-        <path fill="url(#aR)" d="M50 10 L88 90 L66 90 L50 34 Z"/>
-        <path fill="url(#aX)" d="M41.4 64 L58.6 64 L62 76 L38 76 Z"/>
-        <path fill="url(#aL)" d="M50 10 L12 90 L34 90 L50 34 Z"/>
-        <path fill="url(#bl)" d="M50 58 L36 88 L64 88 Z"/>
+      <svg class="mark" viewBox="52 44 136 152" aria-hidden="true" focusable="false">
+        <path fill="url(#aBlue)" d="M120 126 L98 196 L142 196 Z"/>
+        <path fill="url(#aLeft)" d="M112 44 L52 196 L92 196 L120 118 L120 62 Z"/>
+        <path fill="url(#aRight)" d="M128 44 L188 196 L148 196 L120 118 L120 62 Z"/>
       </svg>
-      <span class="word">ATOMYS</span>
+      <svg class="word" viewBox="-12 -12 912 144" role="img" aria-label="ATOMYS" focusable="false">
+        <g fill="url(#word)">
+          <path d="M54 0 L0 120 L34 120 L59 46 L84 120 L118 120 L64 0 L59 14 Z"/>
+          <path d="M160 0 H264 V18 H221 V120 H203 V18 H160 Z"/>
+          <circle cx="366" cy="60" r="51" fill="none" stroke="url(#word)" stroke-width="18"/>
+          <path d="M468 0 L534 64 L600 0 L600 120 L582 120 L582 30 L534 96 L486 30 L486 120 L468 120 Z"/>
+          <path d="M642 0 L662 0 L697 48 L732 0 L752 0 L706 70 L706 120 L688 120 L688 70 Z"/>
+          <path d="M878 34 C878 14 860 6 842 6 C824 6 806 16 806 36 C806 54 822 58 842 62 C862 66 878 70 878 88 C878 108 860 114 842 114 C824 114 806 106 806 86" fill="none" stroke="url(#word)" stroke-width="18" stroke-linecap="butt" stroke-linejoin="round"/>
+        </g>
+      </svg>
     </a>
 
     <ul class="nav-links" id="navLinks">
@@ -309,11 +312,10 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
           <path d="M304 210 L304 234 L200 288 L200 264 Z" fill="var(--iso-side)" opacity=".82"/>
           <path d="M200 156 L304 210 L200 264 L96 210 Z" fill="var(--surface-solid)" stroke="var(--border-strong)" stroke-width="1.4"/>
           <path d="M200 170 L286 210 L200 250 L114 210 Z" fill="var(--surface-hover)" stroke="var(--border)" stroke-width="1"/>
-          <g transform="translate(200,144) scale(1.15)">
-            <path fill="url(#aR)" d="M0 -40 L38 40 L16 40 L0 -16 Z"/>
-            <path fill="url(#aX)" d="M-8.6 14 L8.6 14 L12 26 L-12 26 Z"/>
-            <path fill="url(#aL)" d="M0 -40 L-38 40 L-16 40 L0 -16 Z"/>
-            <path fill="url(#bl)" d="M0 8 L-14 38 L14 38 Z"/>
+          <g transform="translate(113.6,58.6) scale(0.72)">
+            <path fill="url(#aBlue)" d="M120 126 L98 196 L142 196 Z"/>
+            <path fill="url(#aLeft)" d="M112 44 L52 196 L92 196 L120 118 L120 62 Z"/>
+            <path fill="url(#aRight)" d="M128 44 L188 196 L148 196 L120 118 L120 62 Z"/>
           </g>
           <g transform="translate(72,84)"><circle class="node-ring" r="30"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5-5a2 2 0 0 1 1.9-1.4h11.2A2 2 0 0 1 19.5 10L21 15M3 15h18v3H3zM6 18v2M18 18v2"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></g></g>
           <g transform="translate(328,84)"><circle class="node-ring" r="30" style="animation-delay:.85s"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></g></g>
@@ -463,13 +465,21 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
     <div class="foot-grid">
       <div>
         <div class="brand">
-          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-            <path fill="url(#aRb)" d="M50 10 L88 90 L66 90 L50 34 Z"/>
-            <path fill="url(#aXb)" d="M41.4 64 L58.6 64 L62 76 L38 76 Z"/>
-            <path fill="url(#aLb)" d="M50 10 L12 90 L34 90 L50 34 Z"/>
-            <path fill="url(#bl)" d="M50 58 L36 88 L64 88 Z"/>
+          <svg class="mark" viewBox="52 44 136 152" aria-hidden="true" focusable="false">
+            <path fill="url(#aBlue)" d="M120 126 L98 196 L142 196 Z"/>
+            <path fill="url(#aLeft)" d="M112 44 L52 196 L92 196 L120 118 L120 62 Z"/>
+            <path fill="url(#aRight)" d="M128 44 L188 196 L148 196 L120 118 L120 62 Z"/>
           </svg>
-          <span class="word">ATOMYS</span>
+          <svg class="word" viewBox="-12 -12 912 144" role="img" aria-label="ATOMYS" focusable="false">
+            <g fill="url(#wordBright)">
+              <path d="M54 0 L0 120 L34 120 L59 46 L84 120 L118 120 L64 0 L59 14 Z"/>
+              <path d="M160 0 H264 V18 H221 V120 H203 V18 H160 Z"/>
+              <circle cx="366" cy="60" r="51" fill="none" stroke="url(#wordBright)" stroke-width="18"/>
+              <path d="M468 0 L534 64 L600 0 L600 120 L582 120 L582 30 L534 96 L486 30 L486 120 L468 120 Z"/>
+              <path d="M642 0 L662 0 L697 48 L732 0 L752 0 L706 70 L706 120 L688 120 L688 70 Z"/>
+              <path d="M878 34 C878 14 860 6 842 6 C824 6 806 16 806 36 C806 54 822 58 842 62 C862 66 878 70 878 88 C878 108 860 114 842 114 C824 114 806 106 806 86" fill="none" stroke="url(#wordBright)" stroke-width="18" stroke-linecap="butt" stroke-linejoin="round"/>
+            </g>
+          </svg>
         </div>
         <p class="tagline" data-i18n="footer.tagline">Intelligent systems for operations management. Data that drives decisions.</p>
       </div>
