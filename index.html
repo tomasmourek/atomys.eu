@@ -81,8 +81,8 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 header{position:sticky;top:0;z-index:100;padding:0 24px;transition:background .3s,border-color .3s}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;margin:12px auto;max-width:var(--maxw);background:var(--nav-bg);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px}
 .brand{display:flex;align-items:center;gap:11px}
-.brand .mark{height:32px;width:auto;flex:none}
-.brand .word{height:19px;width:auto;display:block;margin-left:1px}
+.brand .mark{height:34px;width:auto;flex:none}
+.brand .word{height:17px;width:auto;display:block;margin-left:1px}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links a{font-size:14.5px;font-weight:500;color:var(--text-dim);padding:9px 14px;border-radius:9px;transition:color .2s,background .2s}
 .nav-links a:hover{color:var(--text);background:var(--surface-hover)}
@@ -223,9 +223,9 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="aLeft" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#eef3f8"/><stop offset="0.30" stop-color="#ffffff"/><stop offset="0.58" stop-color="#c9d3df"/><stop offset="1" stop-color="#7f8b9a"/></linearGradient>
-    <linearGradient id="aRight" x1="0.65" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b8c2cf"/><stop offset="0.45" stop-color="#98a4b3"/><stop offset="1" stop-color="#66727f"/></linearGradient>
-    <linearGradient id="aBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#47a0ff"/><stop offset="1" stop-color="#1466d8"/></linearGradient>
+    <linearGradient id="mUp" x1="0" y1="40" x2="0" y2="319" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fcfcfd"/><stop offset="0.35" stop-color="#f1f4f7"/><stop offset="0.68" stop-color="#c4cdd8"/><stop offset="1" stop-color="#97a5b7"/></linearGradient>
+    <linearGradient id="mLo" x1="0" y1="210" x2="0" y2="322" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e3e7ed"/><stop offset="0.35" stop-color="#d4dae3"/><stop offset="0.68" stop-color="#c0c9d5"/><stop offset="1" stop-color="#aebbc9"/></linearGradient>
+    <linearGradient id="mBl" x1="0" y1="214" x2="0" y2="280" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1d80f6"/><stop offset="1" stop-color="#0166f0"/></linearGradient>
     <linearGradient id="word" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--word1)"/><stop offset="1" stop-color="var(--word2)"/></linearGradient>
     <linearGradient id="wordBright" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient>
   </defs>
@@ -234,19 +234,20 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
 <header>
   <nav class="nav-inner">
     <a href="#top" class="brand" aria-label="ATOMYS — home">
-      <svg class="mark" viewBox="52 44 136 152" aria-hidden="true" focusable="false">
-        <path fill="url(#aBlue)" d="M120 126 L98 196 L142 196 Z"/>
-        <path fill="url(#aLeft)" d="M112 44 L52 196 L92 196 L120 118 L120 62 Z"/>
-        <path fill="url(#aRight)" d="M128 44 L188 196 L148 196 L120 118 L120 62 Z"/>
+      <svg class="mark" viewBox="38 30 348 302" aria-hidden="true" focusable="false">
+        <path fill="url(#mBl)" d="M214 218Q212.1 214.5 210.3 218L178.7 277.3Q177.5 279.5 180 279.5L244 279.5Q246.5 279.5 245.3 277.3Z"/>
+        <path fill="url(#mUp)" d="M98.9 319.1L50.5 318.8Q47.5 318.8 48.9 316.1L176.7 69.6Q181.6 60.2 189.8 53.4L196 48.2Q201.1 44 207.4 42.3L210.2 41.5Q216.2 39.9 222.4 40L228 40Q231 40.1 232.6 42.7L234.3 45.6Q236.7 49.7 238.9 53.8L296.1 164.9Q297.5 167.6 294.5 167.6L246.8 167.9Q243.8 167.9 242.4 165.2L213.3 110.1Q211.9 107.5 210.5 110.2L103.2 316.4Q101.9 319.1 98.9 319.1Z"/>
+        <path fill="url(#mLo)" d="M320.3 212.8L374.3 319.4Q375.6 322.1 372.6 322.1L324.6 322Q321.6 322 320.3 319.3L266.7 212.4Q265.3 209.8 268.3 209.8L316 210.1Q319 210.1 320.3 212.8Z"/>
       </svg>
-      <svg class="word" viewBox="-12 -12 912 144" role="img" aria-label="ATOMYS" focusable="false">
+      <svg class="word" viewBox="445 105 1283 134" role="img" aria-label="ATOMYS" focusable="false">
         <g fill="url(#word)">
-          <path d="M54 0 L0 120 L34 120 L59 46 L84 120 L118 120 L64 0 L59 14 Z"/>
-          <path d="M160 0 H264 V18 H221 V120 H203 V18 H160 Z"/>
-          <circle cx="366" cy="60" r="51" fill="none" stroke="url(#word)" stroke-width="18"/>
-          <path d="M468 0 L534 64 L600 0 L600 120 L582 120 L582 30 L534 96 L486 30 L486 120 L468 120 Z"/>
-          <path d="M642 0 L662 0 L697 48 L732 0 L752 0 L706 70 L706 120 L688 120 L688 70 Z"/>
-          <path d="M878 34 C878 14 860 6 842 6 C824 6 806 16 806 36 C806 54 822 58 842 62 C862 66 878 70 878 88 C878 108 860 114 842 114 C824 114 806 106 806 86" fill="none" stroke="url(#word)" stroke-width="18" stroke-linecap="butt" stroke-linejoin="round"/>
+          <path d="M449.3 234.7L449 232L487.7 171.5L519 118.9Q524.3 112.9 529.3 110.9L534.3 108.9L550 108.9Q559.3 112 561 113.7L562.6 115.3L634.8 232.7L633 234.7L621 234.7Q607.7 234.7 605.8 234.7L604 232.6L561.1 162.3L548.7 140.1Q544.6 135 543.3 134.4L542 133.9Q539.3 135.3 537.1 138.2L535 141.1L508.7 185.6L478.6 233.3L475.7 234.7L449.3 234.7Z"/>
+          <path d="M763.3 133.1L762.8 232.7L760.7 234.7L738.7 234.7L737 234.7L736.6 231.3L736.6 136.3L735.8 134.3L733 132.9L670 132.8L668.7 130.7L668.9 110.7L671.7 108.9L829 108.9L830.8 110.3Q831.8 120.3 831.3 125.8Q830.8 131.3 830.2 132L829.7 132.7L763.3 133.1Z"/>
+          <path fill-rule="evenodd" d="M1046.8 128.3L1049.8 139.7L1049.7 206Q1046.8 216.3 1045.7 218.3Q1044.6 220.3 1041.1 224Q1037.6 227.7 1035.4 229.2L1033.1 230.7L1019.3 234.7L912.7 234.7Q903.7 232.7 899.7 230.7Q895.7 228.7 892.8 226.1Q890 223.6 887.5 220Q885 216.3 883.9 213.8Q882.9 211.3 882.4 207.8L881.9 204.3L881.9 139Q883 132.7 885 128.5Q887 124.3 889.7 121.2Q892.3 118.1 895.1 116Q897.8 114 900.9 112.5Q904 111 908.5 109.9L913 108.9L1019 108.9Q1026.9 111 1031.6 113.5Q1036.3 116 1039.5 119.1Q1042.7 122.2 1044.8 125.3L1046.8 128.3ZM1018 209.8Q1021.7 206.6 1022.8 204.6L1023.8 202.7L1023.8 140.3Q1019.3 134.9 1015 133.9L1010.7 132.9L919.3 132.8Q912.5 135 910.8 136.6Q909 138.2 908.1 141.1L907.2 144L906.9 199.7Q909 205.7 911.3 207.7Q913.7 209.7 919.2 210.4L924.7 211.1L1012 210.9L1018 209.8Z"/>
+          <path d="M1276.7 141.9L1273.3 142L1218.6 197.7Q1206.7 198.8 1205 198.6Q1203.3 198.5 1200.8 196.4L1198.3 194.4L1145.3 141.1L1144 140.9L1142.8 143L1142.7 234.7L1139.7 234.7L1118.1 234.7L1117.2 231.7L1117.2 122Q1118 117.3 1121.8 113.6Q1125.7 110 1127 108.9L1128.3 108.9L1142.7 108.9L1149.3 111.1L1203.2 164.7L1210.3 170L1270.1 112L1279 108.9L1299.7 108.9L1302.3 110.1L1302.8 233L1299.7 234.7L1278.7 234.7L1276.7 231.7L1276.7 141.9Z"/>
+          <path d="M1360 108.9L1389.3 108.9L1391.6 110L1442 164.5L1457.7 180L1457.2 231.7L1456.1 234.7L1453.7 234.7L1434 234.7L1431 234.7L1430 231.7L1430.4 188L1429.7 184L1362.1 113.3L1360 110.8L1360 108.9Z"/>
+          <path d="M1468.3 169.8L1455 155.3L1454.9 152.3L1482 123L1497.3 108.9L1526.7 108.9L1525.7 112.6L1471.6 168.7L1468.3 169.8Z"/>
+          <path d="M1590.3 212L1601 210.9L1686.7 211.2Q1692.3 209.7 1693.5 208.6Q1694.7 207.6 1695.7 205.6Q1696.7 203.7 1697 201.2Q1697.4 198.7 1697.1 196Q1696.8 193.3 1695.7 191.2Q1694.7 189 1693.5 188Q1692.3 186.9 1689.5 185.9L1686.7 184.9L1645.7 181.9L1608.3 180.8Q1599 178.8 1594.8 176.7L1590.7 174.6L1580.8 164.3Q1578 158.3 1576.9 153.5Q1575.9 148.7 1575.9 144.3Q1576 140 1577 135.8Q1578 131.7 1580.5 127Q1583.1 122.3 1586.2 119.2Q1589.3 116.1 1593.8 113.6Q1598.3 111 1602.8 109.9L1607.3 108.9L1715.7 108.9Q1715.8 112.3 1713.8 117.8Q1711.7 123.3 1710.2 126.3Q1708.7 129.4 1707.2 131L1705.7 132.7L1612.3 132.9Q1606.2 135 1604 138.2Q1601.8 141.3 1601.9 145.6Q1602 149.8 1603.1 151.8Q1604.2 153.7 1607.1 155.7L1610 157.8L1694.7 162.9Q1703.3 165.9 1706.8 168Q1710.3 170.1 1713 172.6Q1715.7 175.1 1718.2 179L1720.8 183L1723.5 197Q1722.8 208.3 1721.8 211.5Q1720.8 214.7 1718.7 218.2Q1716.6 221.7 1713.6 224.7Q1710.6 227.7 1705.9 230.2Q1701.3 232.8 1696.3 234.7L1691.3 234.7L1581.3 234.7L1580 234.7L1580 231.7L1590.3 212Z"/>
         </g>
       </svg>
     </a>
@@ -312,10 +313,10 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
           <path d="M304 210 L304 234 L200 288 L200 264 Z" fill="var(--iso-side)" opacity=".82"/>
           <path d="M200 156 L304 210 L200 264 L96 210 Z" fill="var(--surface-solid)" stroke="var(--border-strong)" stroke-width="1.4"/>
           <path d="M200 170 L286 210 L200 250 L114 210 Z" fill="var(--surface-hover)" stroke="var(--border)" stroke-width="1"/>
-          <g transform="translate(113.6,58.6) scale(0.72)">
-            <path fill="url(#aBlue)" d="M120 126 L98 196 L142 196 Z"/>
-            <path fill="url(#aLeft)" d="M112 44 L52 196 L92 196 L120 118 L120 62 Z"/>
-            <path fill="url(#aRight)" d="M128 44 L188 196 L148 196 L120 118 L120 62 Z"/>
+          <g transform="translate(117.9,74.8) scale(0.3881)">
+            <path fill="url(#mBl)" d="M214 218Q212.1 214.5 210.3 218L178.7 277.3Q177.5 279.5 180 279.5L244 279.5Q246.5 279.5 245.3 277.3Z"/>
+            <path fill="url(#mUp)" d="M98.9 319.1L50.5 318.8Q47.5 318.8 48.9 316.1L176.7 69.6Q181.6 60.2 189.8 53.4L196 48.2Q201.1 44 207.4 42.3L210.2 41.5Q216.2 39.9 222.4 40L228 40Q231 40.1 232.6 42.7L234.3 45.6Q236.7 49.7 238.9 53.8L296.1 164.9Q297.5 167.6 294.5 167.6L246.8 167.9Q243.8 167.9 242.4 165.2L213.3 110.1Q211.9 107.5 210.5 110.2L103.2 316.4Q101.9 319.1 98.9 319.1Z"/>
+            <path fill="url(#mLo)" d="M320.3 212.8L374.3 319.4Q375.6 322.1 372.6 322.1L324.6 322Q321.6 322 320.3 319.3L266.7 212.4Q265.3 209.8 268.3 209.8L316 210.1Q319 210.1 320.3 212.8Z"/>
           </g>
           <g transform="translate(72,84)"><circle class="node-ring" r="30"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5-5a2 2 0 0 1 1.9-1.4h11.2A2 2 0 0 1 19.5 10L21 15M3 15h18v3H3zM6 18v2M18 18v2"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></g></g>
           <g transform="translate(328,84)"><circle class="node-ring" r="30" style="animation-delay:.85s"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></g></g>
@@ -465,19 +466,20 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
     <div class="foot-grid">
       <div>
         <div class="brand">
-          <svg class="mark" viewBox="52 44 136 152" aria-hidden="true" focusable="false">
-            <path fill="url(#aBlue)" d="M120 126 L98 196 L142 196 Z"/>
-            <path fill="url(#aLeft)" d="M112 44 L52 196 L92 196 L120 118 L120 62 Z"/>
-            <path fill="url(#aRight)" d="M128 44 L188 196 L148 196 L120 118 L120 62 Z"/>
+          <svg class="mark" viewBox="38 30 348 302" aria-hidden="true" focusable="false">
+            <path fill="url(#mBl)" d="M214 218Q212.1 214.5 210.3 218L178.7 277.3Q177.5 279.5 180 279.5L244 279.5Q246.5 279.5 245.3 277.3Z"/>
+            <path fill="url(#mUp)" d="M98.9 319.1L50.5 318.8Q47.5 318.8 48.9 316.1L176.7 69.6Q181.6 60.2 189.8 53.4L196 48.2Q201.1 44 207.4 42.3L210.2 41.5Q216.2 39.9 222.4 40L228 40Q231 40.1 232.6 42.7L234.3 45.6Q236.7 49.7 238.9 53.8L296.1 164.9Q297.5 167.6 294.5 167.6L246.8 167.9Q243.8 167.9 242.4 165.2L213.3 110.1Q211.9 107.5 210.5 110.2L103.2 316.4Q101.9 319.1 98.9 319.1Z"/>
+            <path fill="url(#mLo)" d="M320.3 212.8L374.3 319.4Q375.6 322.1 372.6 322.1L324.6 322Q321.6 322 320.3 319.3L266.7 212.4Q265.3 209.8 268.3 209.8L316 210.1Q319 210.1 320.3 212.8Z"/>
           </svg>
-          <svg class="word" viewBox="-12 -12 912 144" role="img" aria-label="ATOMYS" focusable="false">
+          <svg class="word" viewBox="445 105 1283 134" role="img" aria-label="ATOMYS" focusable="false">
             <g fill="url(#wordBright)">
-              <path d="M54 0 L0 120 L34 120 L59 46 L84 120 L118 120 L64 0 L59 14 Z"/>
-              <path d="M160 0 H264 V18 H221 V120 H203 V18 H160 Z"/>
-              <circle cx="366" cy="60" r="51" fill="none" stroke="url(#wordBright)" stroke-width="18"/>
-              <path d="M468 0 L534 64 L600 0 L600 120 L582 120 L582 30 L534 96 L486 30 L486 120 L468 120 Z"/>
-              <path d="M642 0 L662 0 L697 48 L732 0 L752 0 L706 70 L706 120 L688 120 L688 70 Z"/>
-              <path d="M878 34 C878 14 860 6 842 6 C824 6 806 16 806 36 C806 54 822 58 842 62 C862 66 878 70 878 88 C878 108 860 114 842 114 C824 114 806 106 806 86" fill="none" stroke="url(#wordBright)" stroke-width="18" stroke-linecap="butt" stroke-linejoin="round"/>
+              <path d="M449.3 234.7L449 232L487.7 171.5L519 118.9Q524.3 112.9 529.3 110.9L534.3 108.9L550 108.9Q559.3 112 561 113.7L562.6 115.3L634.8 232.7L633 234.7L621 234.7Q607.7 234.7 605.8 234.7L604 232.6L561.1 162.3L548.7 140.1Q544.6 135 543.3 134.4L542 133.9Q539.3 135.3 537.1 138.2L535 141.1L508.7 185.6L478.6 233.3L475.7 234.7L449.3 234.7Z"/>
+              <path d="M763.3 133.1L762.8 232.7L760.7 234.7L738.7 234.7L737 234.7L736.6 231.3L736.6 136.3L735.8 134.3L733 132.9L670 132.8L668.7 130.7L668.9 110.7L671.7 108.9L829 108.9L830.8 110.3Q831.8 120.3 831.3 125.8Q830.8 131.3 830.2 132L829.7 132.7L763.3 133.1Z"/>
+              <path fill-rule="evenodd" d="M1046.8 128.3L1049.8 139.7L1049.7 206Q1046.8 216.3 1045.7 218.3Q1044.6 220.3 1041.1 224Q1037.6 227.7 1035.4 229.2L1033.1 230.7L1019.3 234.7L912.7 234.7Q903.7 232.7 899.7 230.7Q895.7 228.7 892.8 226.1Q890 223.6 887.5 220Q885 216.3 883.9 213.8Q882.9 211.3 882.4 207.8L881.9 204.3L881.9 139Q883 132.7 885 128.5Q887 124.3 889.7 121.2Q892.3 118.1 895.1 116Q897.8 114 900.9 112.5Q904 111 908.5 109.9L913 108.9L1019 108.9Q1026.9 111 1031.6 113.5Q1036.3 116 1039.5 119.1Q1042.7 122.2 1044.8 125.3L1046.8 128.3ZM1018 209.8Q1021.7 206.6 1022.8 204.6L1023.8 202.7L1023.8 140.3Q1019.3 134.9 1015 133.9L1010.7 132.9L919.3 132.8Q912.5 135 910.8 136.6Q909 138.2 908.1 141.1L907.2 144L906.9 199.7Q909 205.7 911.3 207.7Q913.7 209.7 919.2 210.4L924.7 211.1L1012 210.9L1018 209.8Z"/>
+              <path d="M1276.7 141.9L1273.3 142L1218.6 197.7Q1206.7 198.8 1205 198.6Q1203.3 198.5 1200.8 196.4L1198.3 194.4L1145.3 141.1L1144 140.9L1142.8 143L1142.7 234.7L1139.7 234.7L1118.1 234.7L1117.2 231.7L1117.2 122Q1118 117.3 1121.8 113.6Q1125.7 110 1127 108.9L1128.3 108.9L1142.7 108.9L1149.3 111.1L1203.2 164.7L1210.3 170L1270.1 112L1279 108.9L1299.7 108.9L1302.3 110.1L1302.8 233L1299.7 234.7L1278.7 234.7L1276.7 231.7L1276.7 141.9Z"/>
+              <path d="M1360 108.9L1389.3 108.9L1391.6 110L1442 164.5L1457.7 180L1457.2 231.7L1456.1 234.7L1453.7 234.7L1434 234.7L1431 234.7L1430 231.7L1430.4 188L1429.7 184L1362.1 113.3L1360 110.8L1360 108.9Z"/>
+              <path d="M1468.3 169.8L1455 155.3L1454.9 152.3L1482 123L1497.3 108.9L1526.7 108.9L1525.7 112.6L1471.6 168.7L1468.3 169.8Z"/>
+              <path d="M1590.3 212L1601 210.9L1686.7 211.2Q1692.3 209.7 1693.5 208.6Q1694.7 207.6 1695.7 205.6Q1696.7 203.7 1697 201.2Q1697.4 198.7 1697.1 196Q1696.8 193.3 1695.7 191.2Q1694.7 189 1693.5 188Q1692.3 186.9 1689.5 185.9L1686.7 184.9L1645.7 181.9L1608.3 180.8Q1599 178.8 1594.8 176.7L1590.7 174.6L1580.8 164.3Q1578 158.3 1576.9 153.5Q1575.9 148.7 1575.9 144.3Q1576 140 1577 135.8Q1578 131.7 1580.5 127Q1583.1 122.3 1586.2 119.2Q1589.3 116.1 1593.8 113.6Q1598.3 111 1602.8 109.9L1607.3 108.9L1715.7 108.9Q1715.8 112.3 1713.8 117.8Q1711.7 123.3 1710.2 126.3Q1708.7 129.4 1707.2 131L1705.7 132.7L1612.3 132.9Q1606.2 135 1604 138.2Q1601.8 141.3 1601.9 145.6Q1602 149.8 1603.1 151.8Q1604.2 153.7 1607.1 155.7L1610 157.8L1694.7 162.9Q1703.3 165.9 1706.8 168Q1710.3 170.1 1713 172.6Q1715.7 175.1 1718.2 179L1720.8 183L1723.5 197Q1722.8 208.3 1721.8 211.5Q1720.8 214.7 1718.7 218.2Q1716.6 221.7 1713.6 224.7Q1710.6 227.7 1705.9 230.2Q1701.3 232.8 1696.3 234.7L1691.3 234.7L1581.3 234.7L1580 234.7L1580 231.7L1590.3 212Z"/>
             </g>
           </svg>
         </div>

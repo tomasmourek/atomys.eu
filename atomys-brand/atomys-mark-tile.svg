@@ -1,34 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="ATOMYS">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480" role="img" aria-label="ATOMYS">
   <title>ATOMYS</title>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#12203a"/>
-      <stop offset="1" stop-color="#060b16"/>
+    <linearGradient id="tBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c1830"/><stop offset="1" stop-color="#050a14"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.40" r="0.60">
-      <stop offset="0" stop-color="#1b3a6b" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#1b3a6b" stop-opacity="0"/>
+    <radialGradient id="tGlow" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#1b3a6b" stop-opacity="0.5"/><stop offset="1" stop-color="#1b3a6b" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="aLeft" x1="0" y1="0" x2="0.35" y2="1">
-      <stop offset="0" stop-color="#eef3f8"/>
-      <stop offset="0.30" stop-color="#ffffff"/>
-      <stop offset="0.58" stop-color="#c9d3df"/>
-      <stop offset="1" stop-color="#7f8b9a"/>
+    <linearGradient id="tUp" x1="0" y1="40" x2="0" y2="319" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fcfcfd"/><stop offset="0.35" stop-color="#f1f4f7"/>
+      <stop offset="0.68" stop-color="#c4cdd8"/><stop offset="1" stop-color="#97a5b7"/>
     </linearGradient>
-    <linearGradient id="aRight" x1="0.65" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#b8c2cf"/>
-      <stop offset="0.45" stop-color="#98a4b3"/>
-      <stop offset="1" stop-color="#66727f"/>
+    <linearGradient id="tLo" x1="0" y1="210" x2="0" y2="322" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e3e7ed"/><stop offset="0.35" stop-color="#d4dae3"/>
+      <stop offset="0.68" stop-color="#c0c9d5"/><stop offset="1" stop-color="#aebbc9"/>
     </linearGradient>
-    <linearGradient id="aBlue" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#47a0ff"/>
-      <stop offset="1" stop-color="#1466d8"/>
+    <linearGradient id="tBl" x1="0" y1="214" x2="0" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d80f6"/><stop offset="1" stop-color="#0166f0"/>
     </linearGradient>
   </defs>
-  <rect x="0" y="0" width="240" height="240" rx="52" fill="url(#bg)"/>
-  <rect x="0" y="0" width="240" height="240" rx="52" fill="url(#glow)"/>
-  <rect x="1" y="1" width="238" height="238" rx="51" fill="none" stroke="#33465f" stroke-opacity="0.5" stroke-width="1.5"/>
-  <path d="M120 126 L98 196 L142 196 Z" fill="url(#aBlue)"/>
-  <path d="M112 44 L52 196 L92 196 L120 118 L120 62 Z" fill="url(#aLeft)"/>
-  <path d="M128 44 L188 196 L148 196 L120 118 L120 62 Z" fill="url(#aRight)"/>
+  <rect width="480" height="480" rx="104" fill="url(#tBg)"/>
+  <rect width="480" height="480" rx="104" fill="url(#tGlow)"/>
+  <g transform="translate(54.3 81.1) scale(0.8778)">
+  <path d="M214 218Q212.1 214.5 210.3 218L178.7 277.3Q177.5 279.5 180 279.5L244 279.5Q246.5 279.5 245.3 277.3Z" fill="url(#tBl)"/>
+  <path d="M98.9 319.1L50.5 318.8Q47.5 318.8 48.9 316.1L176.7 69.6Q181.6 60.2 189.8 53.4L196 48.2Q201.1 44 207.4 42.3L210.2 41.5Q216.2 39.9 222.4 40L228 40Q231 40.1 232.6 42.7L234.3 45.6Q236.7 49.7 238.9 53.8L296.1 164.9Q297.5 167.6 294.5 167.6L246.8 167.9Q243.8 167.9 242.4 165.2L213.3 110.1Q211.9 107.5 210.5 110.2L103.2 316.4Q101.9 319.1 98.9 319.1Z" fill="url(#tUp)"/>
+  <path d="M320.3 212.8L374.3 319.4Q375.6 322.1 372.6 322.1L324.6 322Q321.6 322 320.3 319.3L266.7 212.4Q265.3 209.8 268.3 209.8L316 210.1Q319 210.1 320.3 212.8Z" fill="url(#tLo)"/>
+  </g>
 </svg>
