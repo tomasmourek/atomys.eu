@@ -23,7 +23,7 @@
 {"@context":"https://schema.org","@type":"Organization","name":"ATOMYS","url":"https://atomys.eu","logo":"https://atomys.eu/og.png","description":"Intelligent systems for auto repair shops, senior care homes, retail and modern operations.","email":"info@atomys.eu","telephone":"+420604964867","sameAs":["https://atomys.cz","https://mujautoservis.eu"],"areaServed":"CZ"}
 </script>
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath fill='%23c9d2dc' d='M60 12 L106 108 L82 108 L60 54 L38 108 L14 108 Z'/%3E%3Cpath fill='%232b8fff' d='M60 58 L79 102 L41 102 Z'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%237c8794' d='M50 10 L88 90 L66 90 L50 34 Z'/%3E%3Cpath fill='%23d5dce4' d='M50 10 L12 90 L34 90 L50 34 Z'/%3E%3Cpath fill='%232b8fff' d='M50 58 L36 88 L64 88 Z'/%3E%3C/svg%3E">
 
 <!-- anti-flash: hide until the correct language is applied (only when it differs from the hardcoded English) -->
 <script>(function(){try{var s=localStorage.getItem('atomys-lang');var d=location.hostname.indexOf('.cz')>-1?'cs':'en';var l=s||d;if(l&&l!=='en')document.documentElement.setAttribute('data-i18n-pending','1');}catch(e){}})();</script>
@@ -46,6 +46,7 @@
   --nav-bg:rgba(9,13,20,.72);--chip-bg:rgba(43,143,255,.12);--chip-text:#7cc0ff;
   --hero-glow:rgba(43,143,255,.32);--card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.18),rgba(43,143,255,.04));
   --footer-bg:#060910;--iso-side:#090e17;--mk-1:#f6f8fb;--mk-2:#c1cad6;--mk-3:#6f7a8a;
+  --aL1:#ffffff;--aL2:#b2bcc8;--aR1:#9aa4b0;--aR2:#545e6a;--aX1:#96a0ac;--aX2:#78828e;
 }
 [data-theme="light"]{
   --bg:#ffffff;--bg-grad-1:#eaf2ff;--bg-grad-2:#ffffff;
@@ -56,6 +57,7 @@
   --hero-glow:rgba(43,143,255,.20);--card-icon-bg:linear-gradient(160deg,rgba(43,143,255,.14),rgba(43,143,255,.03));
   --footer-bg:#0a1220;--grad-silver:linear-gradient(180deg,#5b6675 0%,#1f2733 100%);
   --brand:#1666e0;--iso-side:#d5dfee;--mk-1:#8b96a6;--mk-2:#5a6473;--mk-3:#2f3947;
+  --aL1:#c6cfda;--aL2:#8791a0;--aR1:#6b7684;--aR2:#3a434e;--aX1:#7a8492;--aX2:#5c6672;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -225,17 +227,23 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
     <linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--mk-1)"/><stop offset=".5" stop-color="var(--mk-2)"/><stop offset="1" stop-color="var(--mk-3)"/></linearGradient>
     <linearGradient id="mkBright" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fb"/><stop offset=".5" stop-color="#c1cad6"/><stop offset="1" stop-color="#6f7a8a"/></linearGradient>
     <linearGradient id="bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#63ccff"/><stop offset="1" stop-color="#1668e0"/></linearGradient>
+    <linearGradient id="aL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--aL1)"/><stop offset="1" stop-color="var(--aL2)"/></linearGradient>
+    <linearGradient id="aR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--aR1)"/><stop offset="1" stop-color="var(--aR2)"/></linearGradient>
+    <linearGradient id="aX" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--aX1)"/><stop offset="1" stop-color="var(--aX2)"/></linearGradient>
+    <linearGradient id="aLb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b2bcc8"/></linearGradient>
+    <linearGradient id="aRb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9aa4b0"/><stop offset="1" stop-color="#545e6a"/></linearGradient>
+    <linearGradient id="aXb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#96a0ac"/><stop offset="1" stop-color="#78828e"/></linearGradient>
   </defs>
 </svg>
 
 <header>
   <nav class="nav-inner">
     <a href="#top" class="brand" aria-label="ATOMYS — home">
-      <svg class="mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-        <path fill="url(#mk)" d="M60 12 L106 108 L82 108 L60 54 L38 108 L14 108 Z"/>
-        <path fill="url(#mk)" d="M51.9 74 L68.1 74 L73.9 88 L46.1 88 Z"/>
-        <path fill="#fff" opacity=".45" d="M60 12 L66 24 L22 108 L14 108 Z"/>
-        <path fill="url(#bl)" d="M60 58 L79 102 L41 102 Z"/>
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <path fill="url(#aR)" d="M50 10 L88 90 L66 90 L50 34 Z"/>
+        <path fill="url(#aX)" d="M41.4 64 L58.6 64 L62 76 L38 76 Z"/>
+        <path fill="url(#aL)" d="M50 10 L12 90 L34 90 L50 34 Z"/>
+        <path fill="url(#bl)" d="M50 58 L36 88 L64 88 Z"/>
       </svg>
       <span class="word">ATOMYS</span>
     </a>
@@ -301,11 +309,11 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
           <path d="M304 210 L304 234 L200 288 L200 264 Z" fill="var(--iso-side)" opacity=".82"/>
           <path d="M200 156 L304 210 L200 264 L96 210 Z" fill="var(--surface-solid)" stroke="var(--border-strong)" stroke-width="1.4"/>
           <path d="M200 170 L286 210 L200 250 L114 210 Z" fill="var(--surface-hover)" stroke="var(--border)" stroke-width="1"/>
-          <g transform="translate(200,135) scale(1.1)">
-            <path fill="url(#mk)" d="M0 -48 L46 48 L22 48 L0 -6 L-22 48 L-46 48 Z"/>
-            <path fill="url(#mk)" d="M-8.1 14 L8.1 14 L13.9 28 L-13.9 28 Z"/>
-            <path fill="#fff" opacity=".4" d="M0 -48 L6 -36 L-38 48 L-46 48 Z"/>
-            <path fill="url(#bl)" d="M0 -2 L19 42 L-19 42 Z"/>
+          <g transform="translate(200,144) scale(1.15)">
+            <path fill="url(#aR)" d="M0 -40 L38 40 L16 40 L0 -16 Z"/>
+            <path fill="url(#aX)" d="M-8.6 14 L8.6 14 L12 26 L-12 26 Z"/>
+            <path fill="url(#aL)" d="M0 -40 L-38 40 L-16 40 L0 -16 Z"/>
+            <path fill="url(#bl)" d="M0 8 L-14 38 L14 38 Z"/>
           </g>
           <g transform="translate(72,84)"><circle class="node-ring" r="30"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5-5a2 2 0 0 1 1.9-1.4h11.2A2 2 0 0 1 19.5 10L21 15M3 15h18v3H3zM6 18v2M18 18v2"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></g></g>
           <g transform="translate(328,84)"><circle class="node-ring" r="30" style="animation-delay:.85s"/><circle r="26" fill="var(--surface-solid)" stroke="var(--border)"/><g transform="translate(-12,-12)" stroke="var(--brand)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.7 3.7 0 0 1 12 7a3.7 3.7 0 0 1 7 3.4C19 15.6 12 20 12 20z"/></g></g>
@@ -455,11 +463,11 @@ footer .tagline{color:#8493a8;font-size:14.5px;margin-top:14px;max-width:300px}
     <div class="foot-grid">
       <div>
         <div class="brand">
-          <svg class="mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-            <path fill="url(#mkBright)" d="M60 12 L106 108 L82 108 L60 54 L38 108 L14 108 Z"/>
-            <path fill="url(#mkBright)" d="M51.9 74 L68.1 74 L73.9 88 L46.1 88 Z"/>
-            <path fill="#fff" opacity=".4" d="M60 12 L66 24 L22 108 L14 108 Z"/>
-            <path fill="url(#bl)" d="M60 58 L79 102 L41 102 Z"/>
+          <svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <path fill="url(#aRb)" d="M50 10 L88 90 L66 90 L50 34 Z"/>
+            <path fill="url(#aXb)" d="M41.4 64 L58.6 64 L62 76 L38 76 Z"/>
+            <path fill="url(#aLb)" d="M50 10 L12 90 L34 90 L50 34 Z"/>
+            <path fill="url(#bl)" d="M50 58 L36 88 L64 88 Z"/>
           </svg>
           <span class="word">ATOMYS</span>
         </div>
