@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATOMYS — Portfolio projektů</title>
+<meta name="description" content="Kompletní přehled portfolia ATOMYS — dokumentové nástroje UPRAV*, oborové systémy MŮJ*/MOJE*, AI Orchestrator a AI Asistent pro autoservisy. Každý projekt řeší svůj segment od A až do Z.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#080b12">
+<meta name="author" content="ATOMYS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ATOMYS — Portfolio projektů">
+<meta property="og:description" content="18 specializovaných nástrojů · 4 pilíře · 1 ekosystém. Každý projekt řeší svůj segment od A až do Z.">
+<meta property="og:url" content="https://atomys.eu/prezentace/">
+<meta property="og:site_name" content="ATOMYS">
+<meta property="og:image" content="https://atomys.eu/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/svg+xml" href="/atomys-brand/atomys-mark-tile.svg">
+
+<style>
+html,body{margin:0;padding:0;background:#080b12}
+/* ============ ATOMYS deck — brand tokens (dark-committed, brand world) ============ */
+:root{color-scheme:dark}
+.deck-root{
+  --bg:#080b12;--bg-grad-1:#0d1930;--bg-grad-2:#070a11;
+  --surface:rgba(255,255,255,.035);--surface-solid:#0f1622;--surface-hover:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.09);--border-strong:rgba(120,170,255,.35);
+  --text:#eef2f8;--dim:#9fb0c6;--faint:#7d8ca6;
+  --brand:#2b8fff;--brand-2:#48c4ff;
+  --grad-blue:linear-gradient(135deg,#1666e0 0%,#1e74ff 100%);
+  --grad-silver:linear-gradient(180deg,#f6f8fb 0%,#c6cfda 46%,#7c8797 100%);
+  --ok:#34d399;--warn:#ffb648;
+  --acc:#2b8fff; /* per-pillar accent, overridden on slides */
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --radius:18px;--radius-sm:12px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  color:var(--text);line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.deck-root *{box-sizing:border-box;margin:0;padding:0}
+.deck-root ul{list-style:none}
+.deck-root a{color:inherit;text-decoration:none}
+.deck-root :focus-visible{outline:2px solid var(--brand-2);outline-offset:3px;border-radius:10px}
+
+/* ============ stage ============ */
+.stage{position:fixed;inset:0;background:
+  radial-gradient(1000px 620px at 78% -8%,var(--bg-grad-1),transparent 60%),
+  radial-gradient(900px 700px at 6% 14%,rgba(13,25,48,.55),transparent 55%),
+  var(--bg-grad-2);}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 0,#000,transparent 72%);
+  mask-image:radial-gradient(circle at 50% 0,#000,transparent 72%);}
+
+/* ============ top bar ============ */
+.bar-top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;gap:12px;
+  padding:12px 22px;pointer-events:none}
+.bar-top .brandline{display:flex;align-items:center;gap:10px;pointer-events:auto}
+.bar-top .mk{height:26px;width:auto}
+.bar-top .bt{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.bar-top .bt b{color:var(--text)}
+.bar-top .group-lbl{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--acc) 30%,transparent);
+  padding:5px 12px;border-radius:100px;transition:color .3s,background .3s,border-color .3s}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--grad-blue);z-index:41;width:0;
+  box-shadow:0 0 12px rgba(43,143,255,.8);transition:width .35s var(--ease)}
+
+/* ============ bottom bar ============ */
+.bar-bot{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;align-items:center;gap:10px;
+  padding:12px 22px;pointer-events:none}
+.bar-bot .ctr{display:flex;align-items:center;gap:8px;pointer-events:auto}
+.nav-btn{width:38px;height:38px;display:grid;place-items:center;background:var(--surface-solid);
+  border:1px solid var(--border);border-radius:10px;color:var(--dim);cursor:pointer;
+  transition:color .2s,border-color .2s,transform .2s}
+.nav-btn:hover{color:var(--text);border-color:var(--border-strong);transform:translateY(-1px)}
+.nav-btn svg{width:16px;height:16px}
+.counter{min-width:70px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--dim);
+  font-variant-numeric:tabular-nums;background:var(--surface-solid);border:1px solid var(--border);
+  border-radius:10px;padding:9px 12px;cursor:pointer;transition:color .2s,border-color .2s}
+.counter:hover{color:var(--text);border-color:var(--border-strong)}
+.hint{margin-left:auto;font-size:12px;color:var(--faint);letter-spacing:.04em;pointer-events:none}
+@media (max-width:760px){.hint{display:none}}
+
+/* ============ slides ============ */
+.slide{position:fixed;inset:0;z-index:10;display:flex;overflow-y:auto;overflow-x:hidden;
+  visibility:hidden;opacity:0;pointer-events:none;
+  transition:opacity .4s var(--ease),visibility 0s linear .4s;
+  padding:64px clamp(20px,4vw,56px) 70px;scrollbar-width:thin}
+.slide.active{visibility:visible;opacity:1;pointer-events:auto;transition-delay:0s;z-index:20}
+.inner{margin:auto;width:100%;max-width:1180px;
+  transform:translateY(18px);opacity:0;transition:transform .5s var(--ease) .08s,opacity .5s var(--ease) .08s}
+.slide.active .inner{transform:none;opacity:1}
+@media (prefers-reduced-motion:reduce){
+  .slide,.inner{transition:none!important;transform:none!important}
+}
+
+/* ============ shared atoms ============ */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--acc);background:color-mix(in srgb,var(--acc) 11%,transparent);
+  padding:6px 13px;border-radius:100px;border:1px solid color-mix(in srgb,var(--acc) 26%,transparent)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+.h-title{font-size:clamp(26px,3.6vw,40px);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin:16px 0 10px;text-wrap:balance}
+.h-title .tld{color:var(--faint);font-weight:700}
+.grad-text{background:var(--grad-blue);-webkit-background-clip:text;background-clip:text;color:transparent}
+.silver{background:var(--grad-silver);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(15px,1.5vw,17.5px);color:var(--dim);max-width:70ch}
+.lead b{color:var(--text);font-weight:600}
+
+.badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.05em;
+  padding:6px 12px;border-radius:100px;white-space:nowrap}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge.live{color:var(--ok);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3)}
+.badge.dev{color:var(--warn);background:rgba(255,182,72,.1);border:1px solid rgba(255,182,72,.3)}
+.badge.prep{color:var(--faint);background:var(--surface);border:1px solid var(--border)}
+
+.card{background:var(--surface-solid);border:1px solid var(--border);border-radius:var(--radius);padding:20px 20px}
+.note{border-left:3px solid var(--acc);background:color-mix(in srgb,var(--acc) 7%,transparent);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:13px 16px;font-size:13.5px;color:var(--dim)}
+.note b{color:var(--text)}
+
+/* ============ A→Z rail — signature device ============ */
+.az{margin:22px 0 4px}
+.az-cap{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.az-cap b{color:var(--acc)}
+.az-rail{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}
+.az-step{display:flex;align-items:center;gap:9px;background:var(--surface-solid);border:1px solid var(--border);
+  border-radius:12px;padding:8px 13px 8px 8px;font-size:13.5px;font-weight:600;color:var(--text)}
+.az-step .lt{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:8px;
+  font-size:12.5px;font-weight:800;color:#fff;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--acc) 88%,#fff 6%),color-mix(in srgb,var(--acc) 68%,#000 12%));
+  box-shadow:0 4px 12px -4px color-mix(in srgb,var(--acc) 60%,transparent)}
+.az-step.zz .lt{background:var(--grad-silver);color:#0d1524}
+.az-sep{align-self:center;color:var(--faint);font-size:15px;flex:none;user-select:none}
+
+/* ============ product slide layout ============ */
+.p-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.p-head .h-title{margin-bottom:6px}
+.p-head .badge{margin-top:26px;margin-left:auto}
+.p-body{display:grid;grid-template-columns:1.85fr 1fr;gap:18px;margin-top:20px;align-items:start}
+.p-body.w12{grid-template-columns:1.2fr 1fr}
+.p-body.w11{grid-template-columns:1.05fr 1fr}
+@media (max-width:900px){.p-body,.p-body.w12,.p-body.w11{grid-template-columns:1fr}}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px}
+@media (max-width:640px){.feats{grid-template-columns:1fr}}
+.feats li{position:relative;padding:7px 0 7px 22px;font-size:14px;color:var(--dim);border-bottom:1px dashed color-mix(in srgb,var(--border) 70%,transparent)}
+.feats li::before{content:"";position:absolute;left:2px;top:14px;width:8px;height:8px;border-radius:3px;
+  background:color-mix(in srgb,var(--acc) 80%,#fff 5%);box-shadow:0 0 8px color-mix(in srgb,var(--acc) 55%,transparent)}
+.feats b{color:var(--text);font-weight:650}
+.side{display:flex;flex-direction:column;gap:12px}
+.side .card h4{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.eco-links{display:flex;flex-direction:column;gap:7px}
+.eco-links span{display:flex;gap:9px;align-items:baseline;font-size:13.5px;color:var(--dim)}
+.eco-links b{color:var(--brand-2);font-weight:650;white-space:nowrap}
+
+/* ============ generic grids ============ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media (max-width:1020px){.grid5{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:960px){.grid4{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr}}
+@media (max-width:640px){.grid4,.grid2,.grid5{grid-template-columns:1fr}}
+.ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 18%,transparent),color-mix(in srgb,var(--acc) 4%,transparent));
+  border:1px solid var(--border);color:var(--acc);margin-bottom:14px}
+.ic svg{width:22px;height:22px}
+.card h3{font-size:17px;font-weight:750;letter-spacing:-.01em;margin-bottom:5px}
+.card .d{font-size:13.5px;color:var(--dim)}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;font-weight:600;color:var(--dim);background:var(--surface);border:1px solid var(--border);
+  padding:7px 13px;border-radius:100px}
+.chip.on{color:var(--brand-2);border-color:color-mix(in srgb,var(--brand) 40%,transparent);background:color-mix(in srgb,var(--brand) 10%,transparent)}
+
+/* checklist (benefits) */
+.checks li{position:relative;padding:6px 0 6px 26px;font-size:14px;color:var(--dim);break-inside:avoid}
+.checks li::before{content:"✓";position:absolute;left:0;top:5px;color:var(--ok);font-weight:800}
+.checks.two{columns:2;column-gap:40px}
+@media (max-width:640px){.checks.two{columns:1}}
+
+/* numbered legend / timeline (real sequences) */
+.legend li{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed color-mix(in srgb,var(--border) 70%,transparent)}
+.legend li:last-child{border-bottom:0}
+.legend .n{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:50%;
+  font-size:12.5px;font-weight:800;color:#fff;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--acc) 88%,#fff 6%),color-mix(in srgb,var(--acc) 66%,#000 14%))}
+.legend b{color:var(--text);font-weight:650}
+.legend p{font-size:13px;color:var(--dim)}
+
+.tl{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;counter-reset:tl}
+@media (max-width:1020px){.tl{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:640px){.tl{grid-template-columns:repeat(2,1fr)}}
+.tl li{counter-increment:tl;background:var(--surface-solid);border:1px solid var(--border);border-radius:14px;padding:14px 13px;position:relative}
+.tl li::before{content:counter(tl);position:absolute;top:-11px;left:12px;width:24px;height:24px;display:grid;place-items:center;
+  border-radius:50%;font-size:12px;font-weight:800;color:#fff;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--acc) 88%,#fff 6%),color-mix(in srgb,var(--acc) 66%,#000 14%));
+  box-shadow:0 0 0 4px var(--bg)}
+.tl b{display:block;font-size:13.5px;font-weight:700;margin:6px 0 4px}
+.tl p{font-size:12.5px;color:var(--dim)}
+
+/* budget table */
+.tbl{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tbl th{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  text-align:left;padding:0 10px 9px 0;border-bottom:1px solid var(--border)}
+.tbl th:last-child,.tbl td:last-child{text-align:right;white-space:nowrap;padding-right:0}
+.tbl td{padding:8px 10px 8px 0;border-bottom:1px dashed color-mix(in srgb,var(--border) 70%,transparent);color:var(--dim)}
+.tbl tr:last-child td{border-bottom:0;padding-top:12px;color:var(--text);font-weight:800;border-top:1px solid var(--border-strong)}
+.tbl td:last-child{color:var(--text);font-weight:650}
+
+/* flow diagram (synergie) */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:18px 0 8px}
+.flow .fn{flex:1 1 150px;min-width:150px;background:var(--surface-solid);border:1px solid var(--border);border-radius:14px;padding:13px 14px}
+.flow .fn small{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);margin-bottom:5px}
+.flow .fn b{font-size:13.5px;font-weight:700;display:block;margin-bottom:3px}
+.flow .fn p{font-size:12.5px;color:var(--dim)}
+.flow .fa{align-self:center;color:var(--faint);flex:none;font-size:16px;user-select:none}
+
+/* ============ title & closing ============ */
+.titleslide .inner{max-width:1020px;text-align:center}
+.mark-hero{position:relative;width:clamp(130px,17vw,190px);margin:0 auto 26px}
+.mark-hero .glow{position:absolute;inset:-38%;border-radius:50%;
+  background:radial-gradient(circle,rgba(43,143,255,.34),transparent 66%);filter:blur(14px);
+  animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.13);opacity:1}}
+@media (prefers-reduced-motion:reduce){.mark-hero .glow{animation:none}}
+.mark-hero svg{position:relative;width:100%;height:auto}
+.wordmark{font-size:clamp(42px,7vw,76px);font-weight:800;letter-spacing:.14em;line-height:1;margin-left:.14em}
+.tagline{font-size:clamp(11px,1.3vw,13.5px);font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--faint);margin-top:14px}
+.titleslide h1{font-size:clamp(24px,3.2vw,36px);font-weight:800;letter-spacing:-.02em;margin-top:38px}
+.title-sub{color:var(--dim);font-size:clamp(14px,1.6vw,17px);margin-top:10px}
+.stats{display:flex;justify-content:center;gap:clamp(22px,4vw,52px);margin-top:36px;flex-wrap:wrap}
+.stats .num{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stats .lbl{font-size:12.5px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.title-foot{margin-top:44px;font-size:13px;color:var(--faint);letter-spacing:.08em}
+
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.cm{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px;color:var(--text);
+  background:var(--surface-solid);border:1px solid var(--border);padding:13px 20px;border-radius:12px;
+  transition:border-color .2s,transform .2s}
+.cm:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+.cm svg{width:17px;height:17px;color:var(--brand)}
+
+/* ============ TOC overlay ============ */
+.toc{position:fixed;inset:0;z-index:60;background:rgba(5,8,14,.78);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);display:none;overflow-y:auto;padding:56px clamp(20px,5vw,72px)}
+.toc.open{display:block}
+.toc-head{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto 26px}
+.toc-head h2{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.toc-close{width:38px;height:38px;display:grid;place-items:center;background:var(--surface-solid);
+  border:1px solid var(--border);border-radius:10px;color:var(--dim);cursor:pointer}
+.toc-close:hover{color:var(--text);border-color:var(--border-strong)}
+.toc-groups{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.toc-groups h3{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.toc-groups button{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;background:none;border:0;
+  color:var(--dim);font-size:14px;font-family:inherit;padding:6px 8px;border-radius:8px;cursor:pointer}
+.toc-groups button:hover{background:var(--surface-hover);color:var(--text)}
+.toc-groups button.cur{color:var(--brand-2);font-weight:700}
+.toc-groups button i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--faint);font-size:12px;min-width:20px}
+
+/* ============ print / PDF ============ */
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  .deck-root{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .stage{position:static}
+  .bar-top,.bar-bot,.progress,.toc{display:none!important}
+  .slide{position:static;visibility:visible;opacity:1;pointer-events:auto;overflow:visible;
+    padding:8mm 4mm;page-break-after:always;break-after:page;min-height:0;transition:none;
+    background:#080b12}
+  .inner{transform:none;opacity:1;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="deck-root">
+<div class="stage" aria-hidden="true"></div>
+
+<!-- ATOMYS mark — traced vector, defined once, used via <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="mUp" x1="0" y1="40" x2="0" y2="319" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fcfcfd"/><stop offset="0.35" stop-color="#f1f4f7"/>
+      <stop offset="0.68" stop-color="#c4cdd8"/><stop offset="1" stop-color="#97a5b7"/>
+    </linearGradient>
+    <linearGradient id="mLo" x1="0" y1="210" x2="0" y2="322" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e3e7ed"/><stop offset="0.35" stop-color="#d4dae3"/>
+      <stop offset="0.68" stop-color="#c0c9d5"/><stop offset="1" stop-color="#aebbc9"/>
+    </linearGradient>
+    <linearGradient id="mBl" x1="0" y1="214" x2="0" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d80f6"/><stop offset="1" stop-color="#0166f0"/>
+    </linearGradient>
+    <symbol id="atomys-mark" viewBox="38 30 348 302">
+      <path d="M214 218Q212.1 214.5 210.3 218L178.7 277.3Q177.5 279.5 180 279.5L244 279.5Q246.5 279.5 245.3 277.3Z" fill="url(#mBl)"/>
+      <path d="M98.9 319.1L50.5 318.8Q47.5 318.8 48.9 316.1L176.7 69.6Q181.6 60.2 189.8 53.4L196 48.2Q201.1 44 207.4 42.3L210.2 41.5Q216.2 39.9 222.4 40L228 40Q231 40.1 232.6 42.7L234.3 45.6Q236.7 49.7 238.9 53.8L296.1 164.9Q297.5 167.6 294.5 167.6L246.8 167.9Q243.8 167.9 242.4 165.2L213.3 110.1Q211.9 107.5 210.5 110.2L103.2 316.4Q101.9 319.1 98.9 319.1Z" fill="url(#mUp)"/>
+      <path d="M320.3 212.8L374.3 319.4Q375.6 322.1 372.6 322.1L324.6 322Q321.6 322 320.3 319.3L266.7 212.4Q265.3 209.8 268.3 209.8L316 210.1Q319 210.1 320.3 212.8Z" fill="url(#mLo)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="progress" id="progress"></div>
+<header class="bar-top">
+  <div class="brandline">
+    <svg class="mk" viewBox="38 30 348 302" aria-hidden="true"><use href="#atomys-mark"/></svg>
+    <span class="bt"><b>ATOMYS</b> · Portfolio projektů</span>
+  </div>
+  <span class="group-lbl" id="groupLbl">Úvod</span>
+</header>
+
+<main id="deck" aria-live="polite">
+
+<!-- ======================================================= 1 · TITUL -->
+<section class="slide titleslide" id="uvod" data-title="Titulní strana" data-group="Úvod" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="mark-hero"><span class="glow"></span>
+      <svg viewBox="38 30 348 302" role="img" aria-label="ATOMYS"><use href="#atomys-mark"/></svg>
+    </div>
+    <div class="wordmark silver">ATOMYS</div>
+    <div class="tagline">Inteligentní systémy pro řízení provozů</div>
+    <h1>Portfolio projektů <span class="grad-text">2026</span></h1>
+    <p class="title-sub">Specializované nástroje, které řeší konkrétní obor či úlohu — každý <b style="color:var(--text)">od A až do Z</b>.</p>
+    <div class="stats">
+      <div><div class="num silver">18</div><div class="lbl">projektů</div></div>
+      <div><div class="num silver">4</div><div class="lbl">pilíře</div></div>
+      <div><div class="num silver">1</div><div class="lbl">ekosystém</div></div>
+    </div>
+    <div class="title-foot">atomys.eu · červenec 2026</div>
+  </div>
+</section>
+
+<!-- ======================================================= 2 · STRATEGIE -->
+<section class="slide" id="strategie" data-title="Strategie specializace" data-group="Úvod" style="--acc:#2b8fff">
+  <div class="inner">
+    <span class="eyebrow">Strategie</span>
+    <h2 class="h-title">Jedna doména. Jeden obor.<br><span class="grad-text">Jeden nástroj od A do Z.</span></h2>
+    <p class="lead">Nestavíme univerzální systém „pro všechny". Stavíme rodinu úzce zaměřených nástrojů — každý míří na jeden segment a pokrývá ho celý. Doména je zároveň slib: co je v názvu, to nástroj dělá.</p>
+    <div class="grid4" style="margin-top:28px">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Doména = přesný záměr</h3>
+        <p class="d">Zákazník hledá „upravit PDF" nebo „systém pro autoservis" — a najde nástroj, který se přesně tak jmenuje. Nic nevysvětlujeme, název je popis.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13M13 6l6 6-6 6"/></svg></div>
+        <h3>Segment od A do Z</h3>
+        <p class="d">Každý produkt pokrývá celý proces svého oboru — od prvního kontaktu po fakturu a archiv. Ne 20&nbsp;% potřeb v obecném molochu.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg></div>
+        <h3>Sdílené jádro</h3>
+        <p class="d">CRM, fakturace, dokumenty a AI vrstva jsou společné. Nová vertikála = oborová pravidla a rozhraní, ne vývoj od nuly.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 3 11.2c-.6.4-1 1-1 1.8v.5H10v-.5c0-.8-.4-1.4-1-1.8A6 6 0 0 1 12 3zM10 20h4M10.5 22h3"/></svg></div>
+        <h3>AI, kde šetří čas</h3>
+        <p class="d">Přepis hlasu, vytěžení dokladů, kamerové rozpoznávání. Evidence vzniká sama při práci — ne večer u počítače.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px"><b>Výsledek:</b> v každém segmentu můžeme být nejlepší volbou, protože nástroj mluví jazykem oboru — a přitom stojí na jednom společném základu, který se vyplatí jednou a slouží všem.</p>
+  </div>
+</section>
+
+<!-- ======================================================= 3 · MAPA EKOSYSTÉMU -->
+<section class="slide" id="mapa" data-title="Mapa ekosystému" data-group="Úvod" style="--acc:#2b8fff">
+  <div class="inner">
+    <span class="eyebrow">Mapa ekosystému</span>
+    <h2 class="h-title">Čtyři pilíře, <span class="grad-text">jeden základ.</span></h2>
+    <div class="grid4" style="margin-top:24px">
+      <div class="card" style="--acc:#2b8fff">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg></div>
+        <h3>UPRAV*</h3>
+        <p class="d" style="margin-bottom:10px">Dokumentové nástroje. Jeden úkol, jeden nástroj, hotovo za minutu — PDF, CSV, ISDOC, UBL.</p>
+        <span class="chip on">5 projektů · freemium</span>
+      </div>
+      <div class="card" style="--acc:#2fd4b5">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.6-5.4A2.5 2.5 0 0 1 7 8h10a2.5 2.5 0 0 1 2.4 1.6L21 15M3 15h18v3.5H3zM6.5 18.5V21M17.5 18.5V21"/></svg></div>
+        <h3>MŮJ* / MOJE*</h3>
+        <p class="d" style="margin-bottom:10px">Oborové systémy. Autoservis, pneuservis, bazar, domov pro seniory… každý obor od A do Z.</p>
+        <span class="chip on" style="color:#2fd4b5;border-color:rgba(47,212,181,.4);background:rgba(47,212,181,.08)">11 projektů · SaaS</span>
+      </div>
+      <div class="card" style="--acc:#9d7bff">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="4.5" cy="18" r="1.8"/><circle cx="19.5" cy="18" r="1.8"/><path d="M6.1 7.1l3.8 3M17.9 7.1l-3.8 3M6.1 16.9l3.8-3M17.9 16.9l-3.8-3"/></svg></div>
+        <h3>AI Orchestrator</h3>
+        <p class="d" style="margin-bottom:10px">Sdílený AI mozek — propojuje aplikace, agenty a zařízení, automatizuje procesy napříč.</p>
+        <span class="chip on" style="color:#b79dff;border-color:rgba(157,123,255,.4);background:rgba(157,123,255,.09)">1 platforma</span>
+      </div>
+      <div class="card" style="--acc:#ffb648">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6.5" width="18" height="12.5" rx="2.5"/><circle cx="12" cy="12.7" r="3.3"/><path d="M8 6.5l1.3-2.5h5.4L16 6.5"/></svg></div>
+        <h3>AI Asistent</h3>
+        <p class="d" style="margin-bottom:10px">Hardware v provozu: kamery, senzory a hlas přímo v dílně. Dílna si evidenci vede sama.</p>
+        <span class="chip on" style="color:#ffb648;border-color:rgba(255,182,72,.4);background:rgba(255,182,72,.08)">1 řešení · HW + SW</span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+      <b style="font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-right:8px">Společný základ</b>
+      <span class="chip">Jeden účet ATOMYS</span>
+      <span class="chip">Zákaznická data — mujcrm</span>
+      <span class="chip">Fakturace — mojeucetnictvi</span>
+      <span class="chip">e-doklady — ISDOC / UBL</span>
+      <span class="chip">Čeština na prvním místě</span>
+      <span class="chip">Hosting a data v EU</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 4 · PILÍŘ UPRAV -->
+<section class="slide" id="uprav" data-title="Pilíř UPRAV — přehled" data-group="UPRAV — dokumenty" style="--acc:#2b8fff">
+  <div class="inner">
+    <span class="eyebrow">Pilíř 1 · Dokumentové nástroje</span>
+    <h2 class="h-title">UPRAV<span class="grad-text">*</span> — jeden úkol, jeden nástroj, hotovo.</h2>
+    <p class="lead">Webové utility bez instalace a zbytečné registrace. Uživatel přijde z vyhledávače s konkrétním problémem („rozdělit PDF", „rozbitá čeština v CSV") a za minutu odchází s výsledkem. Česky, srozumitelně, zpracování v EU.</p>
+    <div class="grid5" style="margin-top:24px" id="upravGrid">
+      <div class="card"><h3 style="font-size:15.5px">upravdokument<span class="tld">.eu</span></h3><p class="d">Rozcestník rodiny + univerzální převody a úpravy dokumentů.</p></div>
+      <div class="card"><h3 style="font-size:15.5px">upravpdf<span class="tld">.eu</span></h3><p class="d">Vše pro PDF — sloučení, převody, podpisy, OCR, anonymizace.</p></div>
+      <div class="card"><h3 style="font-size:15.5px">upravcsv<span class="tld">.eu</span></h3><p class="d">Data a tabulky — čištění, mapování, převody, validace importů.</p></div>
+      <div class="card"><h3 style="font-size:15.5px">upravisdoc<span class="tld">.eu</span></h3><p class="d">Česká e-faktura ISDOC — zobrazení, tvorba, validace, převody.</p></div>
+      <div class="card"><h3 style="font-size:15.5px">upravubl<span class="tld">.eu</span></h3><p class="d">Evropská e-fakturace UBL / EN 16931 — tvorba, validace, převody.</p></div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <p class="note"><b>Role v ekosystému:</b> levná akvizice ze SEO (statisíce českých dotazů měsíčně na úpravy dokumentů) + dokladová infrastruktura, kterou interně používá mojeucetnictvi a všechny oborové systémy.</p>
+      <p class="note"><b>Obchodní model:</b> freemium — základní úkony zdarma, platí se objem, hromadné zpracování, API a firemní funkce. Nástroje se navzájem doporučují.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 5 · upravdokument -->
+<section class="slide" id="upravdokument" data-title="upravdokument.eu" data-group="UPRAV — dokumenty" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">UPRAV · vstupní brána</span>
+        <h2 class="h-title">upravdokument<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> každý, kdo potřebuje „něco udělat s dokumentem" a nechce nic instalovat — kanceláře, studenti, drobní podnikatelé.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Nahraj soubor</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Rozpoznání formátu</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Úprava / převod</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Kontrola náhledem</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Stáhni / pošli dál</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Převody formátů</b> — Word ↔ PDF ↔ obrázky ↔ text, tabulky i prezentace</li>
+        <li><b>Sloučení a rozdělení</b> dokumentů, výběr stránek, komprese</li>
+        <li><b>OCR s češtinou</b> — z fotky nebo skenu vznikne editovatelný text</li>
+        <li><b>Hromadné zpracování</b> — celé složky najednou</li>
+        <li><b>Chytrý rozcestník</b> — pozná typ úlohy a nasměruje na specializovaný nástroj (PDF, CSV, ISDOC, UBL)</li>
+        <li><b>Bez instalace</b> — vše v prohlížeči, zpracování na serverech v EU</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>uprav*</b> společný „dokumentový engine" pro celou rodinu</span>
+            <span><b>SEO</b> hlavní vstupní brána — obecné dotazy, které rozvádí dál</span>
+          </div>
+        </div>
+        <p class="note"><b>Princip:</b> obecná doména sbírá poptávku, specializované domény ji řeší do hloubky.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 6 · upravpdf -->
+<section class="slide" id="upravpdf" data-title="upravpdf.eu" data-group="UPRAV — dokumenty" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">UPRAV · PDF</span>
+        <h2 class="h-title">upravpdf<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> kanceláře, účetní, úřady i domácnosti — PDF je všude a každý s ním občas bojuje.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Nahraj PDF</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Uprav stránky</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Vyplň &amp; podepiš</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Zabezpeč</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Stáhni / odešli</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Sloučit / rozdělit / otočit</b> — i vyjmout či přeskládat stránky</li>
+        <li><b>Komprese</b> bez viditelné ztráty kvality (e-maily, datovky)</li>
+        <li><b>Převody</b> — PDF ↔ Word / Excel / obrázky</li>
+        <li><b>OCR</b> — prohledávatelné PDF ze skenu, česká diakritika</li>
+        <li><b>Formuláře a podpis</b> — vyplnění, elektronický podpis, razítko</li>
+        <li><b>Vodoznak a číslování</b> stránek, záhlaví a zápatí</li>
+        <li><b>Zabezpečení heslem</b> a správa oprávnění</li>
+        <li><b>Anonymizace</b> — začernění osobních údajů (GDPR)</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mojeucetnictvi</b> tisk a archivace dokladů do PDF</span>
+            <span><b>upravisdoc / upravubl</b> PDF vrstva e-faktur</span>
+            <span><b>oborové systémy</b> protokoly a smlouvy do PDF</span>
+          </div>
+        </div>
+        <p class="note"><b>Diferenciace:</b> čeština na prvním místě, zpracování v EU, žádné nucené registrace ani vodoznaky zdarma verze.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 7 · upravcsv -->
+<section class="slide" id="upravcsv" data-title="upravcsv.eu" data-group="UPRAV — dokumenty" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">UPRAV · data a tabulky</span>
+        <h2 class="h-title">upravcsv<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge dev">Vývojová verze · dev.upravcsv.eu</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> e-shopy, účetní a analytiky — každého, komu z banky, ERP nebo e-shopu „padají" exporty, které je potřeba dostat jinam.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Nahraj export</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Oprav kódování</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Vyčisti data</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Namapuj sloupce</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Zvaliduj</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Export do cíle</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Náhled velkých souborů</b> — statisíce řádků bez Excelu a bez zamrzání</li>
+        <li><b>Oprava kódování</b> — rozbitá čeština (UTF-8 / Windows-1250), oddělovače, uvozovky</li>
+        <li><b>Převody</b> — CSV ↔ Excel ↔ JSON ↔ XML</li>
+        <li><b>Mapování sloupců</b> — přejmenování, přeuspořádání, uložené šablony pro opakované importy</li>
+        <li><b>Čištění</b> — duplicity, prázdné řádky, sjednocení formátů dat a čísel</li>
+        <li><b>Spojování a dělení</b> souborů, filtrace řádků</li>
+        <li><b>Validace proti šabloně</b> cílového systému — e-shop, účetnictví, banka</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>můj* systémy</b> příprava dat pro migrace a importy</span>
+            <span><b>mojeucetnictvi</b> bankovní a skladové exporty</span>
+          </div>
+        </div>
+        <p class="note"><b>Stav:</b> běží vývojová verze na <b>dev.upravcsv.eu</b> — jádro parsování, oprav kódování a převodů.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 8 · upravisdoc -->
+<section class="slide" id="upravisdoc" data-title="upravisdoc.eu" data-group="UPRAV — dokumenty" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">UPRAV · česká e-faktura</span>
+        <h2 class="h-title">upravisdoc<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> firmy a účetní, kterým ISDOC faktury chodí a potřebují je číst, kontrolovat a účtovat — a vývojáře, kteří je musí generovat.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Přijmi ISDOC</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Zobraz čitelně</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Zvaliduj</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Převeď (PDF / UBL)</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Zaúčtuj / archivuj</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Prohlížeč ISDOC / ISDOCX</b> — faktura čitelná jako běžný doklad, ne XML</li>
+        <li><b>Převod ISDOC → PDF</b> pro archiv a předání dál</li>
+        <li><b>Tvorba ISDOC</b> — z jednoduchého formuláře nebo existující faktury</li>
+        <li><b>Validace</b> struktury a povinných polí se srozumitelnými chybami</li>
+        <li><b>Hromadné zpracování</b> — složka faktur najednou</li>
+        <li><b>Most ISDOC ↔ UBL</b> — česká a evropská e-faktura bez ruční práce</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mojeucetnictvi</b> nativní výstupní i vstupní formát dokladů</span>
+            <span><b>upravubl</b> párový nástroj pro evropský formát</span>
+          </div>
+        </div>
+        <p class="note"><b>Kontext:</b> ISDOC je český národní formát elektronické faktury. Systémy ho umí vystavit — ale běžný příjemce ho bez nástroje ani neotevře. Přesně tuhle mezeru zaplňujeme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 9 · upravubl -->
+<section class="slide" id="upravubl" data-title="upravubl.eu" data-group="UPRAV — dokumenty" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">UPRAV · evropská e-fakturace</span>
+        <h2 class="h-title">upravubl<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> exportéry, firmy s odběrateli v EU a vývojáře ERP — všechny, kterých se týká evropská strukturovaná e-faktura.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Vytvoř / přijmi UBL</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Zvaliduj (EN 16931)</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Doplň povinná pole</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Převeď</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Odešli / archivuj</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Tvorba UBL 2.1 faktur</b> — podle normy EN 16931 a profilů Peppol BIS</li>
+        <li><b>Validace</b> se srozumitelnými hláškami — ne výpis XML chyb</li>
+        <li><b>Převody</b> — UBL ↔ PDF ↔ ISDOC</li>
+        <li><b>Kontroly</b> — DIČ/VAT, měny, sazby DPH, součty</li>
+        <li><b>Hromadné zpracování a API</b> pro napojení ERP</li>
+        <li><b>Čitelný náhled</b> — z XML srozumitelná faktura na jeden klik</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mojeucetnictvi</b> e-faktura pro EU odběratele na jedno kliknutí</span>
+            <span><b>upravisdoc</b> most mezi českým a evropským formátem</span>
+          </div>
+        </div>
+        <p class="note"><b>Kontext:</b> EU směřuje k povinné strukturované e-fakturaci (EN 16931, Peppol, balíček ViDA). Kdo obchoduje přes hranice, UBL se nevyhne — a my budeme připraveni dřív než poptávková vlna.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 10 · PILÍŘ MŮJ -->
+<section class="slide" id="muj" data-title="Pilíř MŮJ/MOJE — přehled" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <span class="eyebrow">Pilíř 2 · Oborové systémy</span>
+    <h2 class="h-title">MŮJ<span class="grad-text">*</span> a MOJE<span class="grad-text">*</span> — každý obor dostane vlastní nástroj.</h2>
+    <p class="lead">Jedenáct systémů na společném jádru (zákazníci, zakázky, doklady, kalendáře, notifikace) — každý s oborovou nadstavbou, terminologií a procesy svého segmentu. Majitel neplatí za funkce, které nepotřebuje.</p>
+    <div class="grid4" style="margin-top:24px">
+      <div class="card">
+        <h4 style="font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:12px">Servis &amp; opravy</h4>
+        <div class="eco-links">
+          <span><b>mujautoservis.eu</b> <span class="badge live" style="font-size:10.5px;padding:2px 8px">V provozu</span></span>
+          <span><b>mujpneuservis.eu</b></span>
+          <span><b>mojeautolakovna.eu</b></span>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:12px">Prodej &amp; flotily</h4>
+        <div class="eco-links">
+          <span><b>mujautobazar.eu</b></span>
+          <span><b>mojedovozy.eu</b></span>
+          <span><b>mojeautopujcovna.eu</b></span>
+          <span><b>mujvozovypark.eu</b></span>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:12px">Péče &amp; obchod</h4>
+        <div class="eco-links">
+          <span><b>mujdomovproseniory.eu</b> <span class="badge dev" style="font-size:10.5px;padding:2px 8px">Ve vývoji</span></span>
+          <span><b>mujobchod.eu</b> <span class="badge dev" style="font-size:10.5px;padding:2px 8px">Ve vývoji</span></span>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:12px">Back-office</h4>
+        <div class="eco-links">
+          <span><b>mujcrm.eu</b> <span style="color:var(--faint);font-size:12px">z IC Office CRM</span></span>
+          <span><b>mojeucetnictvi.eu</b></span>
+        </div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:18px"><b>Cross-sell v ceně architektury:</b> autoservis si přidá pneuservis, bazar si přidá dovozy, půjčovna vozový park — data a účet zůstávají, přibývá jen oborový modul. Přechod ke konkurenci znamená ztratit propojení; přechod uvnitř ATOMYS je jedno kliknutí.</p>
+  </div>
+</section>
+
+<!-- ======================================================= 11 · mujautoservis -->
+<section class="slide" id="mujautoservis" data-title="mujautoservis.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · servis &amp; opravy · vlajková loď</span>
+        <h2 class="h-title">mujautoservis<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge live">V provozu</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> nezávislé autoservisy, které chtějí mít rezervace, zakázky, sklad i fakturaci v jednom systému — bez papírových sešitů a tří různých programů.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Rezervace termínu</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Příjem (SPZ / VIN)</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Zakázkový list</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Práce &amp; díly</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Kalkulace</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">F</span>Faktura</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Historie &amp; připomínky</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Online rezervace</b> a plánování kapacit dílny i mechaniků</li>
+        <li><b>Karta vozidla</b> — SPZ, VIN, kompletní historie oprav</li>
+        <li><b>Zakázky</b> — úkony, normohodiny, materiál ze skladu</li>
+        <li><b>Sklad dílů</b> a objednávky dodavatelům</li>
+        <li><b>Pneuhotel</b> — uskladněné sady pneumatik</li>
+        <li><b>Fakturace</b> a SMS / e-mail notifikace zákazníkům</li>
+        <li><b>Kokpit majitele</b> — vytížení, tržby, rozpracované zakázky</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>AI Asistent</b> fotky, měření oleje a diktování jdou rovnou do zakázky</span>
+            <span><b>mujcrm</b> zákazníci a komunikace</span>
+            <span><b>mojeucetnictvi</b> doklady a DPH</span>
+          </div>
+        </div>
+        <p class="note"><b>Vlajková loď portfolia</b> — v ostrém provozu, referenční nasazení celého konceptu „obor od A do Z". Web: mujautoservis.eu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 12 · mujpneuservis -->
+<section class="slide" id="mujpneuservis" data-title="mujpneuservis.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · servis &amp; opravy</span>
+        <h2 class="h-title">mujpneuservis<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> pneuservisy a servisy se sezónními špičkami — obor, kde se o zisku rozhoduje dvakrát ročně během pár týdnů.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Objednání termínu</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Rychlý příjem</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Přezutí &amp; stav pneu</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Uskladnění</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Sezónní připomínka</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Fakturace</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Kapacitní kalendář</b> stavěný na jarní a podzimní špičku</li>
+        <li><b>Rychlé odbavení</b> — vůz přijatý a odbavený v řádu minut</li>
+        <li><b>Pneuhotel</b> — QR štítky, pozice ve skladu, fotky sad</li>
+        <li><b>Evidence dezénu a DOT</b> — doporučení výměny podložené daty</li>
+        <li><b>Kampaně „čas přezout"</b> — hromadné SMS / e-maily zákazníkům</li>
+        <li><b>Fakturace</b> a historie zákazníka napříč sezónami</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mujautoservis</b> stejné jádro — provoz, který dělá obojí, má jedna data</span>
+            <span><b>mujvozovypark</b> firemní flotily jako smluvní zákazníci</span>
+          </div>
+        </div>
+        <p class="note"><b>Proč samostatná doména:</b> čistý pneuservis nechce „autoservisní systém". Chce nástroj, který mluví jeho jazykem — a najde ho pod jeho vlastním názvem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 13 · mojeautolakovna -->
+<section class="slide" id="mojeautolakovna" data-title="mojeautolakovna.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MOJE · servis &amp; opravy</span>
+        <h2 class="h-title">mojeautolakovna<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> autolakovny a karosárny — obor, který žije z pojistných událostí, přesné dokumentace a kalkulací.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Příjem &amp; fotodokumentace</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Kalkulace</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Pojišťovna</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Oprava po etapách</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Výstupní kontrola</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Předání &amp; faktura</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Fotoprotokol poškození</b> při příjmu — s časovým razítkem</li>
+        <li><b>Kalkulace oprav</b> — lakýrnické a klempířské normohodiny, materiál</li>
+        <li><b>Pojistné události</b> — agenda a komunikace s pojišťovnou na jednom místě</li>
+        <li><b>Etapy zakázky</b> — klempírna → příprava → lak → kompletace</li>
+        <li><b>Spotřeba materiálu</b> — laky a plniče na konkrétní zakázku</li>
+        <li><b>Výstupní fotodokumentace</b> — ochrana proti pozdějším reklamacím</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>AI vrstva</b> rozpoznání rozsahu poškození z fotek</span>
+            <span><b>mujautoservis / mujautobazar</b> subdodávky lakýrnických prací</span>
+          </div>
+        </div>
+        <p class="note"><b>Klíčová hodnota:</b> u pojistných událostí rozhoduje důkazní dokumentace — systém ji vytváří mimochodem, při běžné práci.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 14 · mujautobazar -->
+<section class="slide" id="mujautobazar" data-title="mujautobazar.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · prodej &amp; flotily</span>
+        <h2 class="h-title">mujautobazar<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> autobazary a prodejce ojetin — od výkupu vozu po podpis kupní smlouvy a vyhodnocení marže.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Výkup / komise</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Prověření &amp; náklady</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Nacenění</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Inzerce</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Poptávky &amp; testovací jízdy</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">F</span>Smlouvy</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Marže &amp; vyhodnocení</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Karta vozu</b> — VIN prověření, stav, výbava, dokumenty</li>
+        <li><b>Náklady a marže</b> — každá koruna investovaná do přípravy vozu</li>
+        <li><b>Generování inzerátů</b> — AI popisky, sady fotek, export na portály</li>
+        <li><b>Poptávky a rezervace</b> — evidence zájemců a testovacích jízd</li>
+        <li><b>Prodejní dokumenty</b> — kupní smlouva, plná moc, předávací protokol</li>
+        <li><b>Komisní prodej</b> — transparentní vyúčtování majiteli vozu</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mojedovozy</b> dovezený vůz jedním klikem na sklad</span>
+            <span><b>mujautoservis / mojeautolakovna</b> příprava vozů k prodeji</span>
+            <span><b>mujcrm</b> zájemci a follow-up</span>
+          </div>
+        </div>
+        <p class="note"><b>Klíčová hodnota:</b> bazar vydělává na marži — a marži nelze řídit, když se náklady na vůz sbírají po papírcích.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 15 · mojedovozy -->
+<section class="slide" id="mojedovozy" data-title="mojedovozy.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MOJE · prodej &amp; flotily</span>
+        <h2 class="h-title">mojedovozy<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> dovozce vozidel a zprostředkovatele „dovozu na přání" — byznys, který je hlavně o důvěře a přehledu, kde se vůz právě nachází.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Poptávka</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Vyhledání vozu</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Kalkulace nákladů</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Záloha &amp; objednávka</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Přeprava</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">F</span>Kontroly &amp; registrace</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Předání</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Kalkulačka dovozu</b> — cena vozu, doprava, poplatky, DPH / clo, kurzy</li>
+        <li><b>Případ jako timeline</b> — zákazník vidí, v jaké fázi jeho vůz je</li>
+        <li><b>Checklist dokumentů</b> — COC, zahraniční technický průkaz, faktury</li>
+        <li><b>Evidenční kontrola a STK</b> — hlídání termínů a úkonů po dovozu</li>
+        <li><b>Registrace vozidla</b> — podklady pro přihlášení v ČR</li>
+        <li><b>Vyúčtování</b> a předávací protokol</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mujautobazar</b> naskladnění dovezeného vozu k prodeji</span>
+            <span><b>mujautoservis</b> vstupní servisní prohlídka</span>
+          </div>
+        </div>
+        <p class="note"><b>Klíčová hodnota:</b> zákazník platí zálohu na vůz, který ještě neviděl. Transparentní timeline s dokumenty je to, co prodává.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 16 · mojeautopujcovna -->
+<section class="slide" id="mojeautopujcovna" data-title="mojeautopujcovna.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MOJE · prodej &amp; flotily</span>
+        <h2 class="h-title">mojeautopujcovna<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> autopůjčovny a firmy, které půjčují vlastní flotilu — obor, kde se spory vyhrávají fotkou z předávacího protokolu.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Rezervace &amp; ceník</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Smlouva &amp; kauce</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Předávací protokol</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Výpůjčka</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Vrácení &amp; porovnání</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Vyúčtování &amp; faktura</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Kalendář obsazenosti</b> flotily, sezónní ceníky a tarify</li>
+        <li><b>Smlouvy a kauce</b> — spoluúčast, pojištění, podmínky</li>
+        <li><b>Fotoprotokoly</b> při předání i vrácení — porovnání vedle sebe (stav, km, nádrž)</li>
+        <li><b>Hlídání vrácení</b> a prodloužení výpůjček</li>
+        <li><b>Pokuty a přestupky</b> — dohledání řidiče, přeúčtování</li>
+        <li><b>Výnosnost vozů</b> — vytížení a marže po jednotlivých autech</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mujvozovypark</b> údržba a termíny flotily</span>
+            <span><b>mujautoservis</b> servis vozů</span>
+            <span><b>mujcrm</b> historie zákazníků a bonita</span>
+          </div>
+        </div>
+        <p class="note"><b>Klíčová hodnota:</b> protokol s fotkami a podpisem na displeji — konec dohadů „ten škrábanec tam byl už předtím".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 17 · mujvozovypark -->
+<section class="slide" id="mujvozovypark" data-title="mujvozovypark.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · prodej &amp; flotily</span>
+        <h2 class="h-title">mujvozovypark<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> každou firmu s auty — řemeslníky, rozvoz, obchodní týmy. Ne jen dopravce; flotila je dnes skoro každá firma.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Evidence vozů &amp; řidičů</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Termíny &amp; upozornění</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Provoz &amp; kniha jízd</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Náklady</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Události &amp; škody</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Reporty TCO</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Hlídač termínů</b> — STK, emise, servisní intervaly, pojistky, dálniční známky</li>
+        <li><b>Náklady na vůz i na km</b> — palivo, servis, pneumatiky, pojištění</li>
+        <li><b>Kniha jízd</b> a přidělování vozů řidičům</li>
+        <li><b>Škodní události</b> — od nahlášení po vyřízení s pojišťovnou</li>
+        <li><b>GPS / telematika</b> — napojení na sledovací jednotky</li>
+        <li><b>Report TCO</b> — co vás každé auto doopravdy stojí a kdy ho vyměnit</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mujautoservis</b> servisní zakázky rovnou z termínovníku</span>
+            <span><b>mojeautopujcovna</b> interní půjčování vozů zaměstnancům</span>
+            <span><b>mojeucetnictvi</b> náklady do účetnictví</span>
+          </div>
+        </div>
+        <p class="note"><b>Klíčová hodnota:</b> propadlá STK nebo pojistka stojí víc než roční předplatné. Systém hlídá to, na co se v provozu zapomíná.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 18 · mujdomovproseniory -->
+<section class="slide" id="mujdomovproseniory" data-title="mujdomovproseniory.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · péče &amp; obchod · Atomys Care</span>
+        <h2 class="h-title">mujdomovproseniory<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge dev">Ve vývoji</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> domovy pro seniory a pečovatelské služby — provozy, kde každá hodina papírování chybí u klientů.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Poptávka &amp; nástup</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Smlouvy &amp; dokumentace</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Plán péče</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Denní záznamy &amp; léky</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Směny personálu</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">F</span>Komunikace s rodinou</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Vyúčtování &amp; výkazy</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Karta klienta</b> — zdravotní specifika, kontakty, dokumenty, smlouvy</li>
+        <li><b>Individuální plány péče</b> a přehled jejich plnění</li>
+        <li><b>Podávání léků</b> s kontrolou — kdo, kdy, co podal</li>
+        <li><b>Záznamy událostí</b> (pády, změny stavu) — hlášené hned, ne večer po směně</li>
+        <li><b>Směny a docházka</b> personálu, předání služby</li>
+        <li><b>Portál pro rodinu</b> — přehled o blízkém, plánování návštěv</li>
+        <li><b>Vyúčtování péče</b> a podklady pro zřizovatele</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>AI Orchestrator</b> personál diktuje záznamy hlasem — AI přepíše a zařadí ke klientovi</span>
+            <span><b>mojeucetnictvi</b> vyúčtování a doklady</span>
+          </div>
+        </div>
+        <p class="note"><b>Princip:</b> méně času u počítače, více času u lidí. Dokumentace vzniká při péči — hlasem, ne přepisováním sešitů.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 19 · mujobchod -->
+<section class="slide" id="mujobchod" data-title="mujobchod.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · péče &amp; obchod · Atomys Retail</span>
+        <h2 class="h-title">mujobchod<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge dev">Ve vývoji</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> maloobchod a večerky — stavěno pro vietnamskou podnikatelskou komunitu v ČR a EU, která provozuje tisíce prodejen.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Naskladnění (EAN)</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Ceny &amp; marže</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Prodej (pokladna)</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Sklad &amp; inventura</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Objednávky dodavatelům</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Tržby &amp; zisk</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Jednoduchá pokladna</b> na dotykovém displeji — zaučení za pár minut</li>
+        <li><b>Sklad přes čtečku</b> čárových kódů, tisk cenovek</li>
+        <li><b>Marže a šarže</b> — hlídání ziskovosti a prošlého zboží</li>
+        <li><b>Objednávky dodavatelům</b> podle skutečných prodejů</li>
+        <li><b>Tržby přehledně</b> — po dnech, kategoriích i prodejnách</li>
+        <li><b>Více poboček</b> pod jedním účtem</li>
+      </ul>
+      <div class="side">
+        <div class="card" style="border-color:color-mix(in srgb,var(--acc) 40%,transparent)"><h4>Klíčová diferenciace</h4>
+          <p class="d" style="font-size:13.5px"><b style="color:var(--text)">Plně dvojjazyčné rozhraní čeština ⇄ vietnamština</b> (tiếng Việt). Majitel, rodina i brigádník pracují každý ve svém jazyce — nad stejnými daty. Žádný jiný systém na trhu tohle nenabízí jako základ, ne jako dodatek.</p>
+        </div>
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>mojeucetnictvi</b> doklady a podklady pro DPH</span>
+            <span><b>mujcrm</b> věrnostní data zákazníků</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 20 · mujcrm -->
+<section class="slide" id="mujcrm" data-title="mujcrm.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MŮJ · back-office · páteř ekosystému</span>
+        <h2 class="h-title">mujcrm<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> malé a střední firmy, které chtějí obchod pod kontrolou — a zároveň zákaznická páteř, na které stojí všechny aplikace ATOMYS.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Kontakt</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>Příležitost</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Nabídka</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>Jednání &amp; úkoly</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Uzavření</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Péče &amp; opakovaný obchod</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Kontakty a firmy</b> s kompletní historií komunikace</li>
+        <li><b>Obchodní případy</b> — pipeline, fáze, pravděpodobnost, hodnota</li>
+        <li><b>Úkoly a kalendář</b> — nic nevyšumí, follow-up má termín</li>
+        <li><b>Nabídky a objednávky</b> navázané na případy</li>
+        <li><b>Segmentace a štítky</b> — hromadné e-mail / SMS akce</li>
+        <li><b>GDPR</b> — souhlasy a jejich evidence v základu</li>
+      </ul>
+      <div class="side">
+        <div class="card" style="border-color:color-mix(in srgb,var(--acc) 40%,transparent)"><h4>Původ</h4>
+          <p class="d" style="font-size:13.5px">Vychází z <b style="color:var(--text)">IC Office CRM</b> — léty prověřeného systému. Ověřená obchodní logika, nová webová architektura, moderní rozhraní a AI vrstva navrch.</p>
+        </div>
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>všechny produkty</b> jeden zákazník napříč — servis vidí, co řešil obchod; půjčovna zná zákazníka z bazaru</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 21 · mojeucetnictvi -->
+<section class="slide" id="mojeucetnictvi" data-title="mojeucetnictvi.eu" data-group="MŮJ & MOJE — obory" style="--acc:#2fd4b5">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">MOJE · back-office · finanční zázemí</span>
+        <h2 class="h-title">mojeucetnictvi<span class="tld">.eu</span></h2>
+      </div>
+      <span class="badge prep">V přípravě</span>
+    </div>
+    <p class="lead"><b>Pro koho:</b> OSVČ a malé firmy — a jako finanční zázemí pro všechny aplikace ATOMYS: každá vertikála fakturuje tudy.</p>
+    <div class="az">
+      <div class="az-cap">Celý proces <b>od A do Z</b></div>
+      <div class="az-rail">
+        <span class="az-step"><span class="lt">A</span>Doklad vznikne</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">B</span>AI vytěžení</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">C</span>Párování s bankou</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">D</span>DPH podklady</span><span class="az-sep">→</span>
+        <span class="az-step"><span class="lt">E</span>Přehledy &amp; cash-flow</span><span class="az-sep">→</span>
+        <span class="az-step zz"><span class="lt">Z</span>Export pro účetní</span>
+      </div>
+    </div>
+    <div class="p-body">
+      <ul class="feats">
+        <li><b>Fakturace</b> — vystavené i přijaté, šablony, automatické upomínky</li>
+        <li><b>Vyfoť účtenku</b> — AI ji vytěží, zařadí a připraví k zaúčtování</li>
+        <li><b>Banka</b> — napojení účtů, automatické párování plateb</li>
+        <li><b>DPH</b> — podklady pro přiznání a kontrolní hlášení</li>
+        <li><b>Cash-flow</b> — splatnosti, přehled, co přijde a co odejde</li>
+        <li><b>e-doklady</b> — ISDOC a UBL na jedno kliknutí</li>
+        <li><b>Export pro účetní</b> / daňového poradce</li>
+      </ul>
+      <div class="side">
+        <div class="card"><h4>V ekosystému</h4>
+          <div class="eco-links">
+            <span><b>všechny můj*/moje*</b> faktura ze zakázky, prodeje či výpůjčky končí tady</span>
+            <span><b>upravisdoc / upravubl</b> e-fakturační formáty</span>
+            <span><b>upravcsv</b> bankovní a datové exporty</span>
+          </div>
+        </div>
+        <p class="note"><b>Princip:</b> doklad se nikdy nepřepisuje ručně — vzniká v aplikaci, kde vznikla práce, a teče sem automaticky.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 22 · AI ORCHESTRATOR -->
+<section class="slide" id="orchestrator" data-title="AI Orchestrator" data-group="AI vrstva" style="--acc:#9d7bff">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">Pilíř 3 · Sdílená AI vrstva</span>
+        <h2 class="h-title">AI Orchestrator — <span class="grad-text">jeden mozek pro celý ekosystém.</span></h2>
+      </div>
+      <span class="badge dev">Ve vývoji</span>
+    </div>
+    <p class="lead">Centrální AI vrstva ATOMYS. Aplikace zůstávají jednoduché a oborové — inteligence je sdílená. Každá nová AI schopnost se objeví ve všech produktech najednou.</p>
+    <div class="grid3" style="margin-top:24px">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="4.5" cy="18" r="1.8"/><circle cx="19.5" cy="18" r="1.8"/><path d="M6.1 7.1l3.8 3M17.9 7.1l-3.8 3M6.1 16.9l3.8-3M17.9 16.9l-3.8-3"/></svg></div>
+        <h3>Orchestrace agentů</h3>
+        <p class="d">Přepis hlasu, vytěžování dokladů, rozpoznávání obrazu, generování textů — každou úlohu řeší specializovaný AI agent, orchestrátor je řídí a skládá výsledky.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M13 7l-3-3M13 7l-3 3M20 17h-9M11 17l3-3M11 17l3 3"/></svg></div>
+        <h3>Automatizace napříč aplikacemi</h3>
+        <p class="d">Událost v jedné aplikaci spouští kroky v dalších: dokončená zakázka → faktura → e-mail zákazníkovi → připomínka servisu za rok. Bez lidského zásahu.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M12 7v5l3 2"/><path d="M17 3l4 4-4 0z" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Přirozený jazyk nad daty</h3>
+        <p class="d">„Kolik jsme v červnu protočili na pneuhotelu?" Majitel se ptá lidsky a dostane odpověď hned — napříč všemi systémy, bez klikání v reportech.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="8" height="6" rx="1.5"/><rect x="13" y="13" width="8" height="6" rx="1.5"/><path d="M11 8h4a2 2 0 0 1 2 2v3M13 16H9a2 2 0 0 1-2-2v-3"/></svg></div>
+        <h3>Konektory na svět</h3>
+        <p class="d">Kamery, mikrofony, průtokoměry, e-mail, banka, inzertní portály. Orchestrator mluví se zařízeními i externími službami — aplikace to řešit nemusí.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.4 8.3-7 9.6C8.4 19.3 5 16 5 11V6z"/><path d="M12 8v4M12 15.5v.01"/></svg></div>
+        <h3>Kontrola nesrovnalostí</h3>
+        <p class="d">Porovnává realitu ze senzorů — olej, díly, čas — s tím, co je v evidenci. Rozdíl znamená upozornění majiteli, ne ztrátu, na kterou se přijde za půl roku.</p>
+      </div>
+      <div class="card" style="background:color-mix(in srgb,var(--acc) 7%,var(--surface-solid));border-color:color-mix(in srgb,var(--acc) 35%,transparent)">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 1 3 11.2c-.6.4-1 1-1 1.8v.5H10v-.5c0-.8-.4-1.4-1-1.8A6 6 0 0 1 12 3zM10 20h4M10.5 22h3"/></svg></div>
+        <h3>Proč to tak stavíme</h3>
+        <p class="d">Vertikály se soustředí na obor, Orchestrator na inteligenci. Jedna investice do AI slouží osmnácti produktům — to si žádný samostatný oborový systém dovolit nemůže.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 23 · AI ASISTENT — KONCEPT -->
+<section class="slide" id="asistent" data-title="AI Asistent — koncept" data-group="AI vrstva" style="--acc:#ffb648">
+  <div class="inner">
+    <div class="p-head">
+      <div>
+        <span class="eyebrow">Pilíř 4 · AI Asistent pro autoservisy</span>
+        <h2 class="h-title">Dílna, která si evidenci <span class="grad-text">vede sama.</span></h2>
+      </div>
+      <span class="badge dev">Ve vývoji · návrh pro 3 zvedáky</span>
+    </div>
+    <p class="lead">Hardwarová nadstavba nad mujautoservis.eu: kamery, senzory a hlasové ovládání přímo v dílně. Mechanik pracuje — systém zapisuje, fotí, měří a páruje vše k zakázce.</p>
+    <div class="p-body w12">
+      <div class="card">
+        <h4 style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Rozmístění zařízení v dílně</h4>
+        <ul class="legend">
+          <li><span class="n">1</span><div><b>Horní kamery na zvedácích</b><p>přehled na vozidlo, práci a prostor</p></div></li>
+          <li><span class="n">2</span><div><b>Boční kamery</b><p>druhý úhel — kola, práce mechanika</p></div></li>
+          <li><span class="n">3</span><div><b>Pracovní LED osvětlení</b><p>kvalitní světlo pro lidi i pro kamery</p></div></li>
+          <li><span class="n">4</span><div><b>Mobilní spodní kamera / vozík</b><p>fotky spodku vozidla — sdílené zařízení pro celou dílnu</p></div></li>
+          <li><span class="n">5</span><div><b>Kamera u vjezdu / SPZ</b><p>evidence příjezdu vozidla, načtení značky</p></div></li>
+          <li><span class="n">6</span><div><b>Fotostanice dílů</b><p>dokumentace nových a starých dílů</p></div></li>
+          <li><span class="n">7</span><div><b>AI server / úložiště</b><p>zpracování dat a AI analýza lokálně v dílně</p></div></li>
+          <li><span class="n">8</span><div><b>Olejový výdejní systém s měřením</b><p>přesné množství vydaného oleje ke každé zakázce</p></div></li>
+        </ul>
+      </div>
+      <div class="side">
+        <div class="card"><h4>Toky dat a kabeláž</h4>
+          <div class="eco-links">
+            <span><b>PoE síť</b> pevné kamery — napájení i data jedním kabelem</span>
+            <span><b>Datové propojení</b> fotostanice, olejový systém, server</span>
+            <span><b>Wi-Fi</b> mobilní spodní kamera a diktovací zařízení</span>
+            <span><b>Internet</b> jen pro vzdálený přístup a reporty — data zůstávají v dílně</span>
+          </div>
+        </div>
+        <p class="note"><b>Návrh pro 3 zvedáky:</b> každý zvedák má dvojici pevných kamer (horní přehled + boční úhel) a pracovní světlo. Spodní kamera, fotostanice a olejový systém jsou sdílené pro celou dílnu.</p>
+        <p class="note"><b>Modularita:</b> systém roste se servisem — další kamery, zvedáky a funkce lze přidávat podle potřeby.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 24 · AI ASISTENT — PROCES -->
+<section class="slide" id="asistent-proces" data-title="AI Asistent — proces zakázky" data-group="AI vrstva" style="--acc:#ffb648">
+  <div class="inner">
+    <span class="eyebrow">AI Asistent · průchod zakázky dílnou</span>
+    <h2 class="h-title">Od vjezdu po report — <span class="grad-text">bez jediného ručního zápisu.</span></h2>
+    <ol class="tl" style="margin-top:30px">
+      <li><b>Příjem vozidla</b><p>Kamera u vjezdu načte SPZ. Zákazník i vozidlo jsou přiřazeni k zakázce.</p></li>
+      <li><b>Zahájení práce</b><p>Kamery zaznamenají vozidlo na zvedáku. Mechanik načte zakázku (QR / RFID).</p></li>
+      <li><b>Fotky spodku</b><p>Mobilní kamera pořídí fotky spodku vozidla — úniky, koroze, stav dílů.</p></li>
+      <li><b>Díly — staré / nové</b><p>Každý díl je vyfocen, načten (kód / štítek) a přiřazen k zakázce.</p></li>
+      <li><b>Olej — měření</b><p>Výdej oleje je měřen a automaticky zapsán. Porovnání s běžnou kapacitou motoru.</p></li>
+      <li><b>Diktování práce</b><p>Mechanik diktuje provedené úkony (hlasem nebo tlačítkem). AI přepíše a přiřadí k zakázce.</p></li>
+      <li><b>Výstupy a reporty</b><p>Kompletní přehled: fotky, díly, olej, práce, normohodiny, čas, upozornění.</p></li>
+    </ol>
+    <div class="grid2" style="margin-top:26px">
+      <p class="note"><b>Pro zákazníka servisu:</b> doložená zakázka — fotky spodku a vyměněných dílů, změřený olej, přehled práce. Důvěra, kterou konkurence bez dat nenabídne.</p>
+      <p class="note"><b>Pro majitele servisu:</b> vidí dílnu odkudkoli — rozpracované zakázky, skutečný čas na vozidle, spotřebu materiálu a každou nesrovnalost hned, ne na konci měsíce.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 25 · AI ASISTENT — HW & ROZPOČET -->
+<section class="slide" id="asistent-hw" data-title="AI Asistent — hardware a rozpočet" data-group="AI vrstva" style="--acc:#ffb648">
+  <div class="inner">
+    <span class="eyebrow">AI Asistent · hardware a investice</span>
+    <h2 class="h-title">Reálný hardware, <span class="grad-text">spočítaná investice.</span></h2>
+    <div class="p-body w11" style="margin-top:18px">
+      <div class="card">
+        <h4 style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:12px">Orientační rozpočet — 3 zvedáky (vč. DPH)</h4>
+        <table class="tbl">
+          <thead><tr><th>Položka</th><th>Kč</th></tr></thead>
+          <tbody>
+            <tr><td>Kamery (pevné + vjezd + fotostanice)</td><td>30 000 – 55 000</td></tr>
+            <tr><td>Mobilní spodní kamera / vozík</td><td>10 000 – 20 000</td></tr>
+            <tr><td>AI server + úložiště</td><td>30 000 – 60 000</td></tr>
+            <tr><td>Síťové prvky, kabeláž, PoE</td><td>10 000 – 20 000</td></tr>
+            <tr><td>Mikrofony / diktování</td><td>3 000 – 8 000</td></tr>
+            <tr><td>Olejový výdejní systém s měřením</td><td>15 000 – 35 000</td></tr>
+            <tr><td>Ostatní (osvětlení, držáky, drobnosti)</td><td>10 000 – 20 000</td></tr>
+            <tr><td>Celkem orientačně</td><td>108 000 – 218 000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="side">
+        <div class="card"><h4>AI server — minimální doporučená konfigurace</h4>
+          <div class="eco-links">
+            <span><b>CPU</b> Intel i7 / AMD Ryzen 7 a vyšší</span>
+            <span><b>GPU</b> NVIDIA RTX 4060 / 4070 (AI akcelerace)</span>
+            <span><b>RAM</b> 32–64 GB</span>
+            <span><b>Úložiště</b> 2–4 TB NVMe (systém) + 8–16 TB (data)</span>
+            <span><b>Síť</b> 2× Gigabit LAN — oddělená síť kamer a provozu</span>
+            <span><b>OS</b> Linux (doporučeno)</span>
+          </div>
+        </div>
+        <div class="card"><h4>Použité technologie</h4>
+          <div class="chips">
+            <span class="chip">AI rozpoznávání dílů, závad a úniků</span>
+            <span class="chip">Značky / QR / RFID</span>
+            <span class="chip">Přepis řeči</span>
+            <span class="chip">Analytika práce a času</span>
+            <span class="chip">Upozornění na nesrovnalosti</span>
+            <span class="chip">Vzdálený přístup a reporty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h4 style="font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:10px">Výhody pro majitele servisu</h4>
+      <ul class="checks two">
+        <li>Přesná evidence práce a materiálu</li>
+        <li>Ochrana proti ztrátám a nesrovnalostem</li>
+        <li>Úspora času a administrativy</li>
+        <li>Přehledné reporty a historie zakázek</li>
+        <li>Lepší komunikace se zákazníkem</li>
+        <li>Data pro rozhodování a plánování</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 26 · SYNERGIE -->
+<section class="slide" id="synergie" data-title="Synergie ekosystému" data-group="Závěr" style="--acc:#2b8fff">
+  <div class="inner">
+    <span class="eyebrow">Synergie</span>
+    <h2 class="h-title">Jak vše hraje dohromady — <span class="grad-text">jedna zakázka, nula přepisování.</span></h2>
+    <p class="lead">Skutečná síla portfolia není v jednotlivých nástrojích, ale v tom, co se stane, když se potkají:</p>
+    <div class="flow">
+      <div class="fn" style="--acc:#ffb648"><small>AI Asistent</small><b>Vjezd do dílny</b><p>kamera načte SPZ</p></div>
+      <span class="fa">→</span>
+      <div class="fn" style="--acc:#2fd4b5"><small>mujautoservis</small><b>Zakázka</b><p>založena a přiřazena</p></div>
+      <span class="fa">→</span>
+      <div class="fn" style="--acc:#ffb648"><small>AI Asistent + Orchestrator</small><b>Sběr dat</b><p>fotky, díly, olej, diktování</p></div>
+      <span class="fa">→</span>
+      <div class="fn" style="--acc:#2fd4b5"><small>mojeucetnictvi</small><b>Faktura</b><p>vzniká ze zakázky</p></div>
+      <span class="fa">→</span>
+      <div class="fn" style="--acc:#2b8fff"><small>upravisdoc / upravubl</small><b>e-doklad</b><p>ISDOC / UBL výstup</p></div>
+      <span class="fa">→</span>
+      <div class="fn" style="--acc:#2fd4b5"><small>mujcrm</small><b>Historie &amp; péče</b><p>připomínka STK za rok</p></div>
+    </div>
+    <div class="grid2" style="margin-top:20px">
+      <p class="note"><b>Stejný vzorec platí všude:</b> bazar → dovozy → servis → účetnictví; půjčovna → vozový park → servis; obchod → účetnictví → CRM. Každý produkt je silný sám — a silnější v rodině.</p>
+      <div class="card" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:14px 16px">
+        <b style="font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-right:6px">Jednotný základ</b>
+        <span class="chip">Jeden účet</span><span class="chip">Jedna zákaznická data</span><span class="chip">Jeden design</span><span class="chip">Čeština first</span><span class="chip">EU hosting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 27 · ZÁVĚR -->
+<section class="slide titleslide" id="zaver" data-title="Závěr a kontakt" data-group="Závěr" style="--acc:#2b8fff">
+  <div class="inner">
+    <div class="mark-hero" style="width:clamp(96px,11vw,130px)"><span class="glow"></span>
+      <svg viewBox="38 30 348 302" role="img" aria-label="ATOMYS"><use href="#atomys-mark"/></svg>
+    </div>
+    <h1 style="font-size:clamp(28px,4vw,46px);letter-spacing:-.02em">Každý obor si zaslouží nástroj,<br>který mu rozumí <span class="grad-text">od A až do Z.</span></h1>
+    <div class="stats">
+      <div><div class="num silver">18</div><div class="lbl">projektů</div></div>
+      <div><div class="num silver">5</div><div class="lbl">dokumentových nástrojů</div></div>
+      <div><div class="num silver">11</div><div class="lbl">oborových systémů</div></div>
+      <div><div class="num silver">2</div><div class="lbl">AI vrstvy</div></div>
+    </div>
+    <div class="cta-row">
+      <a class="cm" href="https://atomys.eu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.7 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.7-3.9-9S9.5 5.6 12 3z"/></svg>atomys.eu</a>
+      <a class="cm" href="mailto:info@atomys.eu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>info@atomys.eu</a>
+      <a class="cm" href="tel:+420604964867"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>+420 604 964 867</a>
+    </div>
+    <div class="title-foot">ATOMYS · Inteligentní systémy pro řízení provozů · atomys.eu / atomys.cz</div>
+  </div>
+</section>
+
+</main>
+
+<!-- bottom bar -->
+<footer class="bar-bot">
+  <div class="ctr">
+    <button class="nav-btn" id="btnPrev" aria-label="Předchozí slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button class="counter" id="counter" aria-label="Otevřít obsah">1 / 27</button>
+    <button class="nav-btn" id="btnNext" aria-label="Další slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+  <span class="hint">← → listování · O obsah · kliknutím na počítadlo otevřete obsah</span>
+</footer>
+
+<!-- TOC overlay -->
+<div class="toc" id="toc" role="dialog" aria-modal="true" aria-label="Obsah prezentace">
+  <div class="toc-head">
+    <h2>Obsah</h2>
+    <button class="toc-close" id="tocClose" aria-label="Zavřít obsah"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="toc-groups" id="tocGroups"></div>
+</div>
+
+</div><!-- /deck-root -->
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var cur=0,N=slides.length;
+  var progress=document.getElementById('progress'),
+      counter=document.getElementById('counter'),
+      groupLbl=document.getElementById('groupLbl'),
+      toc=document.getElementById('toc'),
+      tocGroups=document.getElementById('tocGroups');
+
+  /* build TOC */
+  var groups={},order=[];
+  slides.forEach(function(s,i){
+    var g=s.dataset.group||'—';
+    if(!groups[g]){groups[g]=[];order.push(g);}
+    groups[g].push({i:i,t:s.dataset.title||('Slide '+(i+1))});
+  });
+  order.forEach(function(g){
+    var col=document.createElement('div');
+    var h=document.createElement('h3');h.textContent=g;col.appendChild(h);
+    groups[g].forEach(function(it){
+      var b=document.createElement('button');
+      b.innerHTML='<i>'+(it.i+1)+'</i><span>'+it.t+'</span>';
+      b.dataset.idx=it.i;
+      b.addEventListener('click',function(){go(it.i);closeToc();});
+      col.appendChild(b);
+    });
+    tocGroups.appendChild(col);
+  });
+
+  function go(i){
+    if(i<0)i=0; if(i>N-1)i=N-1;
+    if(i===cur && slides[i].classList.contains('active'))return;
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    cur=i;
+    var s=slides[i];
+    counter.textContent=(i+1)+' / '+N;
+    groupLbl.textContent=s.dataset.group||'';
+    groupLbl.style.setProperty('--acc',getComputedStyle(s).getPropertyValue('--acc'));
+    progress.style.width=(N>1?(i/(N-1))*100:100)+'%';
+    if(s.id){try{history.replaceState(null,'','#'+s.id);}catch(e){}}
+    s.scrollTop=0;
+    var tb=tocGroups.querySelectorAll('button');
+    tb.forEach(function(b){b.classList.toggle('cur',+b.dataset.idx===i);});
+  }
+  function next(){go(cur+1)} function prev(){go(cur-1)}
+  function openToc(){toc.classList.add('open')}
+  function closeToc(){toc.classList.remove('open')}
+
+  document.getElementById('btnNext').addEventListener('click',next);
+  document.getElementById('btnPrev').addEventListener('click',prev);
+  counter.addEventListener('click',openToc);
+  document.getElementById('tocClose').addEventListener('click',closeToc);
+  toc.addEventListener('click',function(e){if(e.target===toc)closeToc();});
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){closeToc();return;}
+    if(toc.classList.contains('open'))return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();next();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev();}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(N-1);}
+    else if(e.key==='o'||e.key==='O'){openToc();}
+  });
+
+  /* swipe */
+  var tx=null,ty=null;
+  document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(tx===null)return;
+    var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4){dx<0?next():prev();}
+    tx=ty=null;
+  },{passive:true});
+
+  /* deep link */
+  var start=0,h=(location.hash||'').replace('#','');
+  if(h){slides.forEach(function(s,i){if(s.id===h)start=i;});}
+  go(start);
+  window.addEventListener('hashchange',function(){
+    var hh=(location.hash||'').replace('#','');
+    slides.forEach(function(s,i){if(s.id===hh&&i!==cur)go(i);});
+  });
+})();
+</script>
+</body>
+</html>
