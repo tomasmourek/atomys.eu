@@ -1,2 +1,5 @@
 # Local dev only — not part of the published site
 .claude/
+
+# Worktrees zakladane Claude Code
+.claude/worktrees/
