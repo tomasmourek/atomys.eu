@@ -17,6 +17,7 @@ všude se zobrazí identicky. Prošlo nezávislou verifikací proti originálu
 | `atomys-logo.svg` | značka + nápis + tagline + světelná linka, průhledné pozadí — **jen na tmavé podklady** (text je bílý) | tmavé / fotografické podklady |
 | `atomys-logo-dark.svg` | totéž na tmavém pozadí (věrná kopie předlohy) | hlavička webu, prezentace, OG obrázky |
 | `atomys-logo-light.svg` | značka + grafitový nápis, bez linky; kov značky mírně ztmaven kvůli čitelnosti na bílé | světlé / bílé podklady |
+| `atomys-lockup-plochy.svg` | plochá jednobarevná značka a nápis bez gradientů, barva z textu (`currentColor`), symbol `#znacka`; převzato z design systému Atomys 2.0 (`assets/svg/logos`) | patička webu ve stylu Atomys 2.0 (světlý i tmavý motiv) |
 
 ## Jak použít
 

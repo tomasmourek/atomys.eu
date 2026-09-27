@@ -1,0 +1,6 @@
+Atomys Design Language 2.0.0
+Zdroj: github.com/tomasmourek/atomys-design-system, commit 9929f5a
+Převzato: 2026-09-27T08:16:41.906Z
+
+Tuto složku needitujte. Úpravy pro projekt patří do vlastního CSS mimo ni.
+Aktualizace: node <atomys-design-system>/tools/prevzit.mjs atomys

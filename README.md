@@ -1,34 +1,59 @@
 # ATOMYS — firemní web (atomys.eu / atomys.cz)
 
-Jednoduchý, moderní firemní rozcestník značky **ATOMYS**. Celý web je v jednom
-souboru `index.html` (HTML + CSS + JS pohromadě). Žádná databáze, žádné
-závislosti, žádné externí načítání (kvůli GDPR nepoužívá Google Fonts ani cizí
-CDN).
+Firemní rozcestník značky **ATOMYS**. Obsah, texty ve 13 jazycích a skript jsou
+v jednom souboru `index.html`; vzhled dává sjednocený styl **Atomys 2.0** ve složce
+`atomys/`. Žádná databáze, žádný build, žádné externí načítání (písma IBM Plex jsou
+ve složce `atomys/fonty`, web nepoužívá Google Fonts ani cizí CDN).
 
-**Hosting:** GitHub Pages (zdarma, včetně HTTPS) — repozitář
-[`tomasmourek/atomys.eu`](https://github.com/tomasmourek/atomys.eu).
+**Hosting:** GitHub Pages z větve `main` — repozitáře
+[`tomasmourek/atomys.eu`](https://github.com/tomasmourek/atomys.eu) a
+[`tomasmourek/atomys.cz`](https://github.com/tomasmourek/atomys.cz).
 **Doména + DNS:** Wedos.
 
 ## Co web obsahuje
-- Hero „Provoz pod kontrolou. Data, která rozhodují.“
-- Sekci **Naše systémy** se 4 produkty: Atomys Auto, Care, Retail, Vision
+- Úvod s větou o tom, co ATOMYS dělá, a přehledem systémů se stavem
+  (Atomys Auto v provozu s odkazem na mujautoservis.eu; Care, Retail a Vision ve vývoji)
 - Sekci **Proč ATOMYS** (Inteligence, Automatizace, Přehled, Bezpečnost)
-- Sekci **O nás / Kdo jsme** a **Kontakt** (e-mail + tlačítko „Napište nám“)
-- Přepínač **denní / noční režim**, plně responzivní
+- Sekci **Kdo jsme** a **Kontakt** (e-mail, telefon, tlačítko „Napište nám“)
+- Patičku s tiráží provozovatele a informací o úložišti v prohlížeči
+- Volbu jazyka (13 jazyků; výchozí podle domény: `.cz` česky, jinak anglicky)
+  a barevného motivu (systém, světlý, tmavý); plně responzivní od 320 px
+
+## Vzhled: styl Atomys 2.0
+- `<html data-area="atomys" data-vzhled="atomys" data-vzhled-pevny>`: web má pevný
+  vzhled Atomys a neutrální akcent oblasti `atomys`. Návštěvník si volí jen motiv.
+- Složka `atomys/` je převzatý balíček design systému
+  ([atomys-design-system](https://github.com/tomasmourek/atomys-design-system)).
+  **Needitovat ručně.** Aktualizace z kořene tohoto repozitáře:
+  ```bash
+  node <atomys-design-system>/tools/prevzit.mjs atomys
+  ```
+  Potom v `index.html` zvýšit `?v=` u odkazů na `atomys/` na novou verzi
+  (`atomys/VERZE`), aby prohlížeče nenačetly starý soubor z cache.
+- `.gitattributes` drží `atomys/**` bez převodu konců řádků (jinak by nesouhlasily
+  kontrolní součty v `atomys/manifest.json`).
+- Vlastní CSS webu je krátký blok `<style>` v `index.html` a používá jen proměnné `--at-*`.
+- Plochá jednobarevná značka v patičce: `atomys-brand/atomys-lockup-plochy.svg`.
+- Kontrola stylu: `node <atomys-design-system>/tools/kontrola-stylu.mjs .`
+
+## Dva repozitáře, jeden obsah
+`atomys.cz` a `atomys.eu` mají **stejný** `index.html`, `atomys/`, `atomys-brand/`,
+`og.png`, `.gitattributes` a tento README. Liší se jen `CNAME`, `robots.txt` a
+`sitemap.xml` (vlastní doména) a `atomys.eu` má navíc prezentaci `prezentace/`.
+Každou změnu obsahu proto udělejte v obou repozitářích stejně. Kanonickou adresu a
+`og:url` nastaví skript podle domény, na které stránka běží.
+
+## Úložiště v prohlížeči
+Web nenastavuje cookies a nemá analytiku. Do `localStorage` zapisuje jen po změně
+uživatelem: `atomys-lang` (zvolený jazyk) a `atomys-theme` (zvolený motiv; klíč převzatý
+z předchozí verze webu atributem `data-klic-motiv`). Tentýž popis je v patičce webu.
 
 ---
 
-## Jak web funguje / jak ho aktualizovat
+## Jak web aktualizovat
 
-Web je nasazený přes **GitHub Pages** z větve `main`. Cokoli commitneš do
-`index.html` a pushneš, se do ~1 minuty automaticky projeví na webu.
-
-```bash
-# úprava obsahu
-git add index.html
-git commit -m "úprava textu"
-git push
-```
+Web je nasazený přes **GitHub Pages** z větve `main`. Commit do `main` se do ~1 minuty
+projeví na webu. Úpravy dělejte na pracovní větvi a do `main` slučujte až po kontrole.
 
 Živá adresa (než se napojí doména): <https://tomasmourek.github.io/atomys.eu/>
 
@@ -70,21 +95,22 @@ přesměrovat** (ve Wedos nastavení domény / přesměrování) — kvůli SEO 
 obsah). Případně lze stejné DNS záznamy nastavit i pro atomys.cz a v Pages přidat
 druhou custom doménu.
 
+### Známý problém: HTTPS
+Podle plánu převzetí stylu nefunguje HTTPS na vlastních doménách (certifikát GitHub
+Pages). Řeší ho samostatná úloha; změna vzhledu na něj nemá vliv a v jejím rámci se
+neověřovalo.
+
 ---
 
 ## Než web „vypustíš“ — doplň reálné údaje
-1. **Kontaktní e-mail** — nyní `info@atomys.eu` (sekce Kontakt + patička).
-2. **Telefon** — připravený zakomentovaný v sekci Kontakt (`<!-- Telefon… -->`).
-3. **Odkazy produktů** — Atomys Auto → `mujautoservis.eu`; Care/Retail/Vision
-   mají štítek „Připravujeme“, odkaz doplníš, až budou live.
-4. **IČO / sídlo** — volitelně do patičky.
+1. **Tiráž v patičce** — nahradit zástupné hodnoty `[doplnit: obchodní firma]`,
+   `[doplnit: IČO]`, `[doplnit: DIČ]`, `[doplnit: sídlo]`, `[doplnit: zápis v OR]`
+   (v `index.html`, v obou repozitářích).
+2. **Kontakt** — nyní `info@atomys.eu` a `+420 604 964 867` (sekce Kontakt a patička).
+3. **Odkazy produktů** — Atomys Auto → `mujautoservis.eu`; Care, Retail a Vision mají
+   stav „Ve vývoji“ bez odkazu, odkaz doplníš, až budou v provozu.
+4. **Tvrzení v textech** — „Provoz 24/7“ a „v souladu s pravidly“ ponechány z předchozí
+   verze; před zveřejněním ověřit, že odpovídají skutečnosti.
 
 ## Volitelná vylepšení
-- **Vlastní geometrické písmo** (self-hosted, GDPR-clean) pro přesnější match
-  s brand fontem — např. Michroma / Orbitron / Space Grotesk přes `@font-face`.
 - **Sekce Reference** — až budou reálné reference od zákazníků (žádné vymyšlené).
-
-## Poznámka ke kvalitě
-Web prošel kontrolou přístupnosti (WCAG AA kontrast v obou režimech, klávesová
-navigace, struktura nadpisů), responzivity (mobil 360 px → desktop, bez
-vodorovného posuvníku) a české typografie (pomlčky, nedělitelné mezery).
