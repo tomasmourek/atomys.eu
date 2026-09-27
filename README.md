@@ -13,15 +13,17 @@ ve složce `atomys/fonty`, web nepoužívá Google Fonts ani cizí CDN).
 ## Co web obsahuje
 - Úvod s větou o tom, co ATOMYS dělá, a přehledem systémů se stavem
   (Atomys Auto v provozu s odkazem na mujautoservis.eu; Care, Retail a Vision ve vývoji)
-- Sekci **Proč ATOMYS** (Inteligence, Automatizace, Přehled, Bezpečnost)
-- Sekci **Kdo jsme** a **Kontakt** (e-mail, telefon, tlačítko „Napište nám“)
+- Tlačítko „Napište nám“ (e-mail s předvyplněným předmětem) pod přehledem systémů
+- Sekci **O nás** (krátký odstavec o vlastním vývoji) a **Kontakt** (e-mail, telefon)
 - Patičku s tiráží provozovatele a informací o úložišti v prohlížeči
 - Volbu jazyka (13 jazyků; výchozí podle domény: `.cz` česky, jinak anglicky)
   a barevného motivu (systém, světlý, tmavý); plně responzivní od 320 px
 
 ## Vzhled: styl Atomys 2.0
-- `<html data-area="atomys" data-vzhled="atomys" data-vzhled-pevny>`: web má pevný
-  vzhled Atomys a neutrální akcent oblasti `atomys`. Návštěvník si volí jen motiv.
+- `<html data-area="atomys" data-vzhled="tiskopis" data-vzhled-pevny>`: web produktu má
+  podle pravidel design systému (PRAVIDLA.md, oddíl 1) pevný vzhled Tiskopis a neutrální
+  akcent oblasti `atomys`. Návštěvník si volí jen motiv; barvu lišty mobilního prohlížeče
+  (`meta theme-color`) skript sladí se zvoleným motivem.
 - Složka `atomys/` je převzatý balíček design systému
   ([atomys-design-system](https://github.com/tomasmourek/atomys-design-system)).
   **Needitovat ručně.** Aktualizace z kořene tohoto repozitáře:
@@ -103,14 +105,17 @@ neověřovalo.
 ---
 
 ## Než web „vypustíš“ — doplň reálné údaje
+Větev se změnou vzhledu do `main` neslučujte, dokud není hotový bod 1: `main` se nasazuje
+automaticky a zástupné hodnoty by se zveřejnily ve všech 13 jazycích.
+
 1. **Tiráž v patičce** — nahradit zástupné hodnoty `[doplnit: obchodní firma]`,
    `[doplnit: IČO]`, `[doplnit: DIČ]`, `[doplnit: sídlo]`, `[doplnit: zápis v OR]`
    (v `index.html`, v obou repozitářích).
 2. **Kontakt** — nyní `info@atomys.eu` a `+420 604 964 867` (sekce Kontakt a patička).
 3. **Odkazy produktů** — Atomys Auto → `mujautoservis.eu`; Care, Retail a Vision mají
    stav „Ve vývoji“ bez odkazu, odkaz doplníš, až budou v provozu.
-4. **Tvrzení v textech** — „Provoz 24/7“ a „v souladu s pravidly“ ponechány z předchozí
-   verze; před zveřejněním ověřit, že odpovídají skutečnosti.
+4. **Tvrzení v textech** — neověřená tvrzení „Provoz 24/7“ a „v souladu s pravidly“ byla
+   odstraněna. Nové tvrzení (dostupnost, certifikace, lhůty) přidávejte jen doložené.
 
 ## Volitelná vylepšení
 - **Sekce Reference** — až budou reálné reference od zákazníků (žádné vymyšlené).

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-area="atomys" data-vzhled="atomys" data-vzhled-pevny>
+<html lang="en" data-area="atomys" data-vzhled="tiskopis" data-vzhled-pevny>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,15 +8,16 @@
       name="description"
       content="ATOMYS builds intelligent systems for auto repair shops, senior care homes, retail and modern operations. Data that drives decisions – operations under control."
     />
-    <!-- Barva lišty vzhledu Atomys (--at-bar) pro světlý a tmavý motiv systému. -->
+    <!-- Barva lišty vzhledu Tiskopis (--at-bar) pro světlý a tmavý motiv systému.
+     Když návštěvník zvolí motiv sám, přepíše ji skript na konci stránky. -->
     <meta
       name="theme-color"
-      content="#DEE4EB"
+      content="#FFFFFF"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#0E1520"
+      content="#1E232A"
       media="(prefers-color-scheme: dark)"
     />
     <meta name="author" content="ATOMYS" />
@@ -60,8 +61,9 @@
     />
 
     <!-- Styl Atomys 2.0 (složka atomys/ převzatá nástrojem prevzit.mjs, needitovat).
-     Web má pevný vzhled Atomys (data-vzhled-pevny): volbu vzhledu ani hustoty z prohlížeče
-     nepřebírá, nabízí jen barevný motiv. Dosavadní uložený motiv převezme data-klic-motiv. -->
+     Web má pevný vzhled Tiskopis (data-vzhled-pevny, PRAVIDLA oddíl 1): volbu vzhledu ani
+     hustoty z prohlížeče nepřebírá, nabízí jen barevný motiv. Dosavadní uložený motiv
+     převezme data-klic-motiv. -->
     <script
       src="atomys/vzhled.js?v=2.0.0"
       data-klic-motiv="atomys-theme"
@@ -88,7 +90,7 @@
     </style>
 
     <style>
-      /* Výčet vlastností: dvojice název a popis v mřížce, bez karet a ikon. Jen tokeny --at-*. */
+      /* Kontaktní údaje: dvojice název a hodnota v mřížce, bez karet a ikon. Jen tokeny --at-*. */
       .web-vycet {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
@@ -115,21 +117,21 @@
         color: var(--at-ink);
         overflow-wrap: anywhere;
       }
-      /* Zaměření značky jako prostý výčet v řádku, bez pilulek. */
-      .web-zamereni {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 0 var(--at-space-6);
-        padding: 0;
-        list-style: none;
-        color: var(--at-ink-soft);
+      /* Samostatné odkazy na e-mail a telefon: cíl vysoký jako ovladač v dané hustotě
+         (PRAVIDLA oddíl 7), stejně jako odkazy v .at-table. Neviditelná plocha na střed
+         odkazu, řádek tím neroste. */
+      .web-vycet dd a,
+      .at-paticka__tiraz a {
+        position: relative;
       }
-      /* Oddělovač za položkou, aby při zalomení nezačínal řádek tečkou. */
-      .web-zamereni li:not(:last-child)::after {
-        content: "·";
-        content: "·" / "";
-        margin-inline: var(--at-space-2);
-        color: var(--at-muted);
+      .web-vycet dd a::after,
+      .at-paticka__tiraz a::after {
+        content: "";
+        position: absolute;
+        inset: 50% auto auto 50%;
+        inline-size: max(100%, var(--at-control-height));
+        block-size: max(100%, var(--at-control-height));
+        translate: -50% -50%;
       }
       .web-rejstrik-odkaz {
         display: inline-flex;
@@ -161,7 +163,6 @@
           >
             <ul>
               <li><a href="#produkty" data-i18n="nav.products">Products</a></li>
-              <li><a href="#proc" data-i18n="nav.why">Why ATOMYS</a></li>
               <li><a href="#o-nas" data-i18n="nav.about">About</a></li>
             </ul>
           </nav>
@@ -348,88 +349,19 @@
         </div>
       </section>
 
-      <section class="at-web-sekce" id="proc" aria-labelledby="proc-nazev">
-        <div class="at-web-sekce__hlava">
-          <h2 id="proc-nazev" data-i18n="why.title">
-            Four principles we build on.
-          </h2>
-        </div>
-        <dl class="web-vycet">
-          <div>
-            <dt data-i18n="feat.intel.t">Intelligence</dt>
-            <dd data-i18n="feat.intel.d">
-              We turn operational data into a basis for decisions.
-            </dd>
-          </div>
-          <div>
-            <dt data-i18n="feat.auto.t">Automation</dt>
-            <dd data-i18n="feat.auto.d">
-              We automate the routine, save time and cost, and let people focus
-              on what matters.
-            </dd>
-          </div>
-          <div>
-            <dt data-i18n="feat.over.t">Overview</dt>
-            <dd data-i18n="feat.over.d">
-              You see the key information about your operations clearly and up
-              to date.
-            </dd>
-          </div>
-          <div>
-            <dt data-i18n="feat.sec.t">Security</dt>
-            <dd data-i18n="feat.sec.d">
-              Your data is safe – we run it responsibly and in line with the
-              rules.
-            </dd>
-          </div>
-        </dl>
-      </section>
-
       <section class="at-web-sekce" id="o-nas" aria-labelledby="o-nas-nazev">
         <div class="at-web-sekce__hlava">
-          <h2 id="o-nas-nazev" data-i18n="about.title">Who we are</h2>
+          <h2 id="o-nas-nazev" data-i18n="about.title">
+            We develop our systems in-house in Czechia
+          </h2>
         </div>
         <div class="at-text-max">
           <p data-i18n-html="about.p1">
             <strong>ATOMYS</strong> brings together a family of software systems
-            for the everyday operations of businesses. We don’t focus on a
-            single industry – we build tools for auto repair shops, senior care
-            homes, retail and modern operations, united by one need: to keep
-            everything under control.
-          </p>
-          <p data-i18n="about.p2">
-            Our goal is software that makes work easier: clear, fast and built
-            on data you can trust. We solve every product in depth – from
-            bookings and inventory to invoicing and analytics.
+            for the everyday operations of businesses. We write the code
+            ourselves, so we understand the systems down to the last line.
           </p>
         </div>
-        <ul class="web-zamereni">
-          <li data-i18n="about.pill1">Software tailored to operations</li>
-          <li data-i18n="about.pill2">Data &amp; automation</li>
-          <li data-i18n="about.pill3">Developed in Czechia</li>
-          <li data-i18n="about.pill4">Long-term support</li>
-        </ul>
-        <dl class="web-vycet">
-          <div>
-            <dt data-i18n="about.panel1t">In-house development</dt>
-            <dd data-i18n="about.panel1d">
-              We build our systems ourselves, so we understand them down to the
-              last line.
-            </dd>
-          </div>
-          <div>
-            <dt data-i18n="about.panel2t">24/7 operation</dt>
-            <dd data-i18n="about.panel2d">
-              Our systems run non-stop – just like the operations they serve.
-            </dd>
-          </div>
-          <div>
-            <dt data-i18n="about.panel3t">Safe and reliable</dt>
-            <dd data-i18n="about.panel3d">
-              We host data responsibly, with respect for privacy and stability.
-            </dd>
-          </div>
-        </dl>
       </section>
 
       <section
@@ -439,11 +371,11 @@
       >
         <div class="at-web-sekce__hlava">
           <h2 id="kontakt-nazev" data-i18n="contact.title">
-            Let’s bring your operations under control.
+            Enquiries and questions about ATOMYS systems
           </h2>
           <p data-i18n="contact.p">
-            Do you run an operation that deserves a smarter system? Write to us
-            – we’ll be glad to discuss how ATOMYS can help.
+            Tell us what operation you run and what you need from the system,
+            or give us a call.
           </p>
         </div>
         <dl class="web-vycet">
@@ -530,15 +462,34 @@
           y.textContent = new Date().getFullYear();
         }
 
-        /* ---------- barevný motiv (vzhled.js; vzhled Atomys je pevný) ---------- */
+        /* ---------- barevný motiv (vzhled.js; vzhled Tiskopis je pevný) ---------- */
         var motiv = document.getElementById("motiv");
+        /* Lišta mobilního prohlížeče: meta theme-color v hlavičce sleduje jen motiv systému.
+           Při zvoleném motivu dostane barvu hlavičky stránky, u motivu systému původní hodnoty. */
+        var barvyListy = document.querySelectorAll('meta[name="theme-color"]');
+        var puvodniBarvyListy = [];
+        barvyListy.forEach(function (m) {
+          puvodniBarvyListy.push(m.getAttribute("content"));
+        });
+        function nastavBarvuListy(stav) {
+          var hlavicka = document.querySelector(".at-web-hlavicka");
+          var barva =
+            stav.motiv !== "system" && hlavicka
+              ? getComputedStyle(hlavicka).backgroundColor
+              : null;
+          barvyListy.forEach(function (m, i) {
+            m.setAttribute("content", barva || puvodniBarvyListy[i]);
+          });
+        }
         if (motiv && window.atomysVzhled) {
           motiv.value = atomysVzhled.stav().motiv;
+          nastavBarvuListy(atomysVzhled.stav());
           motiv.addEventListener("change", function () {
             atomysVzhled.nastavit({ motiv: motiv.value });
           });
           document.addEventListener("atomys:vzhled", function (e) {
             motiv.value = e.detail.motiv;
+            nastavBarvuListy(e.detail);
           });
         }
 
@@ -551,7 +502,6 @@
             "nav.menu": "Nabídka",
             "nav.label": "Hlavní navigace",
             "nav.products": "Produkty",
-            "nav.why": "Proč ATOMYS",
             "nav.about": "O\u00a0nás",
             "nav.cta": "Kontaktujte nás",
             "switcher.aria": "Vybrat jazyk",
@@ -574,30 +524,10 @@
             "status.indev": "Ve vývoji",
             "contact.btn": "Napište nám",
             "contact.mailsubject": "Poptávka – ATOMYS",
-            "why.title": "Čtyři principy, na kterých stavíme.",
-            "feat.intel.t": "Inteligence",
-            "feat.intel.d": "Z\u00a0provozních dat připravujeme podklady pro rozhodování.",
-            "feat.auto.t": "Automatizace",
-            "feat.auto.d": "Automatizujeme rutinu, šetříme čas i\u00a0náklady a\u00a0necháváme lidi dělat to podstatné.",
-            "feat.over.t": "Přehled",
-            "feat.over.d": "Důležité informace o\u00a0provozu vidíte přehledně a\u00a0aktuálně.",
-            "feat.sec.t": "Bezpečnost",
-            "feat.sec.d": "Vaše data jsou v\u00a0bezpečí – provozujeme je zodpovědně a\u00a0v\u00a0souladu s\u00a0pravidly.",
-            "about.title": "Kdo jsme",
-            "about.p1": "<strong>ATOMYS</strong> zastřešuje rodinu softwarových systémů pro každodenní provoz firem. Nezaměřujeme se na jedno odvětví – stavíme nástroje pro autoservisy, domovy pro seniory, maloobchod i\u00a0moderní provozy, které spojuje jedna potřeba: mít vše pod kontrolou.",
-            "about.p2": "Naším cílem je software, který práci ulehčuje: přehledný, rychlý a\u00a0postavený na datech, kterým se dá věřit. Každý produkt řešíme do hloubky – od rezervací a\u00a0skladu až po fakturaci a\u00a0analýzu.",
-            "about.pill1": "Software na míru provozu",
-            "about.pill2": "Data a\u00a0automatizace",
-            "about.pill3": "Vývoj v\u00a0Česku",
-            "about.pill4": "Dlouhodobá podpora",
-            "about.panel1t": "Vlastní vývoj",
-            "about.panel1d": "Systémy vyvíjíme vlastními silami, takže jim rozumíme do posledního řádku.",
-            "about.panel2t": "Provoz 24/7",
-            "about.panel2d": "Naše systémy běží nepřetržitě – stejně jako provozy, kterým slouží.",
-            "about.panel3t": "Bezpečné a\u00a0spolehlivé",
-            "about.panel3d": "Data hostujeme zodpovědně, s\u00a0ohledem na soukromí a\u00a0stabilitu.",
-            "contact.title": "Pojďme dostat váš provoz pod kontrolu.",
-            "contact.p": "Máte provoz, který by si zasloužil chytřejší systém? Napište nám – rádi probereme, jak vám ATOMYS může pomoci.",
+            "about.title": "Systémy vyvíjíme vlastními silami v Česku",
+            "about.p1": "<strong>ATOMYS</strong> zastřešuje rodinu softwarových systémů pro každodenní provoz firem. Kód píšeme sami, takže systémům rozumíme do posledního řádku.",
+            "contact.title": "Poptávky a dotazy k systémům ATOMYS",
+            "contact.p": "Napište nám, jaký provoz řídíte a co od systému potřebujete, nebo zavolejte.",
             "contact.email": "E-mail",
             "contact.phone": "Telefon",
             "hero.tagline": "Inteligentní systémy pro řízení provozu",
@@ -614,7 +544,6 @@
             "nav.menu": "Menu",
             "nav.label": "Main navigation",
             "nav.products": "Products",
-            "nav.why": "Why ATOMYS",
             "nav.about": "About",
             "nav.cta": "Contact us",
             "switcher.aria": "Choose language",
@@ -637,30 +566,10 @@
             "status.indev": "In development",
             "contact.btn": "Write to us",
             "contact.mailsubject": "Inquiry – ATOMYS",
-            "why.title": "Four principles we build on.",
-            "feat.intel.t": "Intelligence",
-            "feat.intel.d": "We turn operational data into a basis for decisions.",
-            "feat.auto.t": "Automation",
-            "feat.auto.d": "We automate the routine, save time and cost, and let people focus on what matters.",
-            "feat.over.t": "Overview",
-            "feat.over.d": "You see the key information about your operations clearly and up to date.",
-            "feat.sec.t": "Security",
-            "feat.sec.d": "Your data is safe – we run it responsibly and in line with the rules.",
-            "about.title": "Who we are",
-            "about.p1": "<strong>ATOMYS</strong> brings together a family of software systems for the everyday operations of businesses. We don’t focus on a single industry – we build tools for auto repair shops, senior care homes, retail and modern operations, united by one need: to keep everything under control.",
-            "about.p2": "Our goal is software that makes work easier: clear, fast and built on data you can trust. We solve every product in depth – from bookings and inventory to invoicing and analytics.",
-            "about.pill1": "Software tailored to operations",
-            "about.pill2": "Data & automation",
-            "about.pill3": "Developed in Czechia",
-            "about.pill4": "Long-term support",
-            "about.panel1t": "In-house development",
-            "about.panel1d": "We build our systems ourselves, so we understand them down to the last line.",
-            "about.panel2t": "24/7 operation",
-            "about.panel2d": "Our systems run non-stop – just like the operations they serve.",
-            "about.panel3t": "Safe and reliable",
-            "about.panel3d": "We host data responsibly, with respect for privacy and stability.",
-            "contact.title": "Let’s bring your operations under control.",
-            "contact.p": "Do you run an operation that deserves a smarter system? Write to us – we’ll be glad to discuss how ATOMYS can help.",
+            "about.title": "We develop our systems in-house in Czechia",
+            "about.p1": "<strong>ATOMYS</strong> brings together a family of software systems for the everyday operations of businesses. We write the code ourselves, so we understand the systems down to the last line.",
+            "contact.title": "Enquiries and questions about ATOMYS systems",
+            "contact.p": "Tell us what operation you run and what you need from the system, or give us a call.",
             "contact.email": "Email",
             "contact.phone": "Phone",
             "hero.tagline": "Intelligent systems for operations management",
@@ -677,7 +586,6 @@
             "nav.menu": "Menü",
             "nav.label": "Hauptnavigation",
             "nav.products": "Produkte",
-            "nav.why": "Warum ATOMYS",
             "nav.about": "Über uns",
             "nav.cta": "Kontakt aufnehmen",
             "switcher.aria": "Sprache wählen",
@@ -700,30 +608,10 @@
             "status.indev": "In Entwicklung",
             "contact.btn": "Schreiben Sie uns",
             "contact.mailsubject": "Anfrage – ATOMYS",
-            "why.title": "Vier Prinzipien, auf die wir bauen.",
-            "feat.intel.t": "Intelligenz",
-            "feat.intel.d": "Aus Betriebsdaten erstellen wir Grundlagen für Entscheidungen.",
-            "feat.auto.t": "Automatisierung",
-            "feat.auto.d": "Wir automatisieren die Routine, sparen Zeit und Kosten und lassen die Menschen sich auf das Wesentliche konzentrieren.",
-            "feat.over.t": "Überblick",
-            "feat.over.d": "Die wichtigen Informationen zu Ihrem Betrieb sehen Sie übersichtlich und aktuell.",
-            "feat.sec.t": "Sicherheit",
-            "feat.sec.d": "Ihre Daten sind sicher – wir betreiben sie verantwortungsvoll und regelkonform.",
-            "about.title": "Wer wir sind",
-            "about.p1": "<strong>ATOMYS</strong> vereint eine Familie von Softwaresystemen für den täglichen Betrieb von Unternehmen. Wir konzentrieren uns nicht auf eine einzige Branche – wir entwickeln Werkzeuge für Autowerkstätten, Seniorenheime, den Einzelhandel und moderne Betriebe, die eine Notwendigkeit verbindet: alles unter Kontrolle zu haben.",
-            "about.p2": "Unser Ziel ist Software, die die Arbeit erleichtert: übersichtlich, schnell und auf Daten gebaut, denen man vertrauen kann. Jedes Produkt durchdenken wir bis ins Detail – von Terminbuchung und Lager bis hin zu Rechnungsstellung und Analyse.",
-            "about.pill1": "Software maßgeschneidert für den Betrieb",
-            "about.pill2": "Daten & Automatisierung",
-            "about.pill3": "Entwickelt in Tschechien",
-            "about.pill4": "Langfristiger Support",
-            "about.panel1t": "Eigenentwicklung",
-            "about.panel1d": "Wir entwickeln unsere Systeme selbst und verstehen sie deshalb bis zur letzten Zeile.",
-            "about.panel2t": "24/7-Betrieb",
-            "about.panel2d": "Unsere Systeme laufen ununterbrochen – genau wie die Betriebe, denen sie dienen.",
-            "about.panel3t": "Sicher und zuverlässig",
-            "about.panel3d": "Wir hosten Daten verantwortungsvoll – mit Rücksicht auf Datenschutz und Stabilität.",
-            "contact.title": "Bringen wir Ihren Betrieb unter Kontrolle.",
-            "contact.p": "Führen Sie einen Betrieb, der ein intelligenteres System verdient? Schreiben Sie uns – wir besprechen gern, wie ATOMYS helfen kann.",
+            "about.title": "Unsere Systeme entwickeln wir selbst in Tschechien",
+            "about.p1": "<strong>ATOMYS</strong> vereint eine Familie von Softwaresystemen für den täglichen Betrieb von Unternehmen. Den Code schreiben wir selbst und verstehen die Systeme deshalb bis zur letzten Zeile.",
+            "contact.title": "Anfragen und Fragen zu den ATOMYS-Systemen",
+            "contact.p": "Schreiben Sie uns, welchen Betrieb Sie führen und was Sie vom System brauchen, oder rufen Sie uns an.",
             "contact.email": "E-Mail",
             "contact.phone": "Telefon",
             "hero.tagline": "Intelligente Systeme für das Betriebsmanagement",
@@ -740,7 +628,6 @@
             "nav.menu": "Ponuka",
             "nav.label": "Hlavná navigácia",
             "nav.products": "Produkty",
-            "nav.why": "Prečo ATOMYS",
             "nav.about": "O\u00a0nás",
             "nav.cta": "Kontaktujte nás",
             "switcher.aria": "Vybrať jazyk",
@@ -763,30 +650,10 @@
             "status.indev": "Vo vývoji",
             "contact.btn": "Napíšte nám",
             "contact.mailsubject": "Dopyt – ATOMYS",
-            "why.title": "Štyri princípy, na ktorých staviame.",
-            "feat.intel.t": "Inteligencia",
-            "feat.intel.d": "Z\u00a0prevádzkových dát pripravujeme podklady na rozhodovanie.",
-            "feat.auto.t": "Automatizácia",
-            "feat.auto.d": "Automatizujeme rutinu, šetríme čas aj náklady a\u00a0necháme ľudí robiť to podstatné.",
-            "feat.over.t": "Prehľad",
-            "feat.over.d": "Dôležité informácie o\u00a0prevádzke vidíte prehľadne a\u00a0aktuálne.",
-            "feat.sec.t": "Bezpečnosť",
-            "feat.sec.d": "Vaše dáta sú v\u00a0bezpečí – prevádzkujeme ich zodpovedne a\u00a0v\u00a0súlade s\u00a0pravidlami.",
-            "about.title": "Kto sme",
-            "about.p1": "<strong>ATOMYS</strong> zastrešuje rodinu softvérových systémov pre každodennú prevádzku firiem. Nezameriavame sa na jedno odvetvie – staviame nástroje pre autoservisy, domovy pre seniorov, maloobchod aj moderné prevádzky, ktoré spája jedna potreba: mať všetko pod kontrolou.",
-            "about.p2": "Naším cieľom je softvér, ktorý prácu uľahčuje: prehľadný, rýchly a\u00a0postavený na dátach, ktorým sa dá veriť. Každý produkt riešime do hĺbky – od rezervácií a\u00a0skladu až po fakturáciu a\u00a0analýzu.",
-            "about.pill1": "Softvér na mieru prevádzky",
-            "about.pill2": "Dáta a\u00a0automatizácia",
-            "about.pill3": "Vývoj v\u00a0Česku",
-            "about.pill4": "Dlhodobá podpora",
-            "about.panel1t": "Vlastný vývoj",
-            "about.panel1d": "Systémy vyvíjame vlastnými silami, takže im rozumieme do posledného riadka.",
-            "about.panel2t": "Prevádzka 24/7",
-            "about.panel2d": "Naše systémy bežia nepretržite – rovnako ako prevádzky, ktorým slúžia.",
-            "about.panel3t": "Bezpečné a\u00a0spoľahlivé",
-            "about.panel3d": "Dáta hostujeme zodpovedne, s\u00a0ohľadom na súkromie a\u00a0stabilitu.",
-            "contact.title": "Dostaňme vašu prevádzku pod kontrolu.",
-            "contact.p": "Prevádzkujete podnik, ktorý by si zaslúžil inteligentnejší systém? Napíšte nám – radi preberieme, ako vám ATOMYS môže pomôcť.",
+            "about.title": "Systémy vyvíjame vlastnými silami v Česku",
+            "about.p1": "<strong>ATOMYS</strong> zastrešuje rodinu softvérových systémov pre každodennú prevádzku firiem. Kód píšeme sami, takže systémom rozumieme do posledného riadka.",
+            "contact.title": "Dopyty a otázky k systémom ATOMYS",
+            "contact.p": "Napíšte nám, akú prevádzku riadite a čo od systému potrebujete, alebo zavolajte.",
             "contact.email": "E-mail",
             "contact.phone": "Telefón",
             "hero.tagline": "Inteligentné systémy na riadenie prevádzky",
@@ -803,7 +670,6 @@
             "nav.menu": "Menu",
             "nav.label": "Nawigacja główna",
             "nav.products": "Produkty",
-            "nav.why": "Dlaczego ATOMYS",
             "nav.about": "O nas",
             "nav.cta": "Skontaktuj się z nami",
             "switcher.aria": "Wybierz język",
@@ -826,30 +692,10 @@
             "status.indev": "W rozwoju",
             "contact.btn": "Napisz do nas",
             "contact.mailsubject": "Zapytanie – ATOMYS",
-            "why.title": "Cztery zasady, na których budujemy.",
-            "feat.intel.t": "Inteligencja",
-            "feat.intel.d": "Z danych operacyjnych przygotowujemy podstawy do podejmowania decyzji.",
-            "feat.auto.t": "Automatyzacja",
-            "feat.auto.d": "Automatyzujemy rutynę, oszczędzamy czas i koszty, a ludziom pozwalamy skupić się na tym, co ważne.",
-            "feat.over.t": "Przegląd",
-            "feat.over.d": "Ważne informacje o działalności widzisz przejrzyście i na bieżąco.",
-            "feat.sec.t": "Bezpieczeństwo",
-            "feat.sec.d": "Twoje dane są bezpieczne – zarządzamy nimi odpowiedzialnie i zgodnie z przepisami.",
-            "about.title": "Kim jesteśmy",
-            "about.p1": "<strong>ATOMYS</strong> spaja rodzinę systemów informatycznych dla codziennej działalności firm. Nie skupiamy się na jednej branży – tworzymy narzędzia dla warsztatów samochodowych, domów opieki dla seniorów, handlu detalicznego i nowoczesnych zakładów, które łączy jedna potrzeba: mieć wszystko pod kontrolą.",
-            "about.p2": "Naszym celem jest oprogramowanie, które ułatwia pracę: przejrzyste, szybkie i oparte na danych, którym można zaufać. Każdy produkt dopracowujemy w szczegółach – od rezerwacji i magazynu po fakturowanie i analizy.",
-            "about.pill1": "Oprogramowanie dopasowane do operacji",
-            "about.pill2": "Dane i automatyzacja",
-            "about.pill3": "Tworzone w Czechach",
-            "about.pill4": "Długoterminowe wsparcie",
-            "about.panel1t": "Własny rozwój",
-            "about.panel1d": "Nasze systemy tworzymy samodzielnie, dlatego rozumiemy je do ostatniej linijki kodu.",
-            "about.panel2t": "Działanie 24/7",
-            "about.panel2d": "Nasze systemy działają nieprzerwanie – tak jak zakłady, którym służą.",
-            "about.panel3t": "Bezpieczne i niezawodne",
-            "about.panel3d": "Dane hostujemy odpowiedzialnie, z dbałością o prywatność i stabilność.",
-            "contact.title": "Weźmy Twoje operacje pod kontrolę.",
-            "contact.p": "Prowadzisz zakład, który zasługuje na inteligentniejszy system? Napisz do nas – chętnie omówimy, jak ATOMYS może pomóc.",
+            "about.title": "Nasze systemy tworzymy samodzielnie w Czechach",
+            "about.p1": "<strong>ATOMYS</strong> spaja rodzinę systemów informatycznych dla codziennej działalności firm. Kod piszemy sami, dlatego rozumiemy nasze systemy do ostatniej linijki.",
+            "contact.title": "Zapytania i pytania dotyczące systemów ATOMYS",
+            "contact.p": "Napisz, jaki zakład prowadzisz i czego potrzebujesz od systemu, albo zadzwoń.",
             "contact.email": "E-mail",
             "contact.phone": "Telefon",
             "hero.tagline": "Inteligentne systemy do zarządzania operacjami",
@@ -866,7 +712,6 @@
             "nav.menu": "Menu",
             "nav.label": "Navigazione principale",
             "nav.products": "Prodotti",
-            "nav.why": "Perché ATOMYS",
             "nav.about": "Chi siamo",
             "nav.cta": "Contattaci",
             "switcher.aria": "Scegli la lingua",
@@ -889,30 +734,10 @@
             "status.indev": "In sviluppo",
             "contact.btn": "Scrivici",
             "contact.mailsubject": "Richiesta – ATOMYS",
-            "why.title": "Quattro principi su cui costruiamo.",
-            "feat.intel.t": "Intelligenza",
-            "feat.intel.d": "Dai dati operativi ricaviamo la base per le decisioni.",
-            "feat.auto.t": "Automazione",
-            "feat.auto.d": "Automatizziamo la routine, riduciamo tempo e costi e lasciamo che le persone si dedichino a ciò che conta.",
-            "feat.over.t": "Panoramica",
-            "feat.over.d": "Le informazioni importanti sulla tua attività sono chiare e aggiornate.",
-            "feat.sec.t": "Sicurezza",
-            "feat.sec.d": "I tuoi dati sono al sicuro: li gestiamo in modo responsabile e conforme alle regole.",
-            "about.title": "Chi siamo",
-            "about.p1": "<strong>ATOMYS</strong> riunisce una famiglia di sistemi software per l'operatività quotidiana delle aziende. Non ci concentriamo su un unico settore: costruiamo strumenti per autofficine, case di riposo, retail e attività moderne, uniti da un'unica esigenza: tenere tutto sotto controllo.",
-            "about.p2": "Il nostro obiettivo è un software che semplifica il lavoro: chiaro, veloce e costruito su dati di cui ti puoi fidare. Affrontiamo ogni prodotto in profondità, dalle prenotazioni e dal magazzino fino alla fatturazione e all'analisi.",
-            "about.pill1": "Software su misura per l'operatività",
-            "about.pill2": "Dati e automazione",
-            "about.pill3": "Sviluppato in Repubblica Ceca",
-            "about.pill4": "Supporto a lungo termine",
-            "about.panel1t": "Sviluppo interno",
-            "about.panel1d": "Sviluppiamo i nostri sistemi in prima persona, quindi li conosciamo fino all'ultima riga.",
-            "about.panel2t": "Operatività 24/7",
-            "about.panel2d": "I nostri sistemi funzionano senza sosta, proprio come le attività a cui servono.",
-            "about.panel3t": "Sicuri e affidabili",
-            "about.panel3d": "Ospitiamo i dati in modo responsabile, nel rispetto della privacy e della stabilità.",
-            "contact.title": "Portiamo la tua operatività sotto controllo.",
-            "contact.p": "Gestisci un'attività che merita un sistema più intelligente? Scrivici: saremo lieti di valutare insieme come ATOMYS può aiutarti.",
+            "about.title": "Sviluppiamo i nostri sistemi internamente, in Repubblica Ceca",
+            "about.p1": "<strong>ATOMYS</strong> riunisce una famiglia di sistemi software per l'operatività quotidiana delle aziende. Scriviamo il codice noi stessi, quindi conosciamo i sistemi fino all'ultima riga.",
+            "contact.title": "Richieste e domande sui sistemi ATOMYS",
+            "contact.p": "Scrivici che attività gestisci e di cosa hai bisogno dal sistema, oppure chiamaci.",
             "contact.email": "E-mail",
             "contact.phone": "Telefono",
             "hero.tagline": "Sistemi intelligenti per la gestione operativa",
@@ -929,7 +754,6 @@
             "nav.menu": "Μενού",
             "nav.label": "Κύρια πλοήγηση",
             "nav.products": "Προϊόντα",
-            "nav.why": "Γιατί ATOMYS",
             "nav.about": "Σχετικά",
             "nav.cta": "Επικοινωνήστε μαζί μας",
             "switcher.aria": "Επιλογή γλώσσας",
@@ -952,30 +776,10 @@
             "status.indev": "Σε ανάπτυξη",
             "contact.btn": "Γράψτε μας",
             "contact.mailsubject": "Ζήτηση προσφοράς – ATOMYS",
-            "why.title": "Τέσσερις αρχές πάνω στις οποίες χτίζουμε.",
-            "feat.intel.t": "Ευφυΐα",
-            "feat.intel.d": "Από τα λειτουργικά δεδομένα προετοιμάζουμε τη βάση για τη λήψη αποφάσεων.",
-            "feat.auto.t": "Αυτοματισμός",
-            "feat.auto.d": "Αυτοματοποιούμε τη ρουτίνα, εξοικονομούμε χρόνο και κόστος και αφήνουμε τους ανθρώπους να επικεντρωθούν σε αυτό που μετράει.",
-            "feat.over.t": "Εποπτεία",
-            "feat.over.d": "Βλέπετε τις σημαντικές πληροφορίες για τη λειτουργία σας με σαφήνεια και ενημερωμένες.",
-            "feat.sec.t": "Ασφάλεια",
-            "feat.sec.d": "Τα δεδομένα σας είναι ασφαλή – τα διαχειριζόμαστε υπεύθυνα και σύμφωνα με τους κανόνες.",
-            "about.title": "Ποιοι είμαστε",
-            "about.p1": "Η <strong>ATOMYS</strong> συγκεντρώνει μια οικογένεια συστημάτων λογισμικού για την καθημερινή λειτουργία των επιχειρήσεων. Δεν εστιάζουμε σε έναν μόνο κλάδο – δημιουργούμε εργαλεία για συνεργεία αυτοκινήτων, μονάδες φροντίδας ηλικιωμένων, το λιανικό εμπόριο και τις σύγχρονες επιχειρήσεις, που τα ενώνει μία ανάγκη: να έχετε τα πάντα υπό έλεγχο.",
-            "about.p2": "Στόχος μας είναι λογισμικό που κάνει τη δουλειά πιο εύκολη: ξεκάθαρο, γρήγορο και χτισμένο πάνω σε δεδομένα που μπορείτε να εμπιστευτείτε. Κάθε προϊόν το επεξεργαζόμαστε σε βάθος – από τις κρατήσεις και την αποθήκη μέχρι την τιμολόγηση και την ανάλυση.",
-            "about.pill1": "Λογισμικό στα μέτρα της λειτουργίας σας",
-            "about.pill2": "Δεδομένα & αυτοματισμός",
-            "about.pill3": "Ανάπτυξη στην Τσεχία",
-            "about.pill4": "Μακροχρόνια υποστήριξη",
-            "about.panel1t": "Εσωτερική ανάπτυξη",
-            "about.panel1d": "Αναπτύσσουμε τα συστήματά μας μόνοι μας, γι' αυτό και τα γνωρίζουμε μέχρι την τελευταία γραμμή κώδικα.",
-            "about.panel2t": "Λειτουργία 24/7",
-            "about.panel2d": "Τα συστήματά μας λειτουργούν ασταμάτητα – όπως ακριβώς και οι επιχειρήσεις που εξυπηρετούν.",
-            "about.panel3t": "Ασφαλή και αξιόπιστα",
-            "about.panel3d": "Φιλοξενούμε τα δεδομένα υπεύθυνα, με σεβασμό στην ιδιωτικότητα και τη σταθερότητα.",
-            "contact.title": "Ας βάλουμε τη λειτουργία σας υπό έλεγχο.",
-            "contact.p": "Διαχειρίζεστε μια επιχείρηση που αξίζει ένα πιο έξυπνο σύστημα; Γράψτε μας – θα χαρούμε να συζητήσουμε πώς μπορεί να βοηθήσει η ATOMYS.",
+            "about.title": "Αναπτύσσουμε τα συστήματά μας μόνοι μας στην Τσεχία",
+            "about.p1": "Η <strong>ATOMYS</strong> συγκεντρώνει μια οικογένεια συστημάτων λογισμικού για την καθημερινή λειτουργία των επιχειρήσεων. Γράφουμε τον κώδικα μόνοι μας, γι' αυτό γνωρίζουμε τα συστήματα μέχρι την τελευταία γραμμή.",
+            "contact.title": "Αιτήματα και ερωτήσεις για τα συστήματα ATOMYS",
+            "contact.p": "Γράψτε μας ποια επιχείρηση διαχειρίζεστε και τι χρειάζεστε από το σύστημα ή τηλεφωνήστε μας.",
             "contact.email": "Email",
             "contact.phone": "Τηλέφωνο",
             "hero.tagline": "Έξυπνα συστήματα για τη διαχείριση λειτουργιών",
@@ -992,7 +796,6 @@
             "nav.menu": "Menü",
             "nav.label": "Fő navigáció",
             "nav.products": "Termékek",
-            "nav.why": "Miért ATOMYS",
             "nav.about": "Rólunk",
             "nav.cta": "Lépjen kapcsolatba",
             "switcher.aria": "Nyelv kiválasztása",
@@ -1015,30 +818,10 @@
             "status.indev": "Fejlesztés alatt",
             "contact.btn": "Írjon nekünk",
             "contact.mailsubject": "Érdeklődés – ATOMYS",
-            "why.title": "Négy alapelv, amelyre építünk.",
-            "feat.intel.t": "Intelligencia",
-            "feat.intel.d": "Az üzemi adatokból döntés-előkészítő anyagot készítünk.",
-            "feat.auto.t": "Automatizálás",
-            "feat.auto.d": "Automatizáljuk a rutint, időt és költséget takarítunk meg, és hagyjuk, hogy az emberek a lényegre koncentráljanak.",
-            "feat.over.t": "Áttekintés",
-            "feat.over.d": "A működés fontos adatait áttekinthetően és naprakészen látja.",
-            "feat.sec.t": "Biztonság",
-            "feat.sec.d": "Az Ön adatai biztonságban vannak – felelősségteljesen és a szabályoknak megfelelően kezeljük őket.",
-            "about.title": "Kik vagyunk",
-            "about.p1": "Az <strong>ATOMYS</strong> szoftverrendszerek családját fogja össze a vállalkozások mindennapi működéséhez. Nem egyetlen iparágra összpontosítunk – eszközöket építünk autószervizek, idősotthonok, kiskereskedelem és modern üzemek számára, amelyeket egyetlen igény köt össze: mindent kézben tartani.",
-            "about.p2": "Célunk olyan szoftver, amely megkönnyíti a munkát: áttekinthető, gyors és megbízható adatokra épül. Minden terméket mélységében dolgozunk ki – a foglalásoktól és a raktártól a számlázásig és az elemzésig.",
-            "about.pill1": "Működésre szabott szoftver",
-            "about.pill2": "Adatok és automatizálás",
-            "about.pill3": "Csehországban fejlesztve",
-            "about.pill4": "Hosszú távú támogatás",
-            "about.panel1t": "Saját fejlesztés",
-            "about.panel1d": "Rendszereinket saját magunk fejlesztjük, így az utolsó sorig értjük őket.",
-            "about.panel2t": "24/7 üzemelés",
-            "about.panel2d": "Rendszereink megállás nélkül működnek – akárcsak a működés, amelyet kiszolgálnak.",
-            "about.panel3t": "Biztonságos és megbízható",
-            "about.panel3d": "Az adatokat felelősségteljesen tároljuk, tiszteletben tartva a magánszférát és a stabilitást.",
-            "contact.title": "Vegyük kézbe a működését.",
-            "contact.p": "Olyan üzemet vezet, amely megérdemelne egy okosabb rendszert? Írjon nekünk – szívesen megbeszéljük, hogyan segíthet Önnek az ATOMYS.",
+            "about.title": "Rendszereinket saját magunk fejlesztjük Csehországban",
+            "about.p1": "Az <strong>ATOMYS</strong> szoftverrendszerek családját fogja össze a vállalkozások mindennapi működéséhez. A kódot mi magunk írjuk, így a rendszereket az utolsó sorig értjük.",
+            "contact.title": "Ajánlatkérés és kérdések az ATOMYS rendszereiről",
+            "contact.p": "Írja meg, milyen üzemet vezet és mire van szüksége a rendszertől, vagy hívjon minket.",
             "contact.email": "E-mail",
             "contact.phone": "Telefon",
             "hero.tagline": "Intelligens rendszerek a működés irányításához",
@@ -1055,7 +838,6 @@
             "nav.menu": "Menú",
             "nav.label": "Navegación principal",
             "nav.products": "Productos",
-            "nav.why": "Por qué ATOMYS",
             "nav.about": "Nosotros",
             "nav.cta": "Contáctanos",
             "switcher.aria": "Elegir idioma",
@@ -1078,30 +860,10 @@
             "status.indev": "En desarrollo",
             "contact.btn": "Escríbenos",
             "contact.mailsubject": "Consulta – ATOMYS",
-            "why.title": "Cuatro principios sobre los que construimos.",
-            "feat.intel.t": "Inteligencia",
-            "feat.intel.d": "A partir de los datos operativos preparamos la base para tomar decisiones.",
-            "feat.auto.t": "Automatización",
-            "feat.auto.d": "Automatizamos la rutina, ahorramos tiempo y costes, y dejamos que las personas se centren en lo importante.",
-            "feat.over.t": "Visión general",
-            "feat.over.d": "Ves la información importante de tu operación con claridad y al día.",
-            "feat.sec.t": "Seguridad",
-            "feat.sec.d": "Tus datos están seguros: los gestionamos con responsabilidad y conforme a la normativa.",
-            "about.title": "Quiénes somos",
-            "about.p1": "<strong>ATOMYS</strong> reúne una familia de sistemas de software para las operaciones diarias de las empresas. No nos centramos en un único sector: creamos herramientas para talleres de automóviles, residencias de mayores, comercio minorista y operaciones modernas, unidas por una misma necesidad: tenerlo todo bajo control.",
-            "about.p2": "Nuestro objetivo es un software que facilite el trabajo: claro, rápido y basado en datos en los que puedes confiar. Abordamos cada producto en profundidad: desde las reservas y el almacén hasta la facturación y la analítica.",
-            "about.pill1": "Software a medida de tu operación",
-            "about.pill2": "Datos y automatización",
-            "about.pill3": "Desarrollado en Chequia",
-            "about.pill4": "Soporte a largo plazo",
-            "about.panel1t": "Desarrollo propio",
-            "about.panel1d": "Desarrollamos nuestros sistemas con recursos propios, así que los entendemos hasta la última línea.",
-            "about.panel2t": "Funcionamiento 24/7",
-            "about.panel2d": "Nuestros sistemas funcionan sin interrupción, igual que las operaciones a las que sirven.",
-            "about.panel3t": "Seguro y fiable",
-            "about.panel3d": "Alojamos los datos con responsabilidad, cuidando la privacidad y la estabilidad.",
-            "contact.title": "Pongamos tu operación bajo control.",
-            "contact.p": "¿Diriges una operación que merece un sistema más inteligente? Escríbenos: estaremos encantados de hablar de cómo ATOMYS puede ayudarte.",
+            "about.title": "Desarrollamos nuestros sistemas con recursos propios en Chequia",
+            "about.p1": "<strong>ATOMYS</strong> reúne una familia de sistemas de software para las operaciones diarias de las empresas. Escribimos el código nosotros mismos, así que entendemos los sistemas hasta la última línea.",
+            "contact.title": "Solicitudes y consultas sobre los sistemas ATOMYS",
+            "contact.p": "Cuéntanos qué operación diriges y qué necesitas del sistema, o llámanos.",
             "contact.email": "Correo electrónico",
             "contact.phone": "Teléfono",
             "hero.tagline": "Sistemas inteligentes para la gestión de operaciones",
@@ -1118,7 +880,6 @@
             "nav.menu": "Меню",
             "nav.label": "Основная навигация",
             "nav.products": "Продукты",
-            "nav.why": "Почему ATOMYS",
             "nav.about": "О нас",
             "nav.cta": "Свяжитесь с нами",
             "switcher.aria": "Выбрать язык",
@@ -1141,30 +902,10 @@
             "status.indev": "В разработке",
             "contact.btn": "Напишите нам",
             "contact.mailsubject": "Запрос — ATOMYS",
-            "why.title": "Четыре принципа, на которых мы строим.",
-            "feat.intel.t": "Интеллект",
-            "feat.intel.d": "Из операционных данных мы готовим основу для принятия решений.",
-            "feat.auto.t": "Автоматизация",
-            "feat.auto.d": "Мы автоматизируем рутину, экономим время и деньги и даём людям заниматься главным.",
-            "feat.over.t": "Обзор",
-            "feat.over.d": "Важная информация о работе предприятия всегда наглядна и актуальна.",
-            "feat.sec.t": "Безопасность",
-            "feat.sec.d": "Ваши данные в безопасности — мы обращаемся с ними ответственно и по правилам.",
-            "about.title": "Кто мы",
-            "about.p1": "<strong>ATOMYS</strong> объединяет семейство программных систем для повседневной работы компаний. Мы не ограничиваемся одной отраслью — создаём инструменты для автосервисов, домов престарелых, розничной торговли и современных предприятий, которые объединяет одна потребность: держать всё под контролем.",
-            "about.p2": "Наша цель — программное обеспечение, которое облегчает работу: понятное, быстрое и построенное на данных, которым можно доверять. Каждый продукт мы прорабатываем в глубину — от записей и склада до выставления счетов и аналитики.",
-            "about.pill1": "Программное обеспечение под ваши процессы",
-            "about.pill2": "Данные и автоматизация",
-            "about.pill3": "Разработано в Чехии",
-            "about.pill4": "Долгосрочная поддержка",
-            "about.panel1t": "Собственная разработка",
-            "about.panel1d": "Мы разрабатываем свои системы сами, поэтому понимаем их до последней строки кода.",
-            "about.panel2t": "Работа 24/7",
-            "about.panel2d": "Наши системы работают без остановки — как и предприятия, которым они служат.",
-            "about.panel3t": "Безопасно и надёжно",
-            "about.panel3d": "Мы храним данные ответственно, заботясь о конфиденциальности и стабильности.",
-            "contact.title": "Давайте возьмём ваши процессы под контроль.",
-            "contact.p": "У вас есть бизнес, который заслуживает более умной системы? Напишите нам — с радостью обсудим, чем ATOMYS может помочь.",
+            "about.title": "Мы сами разрабатываем свои системы в Чехии",
+            "about.p1": "<strong>ATOMYS</strong> объединяет семейство программных систем для повседневной работы компаний. Код мы пишем сами, поэтому понимаем наши системы до последней строки.",
+            "contact.title": "Запросы и вопросы о системах ATOMYS",
+            "contact.p": "Напишите, каким предприятием вы управляете и что вам нужно от системы, или позвоните нам.",
             "contact.email": "Эл. почта",
             "contact.phone": "Телефон",
             "hero.tagline": "Интеллектуальные системы для управления процессами",
@@ -1181,7 +922,6 @@
             "nav.menu": "Menu",
             "nav.label": "Navigation principale",
             "nav.products": "Produits",
-            "nav.why": "Pourquoi ATOMYS",
             "nav.about": "À propos",
             "nav.cta": "Contactez-nous",
             "switcher.aria": "Choisir la langue",
@@ -1204,30 +944,10 @@
             "status.indev": "En développement",
             "contact.btn": "Écrivez-nous",
             "contact.mailsubject": "Demande – ATOMYS",
-            "why.title": "Quatre principes sur lesquels nous bâtissons.",
-            "feat.intel.t": "Intelligence",
-            "feat.intel.d": "À partir des données d'exploitation, nous préparons la base de vos décisions.",
-            "feat.auto.t": "Automatisation",
-            "feat.auto.d": "Nous automatisons les tâches routinières, réduisons le temps et les coûts, et laissons chacun se concentrer sur l'essentiel.",
-            "feat.over.t": "Vue d'ensemble",
-            "feat.over.d": "Vous voyez les informations importantes sur votre activité clairement et à jour.",
-            "feat.sec.t": "Sécurité",
-            "feat.sec.d": "Vos données sont en sécurité : nous les exploitons de façon responsable et conforme aux règles.",
-            "about.title": "Qui nous sommes",
-            "about.p1": "<strong>ATOMYS</strong> réunit une famille de systèmes logiciels dédiés au fonctionnement quotidien des entreprises. Nous ne nous limitons pas à un seul secteur : nous concevons des outils pour les garages automobiles, les maisons de retraite, le commerce de détail et les activités modernes, réunis par un même besoin : tout garder sous contrôle.",
-            "about.p2": "Notre objectif : un logiciel qui simplifie le travail, clair, rapide et fondé sur des données fiables. Nous traitons chaque produit en profondeur, des réservations et du stock jusqu'à la facturation et l'analyse.",
-            "about.pill1": "Logiciel sur mesure pour l'activité",
-            "about.pill2": "Données et automatisation",
-            "about.pill3": "Développé en Tchéquie",
-            "about.pill4": "Support à long terme",
-            "about.panel1t": "Développement interne",
-            "about.panel1d": "Nous développons nos systèmes en interne : nous les maîtrisons jusqu'à la dernière ligne de code.",
-            "about.panel2t": "Fonctionnement 24/7",
-            "about.panel2d": "Nos systèmes fonctionnent sans interruption, tout comme les activités qu'ils accompagnent.",
-            "about.panel3t": "Sûr et fiable",
-            "about.panel3d": "Nous hébergeons les données de façon responsable, dans le respect de la confidentialité et de la stabilité.",
-            "contact.title": "Mettons votre activité sous contrôle.",
-            "contact.p": "Vous dirigez une activité qui mérite un système plus intelligent ? Écrivez-nous : nous serons ravis d'échanger sur la façon dont ATOMYS peut vous aider.",
+            "about.title": "Nous développons nos systèmes en interne, en Tchéquie",
+            "about.p1": "<strong>ATOMYS</strong> réunit une famille de systèmes logiciels dédiés au fonctionnement quotidien des entreprises. Nous écrivons le code nous-mêmes : nous maîtrisons donc nos systèmes jusqu'à la dernière ligne.",
+            "contact.title": "Demandes et questions sur les systèmes ATOMYS",
+            "contact.p": "Dites-nous quelle activité vous gérez et ce dont vous avez besoin, ou appelez-nous.",
             "contact.email": "E-mail",
             "contact.phone": "Téléphone",
             "hero.tagline": "Systèmes intelligents pour le pilotage de l'activité",
@@ -1244,7 +964,6 @@
             "nav.menu": "菜单",
             "nav.label": "主导航",
             "nav.products": "产品",
-            "nav.why": "为何选择 ATOMYS",
             "nav.about": "关于我们",
             "nav.cta": "联系我们",
             "switcher.aria": "选择语言",
@@ -1267,30 +986,10 @@
             "status.indev": "开发中",
             "contact.btn": "联系我们",
             "contact.mailsubject": "业务咨询 — ATOMYS",
-            "why.title": "我们坚守的四项原则。",
-            "feat.intel.t": "智能",
-            "feat.intel.d": "我们把运营数据整理成决策依据。",
-            "feat.auto.t": "自动化",
-            "feat.auto.d": "我们让日常事务自动化，节省时间与成本，让员工专注于真正重要的事。",
-            "feat.over.t": "全局总览",
-            "feat.over.d": "运营关键信息清晰呈现、及时更新。",
-            "feat.sec.t": "安全",
-            "feat.sec.d": "您的数据安全无忧——我们负责任地运营，并严格遵循相关规范。",
-            "about.title": "我们是谁",
-            "about.p1": "<strong>ATOMYS</strong> 汇聚了一系列面向企业日常运营的软件系统。我们并不局限于某一个行业——我们为汽车维修厂、养老院、零售及现代运营场景打造工具，它们都源于同一个诉求：让一切尽在掌控。",
-            "about.p2": "我们的目标，是让软件为工作减负：清晰、快速，并建立在值得信赖的数据之上。我们对每一款产品都深耕细作——从预约、库存到开票与分析。",
-            "about.pill1": "为运营量身定制的软件",
-            "about.pill2": "数据与自动化",
-            "about.pill3": "捷克研发",
-            "about.pill4": "长期支持",
-            "about.panel1t": "自主研发",
-            "about.panel1d": "我们的系统由自己一手打造，因此对每一行代码都了如指掌。",
-            "about.panel2t": "24/7 全天候运行",
-            "about.panel2d": "我们的系统不间断运行——正如它们所服务的运营场景一样。",
-            "about.panel3t": "安全可靠",
-            "about.panel3d": "我们负责任地托管数据，尊重隐私、保障稳定。",
-            "contact.title": "让我们一起，把您的运营带入掌控之中。",
-            "contact.p": "您的运营是否值得拥有更聪明的系统？欢迎联系我们——我们很乐意探讨 ATOMYS 能为您带来怎样的帮助。",
+            "about.title": "我们在捷克自主研发 ATOMYS 系统",
+            "about.p1": "<strong>ATOMYS</strong> 汇聚了一系列面向企业日常运营的软件系统。代码由我们自己编写，因此我们对系统的每一行都了如指掌。",
+            "contact.title": "关于 ATOMYS 系统的咨询与询价",
+            "contact.p": "请告诉我们您经营的业务以及对系统的需求，也可以直接致电。",
             "contact.email": "电子邮件",
             "contact.phone": "电话",
             "hero.tagline": "面向运营管理的智能系统",
@@ -1307,7 +1006,6 @@
             "nav.menu": "Menu",
             "nav.label": "Điều hướng chính",
             "nav.products": "Sản phẩm",
-            "nav.why": "Vì sao chọn ATOMYS",
             "nav.about": "Giới thiệu",
             "nav.cta": "Liên hệ với chúng tôi",
             "switcher.aria": "Chọn ngôn ngữ",
@@ -1330,30 +1028,10 @@
             "status.indev": "Đang phát triển",
             "contact.btn": "Viết cho chúng tôi",
             "contact.mailsubject": "Yêu cầu tư vấn – ATOMYS",
-            "why.title": "Bốn nguyên tắc chúng tôi lấy làm nền tảng.",
-            "feat.intel.t": "Trí tuệ",
-            "feat.intel.d": "Từ dữ liệu vận hành, chúng tôi chuẩn bị cơ sở cho việc ra quyết định.",
-            "feat.auto.t": "Tự động hóa",
-            "feat.auto.d": "Chúng tôi tự động hóa công việc lặp lại, tiết kiệm thời gian và chi phí, để con người tập trung vào điều thực sự quan trọng.",
-            "feat.over.t": "Tổng quan",
-            "feat.over.d": "Bạn nắm được thông tin quan trọng về hoạt động một cách rõ ràng và cập nhật.",
-            "feat.sec.t": "Bảo mật",
-            "feat.sec.d": "Dữ liệu của bạn được an toàn – chúng tôi vận hành có trách nhiệm và tuân thủ quy định.",
-            "about.title": "Chúng tôi là ai",
-            "about.p1": "<strong>ATOMYS</strong> hội tụ một nhóm các hệ thống phần mềm cho hoạt động vận hành hằng ngày của doanh nghiệp. Chúng tôi không tập trung vào một ngành duy nhất – chúng tôi xây dựng công cụ cho gara ô tô, viện dưỡng lão, bán lẻ và các mô hình vận hành hiện đại, gắn kết bởi một nhu cầu chung: giữ mọi thứ trong tầm kiểm soát.",
-            "about.p2": "Mục tiêu của chúng tôi là phần mềm giúp công việc dễ dàng hơn: rõ ràng, nhanh chóng và dựa trên dữ liệu đáng tin cậy. Chúng tôi giải quyết từng sản phẩm một cách chuyên sâu – từ đặt lịch và quản lý kho đến xuất hóa đơn và phân tích.",
-            "about.pill1": "Phần mềm được thiết kế riêng cho vận hành",
-            "about.pill2": "Dữ liệu & tự động hóa",
-            "about.pill3": "Phát triển tại Séc",
-            "about.pill4": "Hỗ trợ dài hạn",
-            "about.panel1t": "Phát triển nội bộ",
-            "about.panel1d": "Chúng tôi tự xây dựng hệ thống của mình, nên hiểu chúng đến từng dòng lệnh cuối cùng.",
-            "about.panel2t": "Vận hành 24/7",
-            "about.panel2d": "Hệ thống của chúng tôi hoạt động không ngừng nghỉ – giống như chính những mô hình vận hành mà chúng phục vụ.",
-            "about.panel3t": "An toàn và đáng tin cậy",
-            "about.panel3d": "Chúng tôi lưu trữ dữ liệu có trách nhiệm, tôn trọng quyền riêng tư và sự ổn định.",
-            "contact.title": "Hãy đưa hoạt động vận hành của bạn vào tầm kiểm soát.",
-            "contact.p": "Bạn đang điều hành một hoạt động xứng đáng có một hệ thống thông minh hơn? Hãy viết cho chúng tôi – chúng tôi rất vui được trao đổi về cách ATOMYS có thể giúp bạn.",
+            "about.title": "Chúng tôi tự phát triển các hệ thống tại Séc",
+            "about.p1": "<strong>ATOMYS</strong> hội tụ một nhóm các hệ thống phần mềm cho hoạt động vận hành hằng ngày của doanh nghiệp. Chúng tôi tự viết mã nguồn, nên hiểu các hệ thống đến từng dòng lệnh cuối cùng.",
+            "contact.title": "Yêu cầu và câu hỏi về các hệ thống ATOMYS",
+            "contact.p": "Hãy cho chúng tôi biết bạn đang điều hành hoạt động nào và cần gì từ hệ thống, hoặc gọi điện cho chúng tôi.",
             "contact.email": "Email",
             "contact.phone": "Điện thoại",
             "hero.tagline": "Hệ thống thông minh cho quản lý vận hành",
