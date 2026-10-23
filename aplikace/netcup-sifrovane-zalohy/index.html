@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netcup sifrovane zalohy | ATOMYS</title>
+  <meta name="description" content="Informace o soukromé zálohovací aplikaci Netcup sifrovane zalohy, jejím omezeném přístupu ke Google Drive a ochraně dat.">
+  <meta name="theme-color" content="#080b12">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="canonical" href="https://atomys.eu/aplikace/netcup-sifrovane-zalohy/">
+  <link rel="icon" type="image/svg+xml" href="/atomys-brand/atomys-mark-tile.svg">
+  <style>
+    :root{color-scheme:dark;--bg:#080b12;--text:#eef2f8;--dim:#9fb0c6;--link:#7cc0ff;--border:#263449;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-size:1rem;line-height:1.7;overflow-wrap:break-word}
+    a{color:var(--link);text-underline-offset:.22em}a:hover{text-decoration-thickness:2px}a:focus-visible{outline:2px solid #48c4ff;outline-offset:5px;border-radius:3px}::selection{background:#1666e0;color:#fff}
+    .wrap{width:min(100% - 48px,1080px);margin-inline:auto}header{border-bottom:1px solid var(--border)}nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}.brand{display:flex;align-items:center;gap:12px;color:var(--text);font-weight:700;letter-spacing:.08em;text-decoration:none}.brand img{display:block;width:36px;height:36px}nav>a:last-child{font-size:.9375rem}
+    main{max-width:72ch;margin:0 auto;padding-block:64px 80px}h1{font-size:2.75rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 24px;text-wrap:balance}h2{font-size:1.375rem;line-height:1.35;margin:40px 0 12px}p{margin:0 0 18px}.lead{font-size:1.1875rem;color:var(--dim)}ul{padding-left:24px;margin:0 0 22px}li+li{margin-top:10px}.details{border-block:1px solid var(--border);padding-block:24px;margin-block:32px}.details p:last-child{margin-bottom:0}code{font-size:.9375em}footer{border-top:1px solid var(--border);padding-block:24px;color:var(--dim);font-size:.9375rem}footer p{margin:0}.skip{position:absolute;left:24px;top:-80px;padding:10px 16px;background:var(--bg)}.skip:focus{top:8px}
+    @media(max-width:600px){.wrap{width:calc(100% - 40px)}nav{gap:16px;padding-block:18px}main{padding-block:40px 56px}h1{font-size:2rem}h2{margin-top:32px}.brand{gap:8px}nav>a:last-child{max-width:14ch;text-align:right}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#obsah">Přejít na obsah</a>
+  <header><nav class="wrap" aria-label="Hlavní navigace"><a class="brand" href="/"><img src="/atomys-brand/atomys-mark-tile.svg" width="36" height="36" alt="">ATOMYS</a><a href="soukromi/">Zásady soukromí</a></nav></header>
+  <div class="wrap"><main id="obsah">
+    <h1>Netcup sifrovane zalohy</h1>
+    <p class="lead">Soukromá aplikace pro kopírování šifrovaných serverových záloh na Google Drive a ověřování jejich obnovitelnosti.</p>
+    <div class="details">
+      <p>Aplikaci provozuje Tomáš Mourek pro zálohování vlastních spravovaných systémů. Používá místní nástroje Restic a rclone. Není nabízena k veřejné registraci.</p>
+      <p>Tato stránka vysvětluje účel a přístup aplikace. Připojení účtu Google probíhá při nastavení aplikace v prohlížeči na přihlašovací stránce Googlu.</p>
+    </div>
+    <h2>Jak zálohování funguje</h2>
+    <ul>
+      <li>Zálohy jsou zašifrované před odesláním do Google Drive.</li>
+      <li>Aplikace kopíruje soubory zálohovacího repozitáře a ověřovací manifesty do soukromé složky připojeného účtu.</li>
+      <li>Při ověřování stahuje uložené soubory zpět, porovnává kontrolní součty a kontroluje čitelnost zálohy. Obnova se ověřuje v odděleném prostředí.</li>
+    </ul>
+    <h2>Jaký přístup ke Googlu potřebuje</h2>
+    <p>Aplikace žádá pouze oprávnění <code>drive.file</code>. Umožňuje pracovat se soubory vytvořenými aplikací nebo výslovně zpřístupněnými aplikaci. Nepožaduje oprávnění ke všem souborům na Disku, k Gmailu ani ke kontaktům.</p>
+    <p>Z Google Drive API také zjišťuje identitu připojeného účtu a dostupnou kapacitu, aby ověřila správný cíl a dostatek místa. Přístup můžete kdykoli odvolat v <a href="https://myaccount.google.com/connections">nastavení propojení účtu Google</a>.</p>
+    <h2>Soukromí a podpora</h2>
+    <p>Podrobnosti o údajích, jejich uchovávání a odstranění najdete v <a href="soukromi/">zásadách soukromí aplikace</a>.</p>
+    <p>Provozovatel a kontakt: Tomáš Mourek, <a href="mailto:info@atomys.eu">info@atomys.eu</a>.</p>
+  </main></div>
+  <footer><div class="wrap"><p><a href="/">ATOMYS</a> · Informace aktualizovány 23. října 2026.</p></div></footer>
+</body>
+</html>
